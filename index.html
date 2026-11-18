@@ -290,7 +290,77 @@ label.ck input{width:22px;height:22px;accent-color:var(--accent-ink)}
 .aggiorna span{margin-right:auto}
 .aggiorna button{background:var(--accent);color:var(--on-accent);border:0;border-radius:12px;min-height:44px;padding:7px 14px;font-size:14px;font-weight:700}
 
+/* ---------- chi usa il telefono: Andrea o chi cucina ---------- */
+body.cucina [data-ruolo="andrea"], body:not(.cucina) [data-ruolo="cucina"]{display:none}
+body.benvenuto nav.tabs, body.benvenuto .menu{display:none}
+.tabs-in{grid-template-columns:repeat(var(--n-tab,3),1fr)}
+@media(min-width:760px){.tabs-in{grid-template-columns:repeat(var(--n-tab,3),max-content)}}
+
+/* schermata di benvenuto */
+.benv{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:10px 0 30px}
+.benv .logo{width:84px;height:84px;border-radius:22px;box-shadow:var(--shadow);align-self:center}
+.benv h1{text-align:center}
+.benv p{text-align:center;color:var(--ink-2);font-size:16px}
+.scelta{display:flex;align-items:center;gap:14px;width:100%;min-height:100px;padding:16px;border-radius:var(--r);border:1px solid var(--edge);background:var(--glass);box-shadow:var(--shadow);text-align:left;transition:transform .15s ease-out}
+.scelta:active{transform:scale(.98)}
+.scelta .ic{flex:0 0 56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink)}
+.scelta .ic svg{width:30px;height:30px}
+.scelta b{display:block;font-family:var(--f-tit);font-size:24px;line-height:1.15}
+.scelta span{font-size:15px;color:var(--ink-2)}
+.scelta.scura{background:var(--deep);color:var(--deep-ink);border-color:transparent}
+.scelta.scura span{color:var(--deep-ink-2)}
+.scelta.scura .ic{background:var(--deep-fill);color:var(--glow)}
+
+/* versione cucina: tutto piu' grande e semplice */
+body.cucina{font-size:17px}
+.giornata{display:flex;align-items:center;gap:12px;border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.giornata[data-tipo="ON"]{background:var(--deep);color:var(--deep-ink)}
+.giornata[data-tipo="OFF"],.giornata[data-tipo="LIBERO"]{background:var(--glass);border:1px solid var(--edge)}
+.giornata b{display:block;font-family:var(--f-tit);font-size:24px;line-height:1.15}
+.giornata span{font-size:15px;opacity:.85}
+.giornata .ic{flex:0 0 46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink)}
+.giornata[data-tipo="ON"] .ic{background:var(--deep-fill);color:var(--glow)}
+.giornata .ic svg{width:26px;height:26px}
+.piatto{background:var(--glass);border:1px solid var(--edge);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.piatto-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:13px 16px 9px;border-bottom:1px solid var(--line)}
+.piatto-h h2{font-size:28px}
+.piatto-h .ora{font-family:var(--f-tit);font-size:22px;font-weight:700;color:var(--accent-ink)}
+.ing{display:flex;align-items:baseline;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line)}
+.ing:last-child{border-bottom:0}
+.ing .q{flex:0 0 100px;font-family:var(--f-tit);font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.ing .q.parola{font-size:19px}
+.ing .n{flex:1;min-width:0;font-size:18px;line-height:1.3}
+.ing .n small{display:block;font-size:13.5px;color:var(--ink-3)}
+.piccolo .ing .q{font-size:20px;flex-basis:84px}
+.piccolo .ing .n{font-size:16px}
+.piccolo .piatto-h h2{font-size:22px}
+.domani{font-size:15px;color:var(--ink-2)}
+.domani b{color:var(--ink)}
+.sett-g{display:block;width:100%;text-align:left;background:var(--glass);border:1px solid var(--edge);border-radius:var(--r);box-shadow:var(--shadow);padding:13px 15px;font-size:15.5px;line-height:1.4}
+.sett-g[aria-current="date"]{border:2px solid var(--dato)}
+.sett-g .t{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.sett-g .t b{font-family:var(--f-tit);font-size:23px}
+.sett-g .lab{font-weight:600;color:var(--accent-ink)}
+.pill{display:inline-block;font-size:13px;font-weight:600;border-radius:100px;padding:3px 10px}
+.pill.on{background:var(--deep);color:var(--glow)}
+.pill.off{background:var(--surface-2);color:var(--ink-2)}
+.rep-tit{font-family:var(--f-tit);font-size:22px;font-weight:700;margin:6px 2px 0;color:var(--accent-ink)}
+.compra{display:flex;align-items:center;gap:13px;width:100%;min-height:64px;padding:10px 14px;background:var(--glass);border:1px solid var(--edge);border-radius:16px;text-align:left;transition:background-color .15s ease-out}
+.compra + .compra{margin-top:7px}
+.compra .ck{flex:0 0 32px;height:32px;border-radius:50%;border:2px solid var(--line-2);background:var(--surface);display:grid;place-items:center;color:var(--on-up)}
+.compra .ck svg{width:18px;height:18px;opacity:0}
+.compra .n{flex:1;min-width:0}
+.compra .n b{display:block;font-size:18px;font-weight:600;line-height:1.25}
+.compra .n small{display:block;font-size:13.5px;color:var(--ink-3);line-height:1.3}
+.compra .q{flex:0 0 auto;font-family:var(--f-tit);font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.compra[aria-pressed="true"]{background:var(--up-soft);border-color:transparent}
+.compra[aria-pressed="true"] .ck{background:var(--up);border-color:var(--up)}
+.compra[aria-pressed="true"] .ck svg{opacity:1}
+.compra[aria-pressed="true"] .n b{text-decoration:line-through;color:var(--ink-2)}
+
 @media(max-width:360px){
+  .ing .q{flex-basis:84px;font-size:22px}
+  .scelta b{font-size:21px}
   .hero .big{font-size:38px}
   .gr{flex-basis:84px}
   .p-kcal{font-size:17px}
@@ -313,13 +383,15 @@ label.ck input{width:22px;height:22px;accent-color:var(--accent-ink)}
       </summary>
       <div class="menu-pop">
         <button data-azione="allenamento">Giorni di allenamento…</button>
-        <button data-azione="orari">Orari dei pasti…</button>
-        <button data-azione="calendario">Promemoria nel calendario…</button>
+        <button data-azione="orari" data-ruolo="andrea">Orari dei pasti…</button>
+        <button data-azione="calendario" data-ruolo="andrea">Promemoria nel calendario…</button>
+        <button data-azione="manda-cucina" data-ruolo="andrea">Manda l'app a chi cucina…</button>
+        <hr data-ruolo="andrea">
+        <button data-azione="esporta" data-ruolo="andrea">Esporta backup (.json)</button>
+        <button data-azione="importa" data-ruolo="andrea">Importa backup…</button>
         <hr>
-        <button data-azione="esporta">Esporta backup (.json)</button>
-        <button data-azione="importa">Importa backup…</button>
-        <hr>
-        <button data-azione="azzera">Azzera tutto</button>
+        <button data-azione="cambia-ruolo">Chi usa questo telefono…</button>
+        <button data-azione="azzera" data-ruolo="andrea">Azzera tutto</button>
       </div>
     </details>
   </div>
@@ -327,17 +399,30 @@ label.ck input{width:22px;height:22px;accent-color:var(--accent-ink)}
 
 <nav class="tabs">
   <div class="tabs-in" role="tablist">
-    <button class="tab" role="tab" data-vista="oggi" aria-selected="true">
+    <button class="tab" role="tab" data-vista="oggi" data-ruolo="andrea" aria-selected="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><path d="M2.5 4v5M2.5 9v11M21.5 4c-1.5 1-2 3-2 5h2M21.5 4v16"/></svg>
       Oggi
     </button>
-    <button class="tab" role="tab" data-vista="peso" aria-selected="false">
+    <button class="tab" role="tab" data-vista="peso" data-ruolo="andrea" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="4"/><path d="M8.5 9.5a4.5 4.5 0 017 0M12 9.5l1.5-2"/></svg>
       Peso
     </button>
-    <button class="tab" role="tab" data-vista="report" aria-selected="false">
+    <button class="tab" role="tab" data-vista="report" data-ruolo="andrea" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5M4 19.5h16M7.5 16l3.5-4.5 3 2.5 4.5-6"/></svg>
       Report
+    </button>
+    <!-- versione "cucina" (per chi prepara i pasti) -->
+    <button class="tab" role="tab" data-vista="cucina" data-ruolo="cucina" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h16a8 8 0 01-16 0zM12 5v3M8.5 6.5l1 2M15.5 6.5l-1 2"/></svg>
+      Da cucinare
+    </button>
+    <button class="tab" role="tab" data-vista="settimana" data-ruolo="cucina" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+      Settimana
+    </button>
+    <button class="tab" role="tab" data-vista="spesa" data-ruolo="cucina" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="18.5" r="1.5"/><circle cx="17" cy="18.5" r="1.5"/></svg>
+      Spesa
     </button>
   </div>
 </nav>
@@ -427,8 +512,9 @@ function testoVoci(voci){ return voci.length ? voci.map(etichetta).join(" · ") 
 
 /* ===================== stato salvato sul telefono ===================== */
 function nuovoStato(){
-  const s = {v: 1, giorni: {}, pesi: {}, miei: {}, recenti: [],
-    impost: {allenamento: null, orari: Object.assign({}, P.orari), orariOn: Object.assign({}, P.orariOn)}};
+  const s = {v: 1, giorni: {}, pesi: {}, miei: {}, recenti: [], spesa: {},
+    impost: {allenamento: P.giorniAllenamento.slice(), pranzoTardi: P.giorniPranzoTardi.slice(),
+      orari: Object.assign({}, P.orari), orariOn: Object.assign({}, P.orariOn), ruolo: undefined}};
   s.pesi["2026-11-18"] = P.profilo.peso_iniziale;
   return s;
 }
@@ -441,6 +527,11 @@ function carica(){
       s.impost = Object.assign(b.impost, s.impost || {});
       s.impost.orari = Object.assign({}, P.orari, s.impost.orari || {});
       s.impost.orariOn = Object.assign({}, P.orariOn, s.impost.orariOn || {});
+      if (!Array.isArray(s.impost.allenamento)) s.impost.allenamento = P.giorniAllenamento.slice();
+      if (!Array.isArray(s.impost.pranzoTardi)) s.impost.pranzoTardi = P.giorniPranzoTardi.slice();
+      if (!s.spesa || typeof s.spesa !== "object") s.spesa = {};
+      // chi aveva gia' l'app prima della versione "cucina" e' Andrea
+      if (!s.impost.ruolo && (Object.keys(s.giorni).length || Object.keys(s.pesi).length > 1)) s.impost.ruolo = "andrea";
       // giorni scritti male (backup vecchi o modificati a mano) non devono bloccare l'app
       for (const d of Object.keys(s.giorni)){
         const g = s.giorni[d];
@@ -495,8 +586,9 @@ function pianoPasto(d, p){
   return daLista(alt ? alt[1] : base);
 }
 /* Orario di un pasto in quel giorno: nei giorni ON il pranzo e' piu' tardi (allenamento in pausa pranzo). */
+function pranzoTardi(d){ return tipoDi(d) === "ON" && (stato.impost.pranzoTardi || []).includes(daIso(d).getDay()); }
 function orarioDi(d, p){
-  if (tipoDi(d) === "ON" && stato.impost.orariOn[p]) return stato.impost.orariOn[p];
+  if (pranzoTardi(d) && stato.impost.orariOn[p]) return stato.impost.orariOn[p];
   return stato.impost.orari[p];
 }
 /* Congela un pasto (prima modifica o spunta): da qui in poi contano le sue voci, non il piano.
@@ -645,11 +737,141 @@ function cerchio(st){
 }
 function barra(val, max, colore){ const pc = max ? Math.max(0, Math.min(100, val / max * 100)) : 0; return '<div class="b"><i style="width:' + pc + '%;background:' + colore + '"></i></div>'; }
 
+const VISTE_CUCINA = ["cucina", "settimana", "spesa"];
 function render(){
+  const ruolo = stato.impost.ruolo;
+  document.body.classList.toggle("benvenuto", !ruolo);
+  document.body.classList.toggle("cucina", ruolo === "cucina");
+  $(".brand").lastChild.textContent = ruolo === "cucina" ? "Cucina per Andrea" : "Diario del Piatto";
+  if (!ruolo){ app.innerHTML = vistaBenvenuto(); return; }
+  // ogni ruolo ha le sue schermate: se la vista non e' sua, si torna alla prima
+  if (ruolo === "cucina" && !VISTE_CUCINA.includes(vista)) vista = "cucina";
+  if (ruolo === "andrea" && VISTE_CUCINA.includes(vista)) vista = "oggi";
   document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.vista === vista)));
   if (vista === "oggi") app.innerHTML = vistaOggi();
   else if (vista === "peso"){ app.innerHTML = vistaPeso(); disegnaGraficoPeso(); }
-  else { app.innerHTML = vistaReport(); disegnaGraficoKcal(); }
+  else if (vista === "report"){ app.innerHTML = vistaReport(); disegnaGraficoKcal(); }
+  else if (vista === "cucina") app.innerHTML = vistaCucina();
+  else if (vista === "settimana") app.innerHTML = vistaSettimana();
+  else if (vista === "spesa") app.innerHTML = vistaSpesa();
+}
+
+/* ---------- Benvenuto: chi usa questo telefono ---------- */
+const ICO_GRANDI = {
+  io: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>',
+  pentola: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v5a5 5 0 01-5 5H9a5 5 0 01-5-5zM2 10h2M20 10h2M9 6.5c0-1 1-1.5 1-2.5M13 6.5c0-1 1-1.5 1-2.5"/></svg>',
+  bilanciere: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9v6M7.5 6.5v11M16.5 6.5v11M20 9v6M7.5 12h9"/></svg>',
+  divano: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V8a2 2 0 012-2h10a2 2 0 012 2v3M3 13a2 2 0 014 0v2h10v-2a2 2 0 014 0v5H3zM6 18v2M18 18v2"/></svg>',
+};
+function vistaBenvenuto(){
+  return '<div class="benv"><img class="logo" src="icons/icon-192.png" alt=""><h1>Benvenuto</h1><p>Chi usa l\'app su questo telefono?</p>' +
+    '<button class="scelta scura" data-ruolo-scelta="cucina"><span class="ic">' + ICO_GRANDI.pentola + '</span><span><b>Cucino io per Andrea</b><span>Vedo cosa preparare ogni giorno e la lista della spesa</span></span></button>' +
+    '<button class="scelta" data-ruolo-scelta="andrea"><span class="ic">' + ICO_GRANDI.io + '</span><span><b>Sono Andrea</b><span>Segno quello che mangio e il mio peso</span></span></button>' +
+    '<p class="small">Si può cambiare quando vuoi dal menu in alto.</p></div>';
+}
+
+/* ---------- Cucina: cosa preparare (per la mamma) ---------- */
+const NOMI_CUCINA = {"tonno al naturale (sgocciolato)": "tonno al naturale", "succo di frutta 100%": "succo di frutta 100%"};
+const CRUDI = ["riso bianco", "pasta integrale", "patate", "gnocchi di patate", "ravioli ricotta e spinaci", "petto di pollo", "fesa di tacchino", "manzo magro", "tartare di manzo", "merluzzo o nasello"];
+/* Una riga facile da leggere: quantita' grande a sinistra, nome a destra, nota piccola sotto. */
+function rigaCucina(v, pasto){
+  const pz = pezzoG(v.n);
+  if (v.n === P.olio){
+    const c = v.g / 10, testo = {0.5: "mezzo cucchiaio", 1: "1 cucchiaio", 1.5: "1 cucchiaio e mezzo", 2: "2 cucchiai", 2.5: "2 cucchiai e mezzo", 3: "3 cucchiai"}[c] || fmt(c, 1) + " cucchiai";
+    return {q: testo, parola: true, n: "olio extravergine", nota: v.g + " g"};
+  }
+  if (v.n === P.verdure) return {q: "a piacere", parola: true, n: "verdure", nota: "pomodori, carote, insalata o rucola (circa " + v.g + " g)"};
+  if (pz && v.g % pz === 0 && v.g / pz <= 12) return {q: String(v.g / pz), n: (P.aPezzi[v.n] && v.g / pz > 1) ? P.aPezzi[v.n] : v.n.replace(" (mela/pera/arancia)", " (mela, pera o arancia)"), nota: ""};
+  const ml = /succo|latte/.test(v.n);
+  return {q: v.g + (ml ? " ml" : " g"), n: NOMI_CUCINA[v.n] || v.n, nota: CRUDI.includes(v.n) ? "pesato crudo" : (v.n === "succo di frutta 100%" && pasto === "Pranzo" ? "lo beve Andrea dopo l'allenamento" : "")};
+}
+function piattoHTML(titolo, ora, voci, piccolo){
+  return '<div class="piatto' + (piccolo ? " piccolo" : "") + '"><div class="piatto-h"><h2>' + esc(titolo) + '</h2>' + (ora ? '<span class="ora">' + esc(ora) + '</span>' : "") + '</div>' +
+    voci.map(v => { const r = rigaCucina(v, titolo); return '<div class="ing"><span class="q' + (r.parola ? " parola" : "") + '">' + esc(r.q) + '</span><span class="n">' + esc(r.n) + (r.nota ? '<small>' + esc(r.nota) + '</small>' : "") + '</span></div>'; }).join("") + '</div>';
+}
+function giornataHTML(d){
+  const t = tipoDi(d);
+  if (t === "LIBERO") return '<div class="giornata" data-tipo="LIBERO"><span class="ic">' + ICO_GRANDI.divano + '</span><span><b>Giorno libero</b><span>Niente menù: Andrea mangia quello che c\'è, ma senza saltare pasti.</span></span></div>';
+  if (t === "ON") return '<div class="giornata" data-tipo="ON"><span class="ic">' + ICO_GRANDI.bilanciere + '</span><span><b>Andrea si allena</b><span>' + (pranzoTardi(d) ? "Pranza tardi, alle " + esc(orarioDi(d, "Pranzo")) + ", e la sera mangia un po' di più." : "La sera mangia un po' di più.") + '</span></span></div>';
+  return '<div class="giornata" data-tipo="OFF"><span class="ic">' + ICO_GRANDI.divano + '</span><span><b>Giorno di riposo</b><span>Pranzo e cena normali.</span></span></div>';
+}
+function vistaCucina(){
+  const d = dataSel, eOggi = d === oggi(), domani = piuGiorni(d, 1);
+  const titolo = eOggi ? "Oggi" : d === piuGiorni(oggi(), 1) ? "Domani" : d === piuGiorni(oggi(), -1) ? "Ieri" : dataLunga(d);
+  let h = '<div class="stack">';
+  h += '<div class="datanav"><button class="icobtn" data-giorno="-1" aria-label="Giorno prima">' + ICO.sx + '</button>' +
+    '<div class="t"><h1 style="font-size:30px">' + esc(titolo) + '</h1><div class="small muted">' + esc(dataLunga(d)) + '</div></div>' +
+    '<button class="icobtn" data-giorno="1" aria-label="Giorno dopo">' + ICO.dx + '</button></div>';
+  h += giornataHTML(d);
+  if (tipoDi(d) !== "LIBERO"){
+    h += piattoHTML("Pranzo", orarioDi(d, "Pranzo"), pianoPasto(d, "Pranzo"));
+    h += piattoHTML("Cena", orarioDi(d, "Cena"), pianoPasto(d, "Cena"));
+    h += '<p class="nota">Le quantità sono solo per Andrea. Riso, pasta, patate, carne e pesce si pesano <b>crudi</b>.</p>';
+    const fissi = PASTI.filter(p => p !== "Pranzo" && p !== "Cena" && pianoPasto(d, p).length);
+    h += fissi.map(p => piattoHTML(nomeCorto(p), orarioDi(d, p), pianoPasto(d, p), true)).join("");
+  }
+  if (!eOggi && d !== piuGiorni(oggi(), -1)) h += '<button class="btn block big" data-oggi>Torna a oggi</button>';
+  else if (tipoDi(domani) !== "LIBERO"){
+    const corto = vv => vv.filter(v => v.n !== P.olio && v.n !== P.verdure && !/succo/.test(v.n)).map(v => { const r = rigaCucina(v); return r.q + " " + r.n; }).join(", ");
+    h += '<div class="card pad stack"><div class="eyebrow">Per domani (' + esc(tipoDi(domani) === "ON" ? "si allena" : "riposo") + ')</div>' +
+      '<p class="domani"><b>Pranzo:</b> ' + esc(corto(pianoPasto(domani, "Pranzo"))) + '</p><p class="domani"><b>Cena:</b> ' + esc(corto(pianoPasto(domani, "Cena"))) + '</p>' +
+      '<button class="btn" data-giorno="1">Vedi domani</button></div>';
+  }
+  return h + '</div>';
+}
+function lunediCorrente(){ const l = lunediDi(oggi()); return daIso(oggi()).getDay() === 0 ? piuGiorni(l, 7) : l; }
+function vistaSettimana(){
+  const lun = lunediCorrente();
+  let h = '<div class="stack"><h1>La settimana</h1><p class="muted">Tocca un giorno per vedere tutto. Il menù è uguale tutte le settimane.</p>';
+  for (let i = 0; i < 6; i++){
+    const d = piuGiorni(lun, i), t = tipoDi(d);
+    const corto = vv => vv.filter(v => v.n !== P.olio && v.n !== P.verdure && !/succo/.test(v.n)).map(v => { const r = rigaCucina(v); return r.q + " " + r.n; }).join(", ");
+    h += '<button class="sett-g" data-vai="' + d + '"' + (d === oggi() ? ' aria-current="date"' : "") + '><span class="t"><b>' + esc(GIORNI_SETT[daIso(d).getDay()]) + (d === oggi() ? " · oggi" : "") + '</b>' +
+      '<span class="pill ' + (t === "ON" ? "on" : "off") + '">' + (t === "ON" ? "si allena" : "riposo") + '</span></span>' +
+      '<span class="lab">Pranzo ' + esc(orarioDi(d, "Pranzo")) + ':</span> ' + esc(corto(pianoPasto(d, "Pranzo"))) + '<br>' +
+      '<span class="lab">Cena:</span> ' + esc(corto(pianoPasto(d, "Cena"))) + '</button>';
+  }
+  h += '<div class="giornata" data-tipo="LIBERO"><span class="ic">' + ICO_GRANDI.divano + '</span><span><b>Domenica</b><span>Giorno libero, niente menù.</span></span></div>';
+  return h + '</div>';
+}
+/* Spesa della settimana: somma dei menu' lun-sab con i giorni di allenamento di Andrea. */
+function listaSpesa(){
+  const lun = lunediCorrente(), tot = {};
+  for (let i = 0; i < 6; i++){
+    const d = piuGiorni(lun, i), tipo = tipoDi(d) === "ON" ? "ON" : "OFF", nome = GIORNI_SETT[daIso(d).getDay()];
+    for (const p of PASTI) for (const v of daLista(((P.menu[tipo] || {})[nome] || {})[p] || [])) tot[v.n] = (tot[v.n] || 0) + v.g;
+  }
+  const quanti = (n, g) => {
+    if (P.aPezzi[n]) return Math.ceil(g / pezzoG(n) - 0.01) + " " + P.aPezzi[n];
+    if (/succo|latte/.test(n)) return fmt(Math.ceil(g / 250 - 0.01) * 0.25, 2).replace(/,?0+$/, "") + " litri";
+    if (g >= 1000) return fmt(Math.ceil(g / 100 - 0.01) / 10, 1).replace(",0", "") + " kg";
+    const passo = g > 100 ? 50 : 10; return Math.ceil(g / passo - 0.01) * passo + " g";
+  };
+  const per = {};
+  for (const n of Object.keys(tot)){
+    const [rep, cons] = P.spesa[n] || ["Altro", ""];
+    (per[rep] = per[rep] || []).push({n, nome: P.aPezzi[n] ? "" : (n === P.verdure ? "verdure" : NOMI_CUCINA[n] || n), q: quanti(n, tot[n]), cons});
+  }
+  return {lun, per};
+}
+function vistaSpesa(){
+  const {lun, per} = listaSpesa();
+  if (stato.spesa.settimana !== lun) stato.spesa = {settimana: lun, presi: []};   // ogni settimana la lista riparte
+  const presi = stato.spesa.presi;
+  const tutte = Object.values(per).flat(), fatti = tutte.filter(x => presi.includes(x.n)).length;
+  let h = '<div class="stack"><h1>Spesa</h1><p class="muted">Per una settimana, <b>solo per Andrea</b>: aggiungete le vostre quantità. Tocca una cosa quando l\'hai presa.</p>';
+  h += '<div class="hero"><div class="lbl">Presi</div><div class="big">' + fatti + '<small>di ' + tutte.length + '</small></div><div class="hbar"><i style="width:' + (tutte.length ? fatti / tutte.length * 100 : 0) + '%"></i></div></div>';
+  for (const rep of P.reparti){
+    const voci = (per[rep] || []).sort((a, b) => (a.nome || a.q).localeCompare(b.nome || b.q, "it"));
+    if (!voci.length) continue;
+    h += '<div class="rep-tit">' + esc(rep) + '</div><div>' + voci.map(x => {
+      const preso = presi.includes(x.n), nome = x.nome || x.q.split(" ").slice(1).join(" "), q = x.nome ? x.q : x.q.split(" ")[0];
+      return '<button class="compra" data-compra="' + esc(x.n) + '" aria-pressed="' + preso + '"><span class="ck">' + ICO.tick + '</span><span class="n"><b>' + esc(nome) + '</b>' + (x.cons ? '<small>' + esc(x.cons) + '</small>' : "") + '</span><span class="q">' + esc(q) + '</span></button>';
+    }).join("") + '</div>';
+  }
+  h += '<div class="card pad stack"><h3>Dove comprare</h3>' + P.doveComprare.map(([a, b]) => '<p><b>' + esc(a) + '</b>: ' + esc(b) + '</p>').join("") + '</div>';
+  if (fatti) h += '<button class="btn block big" data-spesa-reset>Ricomincia la lista</button>';
+  return h + '</div>';
 }
 
 /* ---------- Oggi ---------- */
@@ -1045,9 +1267,13 @@ function apriRicariche(){
 function apriAllenamento(){
   const al = stato.impost.allenamento || [];
   const nomi = ["L", "M", "M", "G", "V", "S"];
-  const corpo = '<p class="small muted">Nei giorni scelti l\'app usa il menù ON: pranzo alle ' + esc(stato.impost.orariOn.Pranzo || stato.impost.orari.Pranzo) + ' dopo l\'allenamento, niente spuntino del pomeriggio, più carboidrati a pranzo e cena. Puoi sempre cambiare il singolo giorno da Oggi.</p>' +
-    '<div class="giorni7" role="group" aria-label="Giorni di allenamento">' + [1, 2, 3, 4, 5, 6].map((w, i) => '<button class="chip" data-gs="' + w + '" aria-pressed="' + al.includes(w) + '" aria-label="' + GIORNI_SETT[w] + '">' + nomi[i] + '</button>').join("") + '<button class="chip" disabled aria-label="Domenica, libera">D</button></div>';
-  apriFoglio("Impostazioni", "Giorni di allenamento", corpo, '<button class="btn primary" data-salva-allenamento>Salva</button>');
+  const pt = stato.impost.pranzoTardi || [], cucina = stato.impost.ruolo === "cucina";
+  const riga = (attr, scelti) => '<div class="giorni7" role="group">' + [1, 2, 3, 4, 5, 6].map((w, i) => '<button class="chip" ' + attr + '="' + w + '" aria-pressed="' + scelti.includes(w) + '" aria-label="' + GIORNI_SETT[w] + '">' + nomi[i] + '</button>').join("") + '<button class="chip" disabled aria-label="Domenica, libera">D</button></div>';
+  const corpo = '<p class="small muted">' + (cucina ? "In questi giorni Andrea si allena: la sera mangia un po' di più. Se cambiano, Andrea te lo dice." :
+      "Nei giorni scelti l'app usa il menù di allenamento: niente spuntino del pomeriggio, succo a pranzo e più carboidrati a cena. Puoi sempre cambiare il singolo giorno da Oggi.") + '</p>' +
+    '<div class="eyebrow">Si allena</div>' + riga("data-gs", al) +
+    '<div class="eyebrow">Pranzo tardi (alle ' + esc(stato.impost.orariOn.Pranzo || "14:30") + ', allenamento in pausa pranzo)</div>' + riga("data-pt", pt);
+  apriFoglio("Impostazioni", cucina ? "Quando si allena Andrea" : "Giorni di allenamento", corpo, '<button class="btn primary" data-salva-allenamento>Salva</button>');
 }
 function apriOrari(){
   const corpo = '<p class="small muted">Servono per la tabella di marcia ("sei indietro di…") e per i promemoria.</p>' +
@@ -1077,14 +1303,17 @@ function creaIcs(pasti){
   const righe = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Diario del Piatto//IT", "CALSCALE:GREGORIAN"];
   // giorni di allenamento e di riposo hanno orari (e pasti) diversi: un evento per gruppo di giorni
   const SIGLE = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
-  const on = stato.impost.allenamento || [], off = [1, 2, 3, 4, 5, 6].filter(w => !on.includes(w));
-  const haPasto = (tipo, p) => ((P.menu[tipo] || {})["Lunedì"] || {})[p] && P.menu[tipo]["Lunedì"][p].length > 0;
+  const on = stato.impost.allenamento || [], tardi = stato.impost.pranzoTardi || [];
   for (const p of pasti){
-    const gruppi = [];
-    const oOff = stato.impost.orari[p], oOn = stato.impost.orariOn[p] || oOff;
-    const gOn = haPasto("ON", p) ? on : [], gOff = off;
-    if (oOn === oOff) gruppi.push([oOff, gOff.concat(gOn).sort()]);
-    else { gruppi.push([oOff, gOff]); gruppi.push([oOn, gOn]); }
+    // per ogni giorno lun-sab: c'e' il pasto? a che ora? poi un evento per ogni orario diverso
+    const perOra = {};
+    for (const w of [1, 2, 3, 4, 5, 6]){
+      const tipo = on.includes(w) ? "ON" : "OFF", voci = ((P.menu[tipo] || {})[GIORNI_SETT[w]] || {})[p] || [];
+      if (!voci.length) continue;
+      const orario = tipo === "ON" && tardi.includes(w) && stato.impost.orariOn[p] ? stato.impost.orariOn[p] : stato.impost.orari[p];
+      (perOra[orario] = perOra[orario] || []).push(w);
+    }
+    const gruppi = Object.entries(perOra);
     const fisso = P.pastiFissi.find(x => x[0] === p);
     for (const [orario, giorni] of gruppi){
       if (!giorni.length) continue;
@@ -1138,7 +1367,20 @@ app.addEventListener("click", e => {
   clearTimeout(tRidisegna);
   applicaGrammi(document.activeElement);   // su iPhone il campo non perde il fuoco prima del tocco
   const d = dataSel;
-  if (b.dataset.giorno){ dataSel = piuGiorni(d, Number(b.dataset.giorno)); if (dataSel > oggi()) dataSel = oggi(); aperto = null; render(); return; }
+  if (b.dataset.ruoloScelta){
+    stato.impost.ruolo = b.dataset.ruoloScelta; salva();
+    vista = b.dataset.ruoloScelta === "cucina" ? "cucina" : "oggi"; dataSel = oggi(); render(); window.scrollTo(0, 0); return;
+  }
+  // chi cucina puo' guardare anche i giorni dopo (per organizzarsi); Andrea segna solo fino a oggi
+  if (b.dataset.giorno){ dataSel = piuGiorni(d, Number(b.dataset.giorno)); if (stato.impost.ruolo !== "cucina" && dataSel > oggi()) dataSel = oggi(); aperto = null; render(); window.scrollTo(0, 0); return; }
+  if (b.dataset.vai){ dataSel = b.dataset.vai; vista = "cucina"; render(); window.scrollTo(0, 0); return; }
+  if (b.hasAttribute("data-oggi")){ dataSel = oggi(); render(); window.scrollTo(0, 0); return; }
+  if (b.dataset.compra){
+    const n = b.dataset.compra, presi = stato.spesa.presi || (stato.spesa.presi = []);
+    const i = presi.indexOf(n); if (i >= 0) presi.splice(i, 1); else presi.push(n);
+    salva(); const y = window.scrollY; render(); window.scrollTo(0, y); return;
+  }
+  if (b.hasAttribute("data-spesa-reset")){ stato.spesa.presi = []; salva(); render(); window.scrollTo(0, 0); return; }
   if (b.dataset.tipo){
     const g = giorno(d, true);
     g.tipo = b.dataset.tipo;
@@ -1190,6 +1432,18 @@ function azione(a){
   else if (a === "orari") apriOrari();
   else if (a === "calendario") apriCalendario();
   else if (a === "ricarica") apriRicariche();
+  else if (a === "cambia-ruolo"){
+    apriFoglio("Impostazioni", "Chi usa questo telefono?", '<p>Puoi passare dalla versione di Andrea a quella per chi cucina. I dati salvati non si perdono.</p>',
+      '<button class="btn" data-ruolo-dlg="cucina">Chi cucina</button><button class="btn" data-ruolo-dlg="andrea">Andrea</button>');
+  }
+  else if (a === "manda-cucina"){
+    const link = location.origin + location.pathname.replace(/index\.html$/, "") + "?per=cucina";
+    const testo = "Ciao! Questa è l'app con cosa cucinare per me e la lista della spesa. Aprila con Safari, tocca il quadrato con la freccia in basso (Condividi) e poi \"Aggiungi alla schermata Home\". Quando si apre, tocca \"Cucino io per Andrea\".\n" + link;
+    apriFoglio("Per la mamma", "Manda l'app a chi cucina", '<p>Sul suo telefono vedrà <b>cosa preparare ogni giorno</b> (solo le tue porzioni) e la <b>lista della spesa</b> da spuntare. Niente calorie né pesate: quelle restano sul tuo.</p>' +
+      '<pre style="white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;background:var(--surface-3);border-radius:12px;padding:12px">' + esc(testo) + '</pre>',
+      '<button class="btn" data-copia>Copia</button>' + (navigator.share ? '<button class="btn primary" data-condividi>Manda su WhatsApp</button>' : ""));
+    dlg._testo = testo;
+  }
   else if (a === "esporta") scarica("diario-del-piatto-" + oggi() + ".json", JSON.stringify(Object.assign({}, stato, {calcolato: calcolatoPerAnalisi()}), null, 1), "application/json");
   else if (a === "importa") $("#file-import").click();
   else if (a === "azzera"){
@@ -1265,11 +1519,12 @@ dlg.addEventListener("click", async e => {
     const o = dlg._ricariche[Number(b.dataset.ricarica)], g = giorno(dataSel, true);
     g.extra = (g.extra || []).concat(o.voci.map(v => Object.assign({}, v))); salva(); dlg.close(); render(); avviso(o.nome + ": " + fmt(o.m.k) + " kcal segnate"); return;
   }
-  if (b.dataset.gs){ b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); return; }
+  if (b.dataset.gs || b.dataset.pt){ b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); return; }
   if (b.hasAttribute("data-salva-allenamento")){
     // i giorni passati gia' segnati tengono il tipo che avevano: cambiare i giorni vale da oggi in poi
     for (const d of Object.keys(stato.giorni)) if (d < oggi() && !stato.giorni[d].tipo) stato.giorni[d].tipo = tipoDi(d);
     stato.impost.allenamento = [...dlg.querySelectorAll("[data-gs]")].filter(x => x.getAttribute("aria-pressed") === "true").map(x => Number(x.dataset.gs));
+    stato.impost.pranzoTardi = [...dlg.querySelectorAll("[data-pt]")].filter(x => x.getAttribute("aria-pressed") === "true").map(x => Number(x.dataset.pt));
     salva(); dlg.close(); render(); avviso("Giorni di allenamento salvati"); return;
   }
   if (b.hasAttribute("data-salva-orari")){
@@ -1284,6 +1539,10 @@ dlg.addEventListener("click", async e => {
   }
   if (b.hasAttribute("data-copia")){ try { await navigator.clipboard.writeText(dlg._testo); avviso("Copiato: incollalo su WhatsApp"); } catch (err) { avviso("Copia non riuscita: tieni premuto sul testo"); } return; }
   if (b.hasAttribute("data-condividi")){ try { await navigator.share({text: dlg._testo}); } catch (err) {} return; }
+  if (b.dataset.ruoloDlg){
+    stato.impost.ruolo = b.dataset.ruoloDlg; salva(); dlg.close();
+    vista = b.dataset.ruoloDlg === "cucina" ? "cucina" : "oggi"; dataSel = oggi(); render(); window.scrollTo(0, 0); return;
+  }
   if (b.hasAttribute("data-conferma-import")){
     try { localStorage.setItem(CHIAVE, JSON.stringify(dlg._import)); }
     catch (err) { avviso("Spazio sul telefono pieno: backup non importato"); return; }
@@ -1312,7 +1571,9 @@ setInterval(() => { if (vista === "oggi" && !dlg.open && !dlgCibo.open && docume
 let larghezza = window.innerWidth;
 window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - larghezza) > 40){ larghezza = window.innerWidth; if (vista !== "oggi") render(); } });
 
-window.__piatto = {stato: () => stato, mangiato, vociPasto, tipoDi, ritmo, mantenimento, verdetto, settimane, creaIcs, calcolato: calcolatoPerAnalisi};
+if (new URLSearchParams(location.search).get("per") === "cucina" && !stato.impost.ruolo){ stato.impost.ruolo = "cucina"; vista = "cucina"; salva(); }
+else if (stato.impost.ruolo === "cucina") vista = "cucina";
+window.__piatto = {stato: () => stato, mangiato, vociPasto, tipoDi, ritmo, mantenimento, verdetto, settimane, creaIcs, calcolato: calcolatoPerAnalisi, listaSpesa, pianoPasto};
 render();
 })();
 </script>

@@ -1881,5 +1881,204 @@ window.PIANO = {
    ]
   ]
  ],
- "domenica": "Giorno libero, ma senza saltare pasti: mangia almeno quanto un giorno OFF."
+ "domenica": "Giorno libero, ma senza saltare pasti: mangia almeno quanto un giorno OFF.",
+ "giorniAllenamento": [
+  1,
+  3,
+  5,
+  6
+ ],
+ "giorniPranzoTardi": [
+  1,
+  3,
+  5
+ ],
+ "spesa": {
+  "riso bianco": [
+   "Pasta, riso e pane",
+   "Scotti o Gallo; va bene anche quello Coop o Conad"
+  ],
+  "pasta integrale": [
+   "Pasta, riso e pane",
+   "Barilla o De Cecco integrale; al Lidl Combino integrale"
+  ],
+  "pane": [
+   "Pasta, riso e pane",
+   "dal fornaio o al banco del pane"
+  ],
+  "torta di ceci (farinata)": [
+   "Pasta, riso e pane",
+   "in panetteria o rosticceria, oppure fatta in casa"
+  ],
+  "gnocchi di patate": [
+   "Banco frigo",
+   "freschi: Giovanni Rana, Lovilio (Lidl) o marca Coop/Conad"
+  ],
+  "ravioli ricotta e spinaci": [
+   "Banco frigo",
+   "freschi: Giovanni Rana o Lovilio (Lidl)"
+  ],
+  "patate": [
+   "Frutta e verdura",
+   ""
+  ],
+  "verdure (pomodori, carote, insalata, rucola)": [
+   "Frutta e verdura",
+   "pomodori, carote, insalata, rucola: quello che c'è"
+  ],
+  "banana": [
+   "Frutta e verdura",
+   ""
+  ],
+  "frutto (mela/pera/arancia)": [
+   "Frutta e verdura",
+   "mele, pere o arance"
+  ],
+  "petto di pollo": [
+   "Carne e pesce",
+   "al banco macelleria"
+  ],
+  "fesa di tacchino": [
+   "Carne e pesce",
+   "al banco macelleria"
+  ],
+  "manzo magro": [
+   "Carne e pesce",
+   "fesa o girello"
+  ],
+  "tartare di manzo": [
+   "Carne e pesce",
+   "macinato magro di manzo, o tartare già pronta"
+  ],
+  "merluzzo o nasello": [
+   "Carne e pesce",
+   "anche filetti surgelati (Findus o marca del supermercato)"
+  ],
+  "bresaola": [
+   "Salumi e formaggi",
+   "Rigamonti o al banco salumi"
+  ],
+  "mozzarella light": [
+   "Salumi e formaggi",
+   "Santa Lucia Light (Galbani) o light Coop/Conad"
+  ],
+  "grana padano": [
+   "Salumi e formaggi",
+   "anche già grattugiato"
+  ],
+  "uova": [
+   "Latte, yogurt e uova",
+   ""
+  ],
+  "albume": [
+   "Latte, yogurt e uova",
+   "albume liquido in brick, vicino alle uova"
+  ],
+  "yogurt greco 0%": [
+   "Latte, yogurt e uova",
+   "Fage Total 0% o greco 0% della marca del supermercato"
+  ],
+  "skyr": [
+   "Latte, yogurt e uova",
+   "Milbona Skyr (Lidl) o Arla / Yoplait Skyr"
+  ],
+  "latte parzialmente scremato": [
+   "Latte, yogurt e uova",
+   ""
+  ],
+  "tonno al naturale (sgocciolato)": [
+   "Dispensa",
+   "al naturale, non sott'olio: Rio Mare, Mareblu o Nixe (Lidl)"
+  ],
+  "cereali corn flakes": [
+   "Dispensa",
+   "Kellogg's Corn Flakes o Crownfield (Lidl)"
+  ],
+  "fiocchi d'avena": [
+   "Dispensa",
+   "Quaker o marca del supermercato"
+  ],
+  "gallette di riso": [
+   "Dispensa",
+   "semplici, qualsiasi marca"
+  ],
+  "cracker": [
+   "Dispensa",
+   "Crich o Gran Pavesi, o marca del supermercato"
+  ],
+  "barretta ai cereali": [
+   "Dispensa",
+   "barrette ai cereali da circa 25 g l'una"
+  ],
+  "datteri secchi": [
+   "Dispensa",
+   "al Lidl o Eurospin costano meno"
+  ],
+  "mandorle": [
+   "Dispensa",
+   "sgusciate, al naturale (non salate)"
+  ],
+  "frutta secca mista": [
+   "Dispensa",
+   "al naturale (non salata)"
+  ],
+  "miele": [
+   "Dispensa",
+   ""
+  ],
+  "marmellata": [
+   "Dispensa",
+   ""
+  ],
+  "burro d'arachidi": [
+   "Dispensa",
+   "100% arachidi, senza zucchero"
+  ],
+  "olio extravergine": [
+   "Dispensa",
+   ""
+  ],
+  "succo di frutta 100%": [
+   "Bevande",
+   "100% frutta, senza zuccheri aggiunti; va bene la marca del supermercato"
+  ],
+  "proteine whey": [
+   "Integratori",
+   "online (es. MyProtein, Prozis) o in negozio di sport"
+  ]
+ },
+ "reparti": [
+  "Frutta e verdura",
+  "Carne e pesce",
+  "Salumi e formaggi",
+  "Latte, yogurt e uova",
+  "Banco frigo",
+  "Pasta, riso e pane",
+  "Dispensa",
+  "Bevande",
+  "Integratori"
+ ],
+ "aPezzi": {
+  "uova": "uova",
+  "banana": "banane",
+  "frutto (mela/pera/arancia)": "frutti"
+ },
+ "doveComprare": [
+  [
+   "Coop o Conad",
+   "si trova tutto; le marche Coop e Conad vanno benissimo e costano meno."
+  ],
+  [
+   "Lidl o Eurospin",
+   "conviene per yogurt, skyr, frutta secca, datteri, cereali, gallette, tonno, pasta e riso."
+  ],
+  [
+   "Macelleria o banco carne",
+   "pollo, tacchino, manzo e la tartare (macinato magro di manzo)."
+  ],
+  [
+   "Online o negozio di sport",
+   "solo le proteine in polvere (whey), se Andrea le usa."
+  ]
+ ]
 };
