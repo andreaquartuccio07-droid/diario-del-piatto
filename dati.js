@@ -230,6 +230,16 @@ window.PIANO = {
    68.0,
    12.0
   ],
+  "caffè": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "creatina monoidrato": [
+   0.0,
+   0.0,
+   0.0
+  ],
   "pasta di semola": [
    12.0,
    72.0,
@@ -348,27 +358,32 @@ window.PIANO = {
   "gallette di riso": 8,
   "fette biscottate": 9,
   "datteri secchi": 8,
-  "barretta ai cereali": 25
+  "barretta ai cereali": 25,
+  "caffè": 30
  },
  "pastiFissi": [
   [
    "Colazione",
    [
     [
+     "latte parzialmente scremato",
+     250
+    ],
+    [
+     "caffè",
+     "1 pz"
+    ],
+    [
      "uova",
-     "3 pz"
+     "2 pz"
     ],
     [
      "pane",
-     100
+     120
     ],
     [
      "miele",
      30
-    ],
-    [
-     "succo di frutta 100%",
-     250
     ]
    ]
   ],
@@ -416,20 +431,24 @@ window.PIANO = {
    "Lunedì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -466,6 +485,10 @@ window.PIANO = {
      [
       "olio extravergine",
       25
+     ],
+     [
+      "creatina monoidrato",
+      5
      ]
     ],
     "Spuntino pomeriggio (tascabile)": [
@@ -504,20 +527,24 @@ window.PIANO = {
    "Martedì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -554,6 +581,10 @@ window.PIANO = {
      [
       "olio extravergine",
       25
+     ],
+     [
+      "creatina monoidrato",
+      5
      ]
     ],
     "Spuntino pomeriggio (tascabile)": [
@@ -596,20 +627,24 @@ window.PIANO = {
    "Mercoledì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -646,6 +681,10 @@ window.PIANO = {
      [
       "olio extravergine",
       15
+     ],
+     [
+      "creatina monoidrato",
+      5
      ]
     ],
     "Spuntino pomeriggio (tascabile)": [
@@ -688,20 +727,24 @@ window.PIANO = {
    "Giovedì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -746,6 +789,10 @@ window.PIANO = {
      [
       "olio extravergine",
       15
+     ],
+     [
+      "creatina monoidrato",
+      5
      ]
     ],
     "Spuntino pomeriggio (tascabile)": [
@@ -788,20 +835,24 @@ window.PIANO = {
    "Venerdì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -842,6 +893,10 @@ window.PIANO = {
      [
       "olio extravergine",
       10
+     ],
+     [
+      "creatina monoidrato",
+      5
      ]
     ],
     "Spuntino pomeriggio (tascabile)": [
@@ -884,20 +939,24 @@ window.PIANO = {
    "Sabato": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -934,6 +993,10 @@ window.PIANO = {
      [
       "olio extravergine",
       15
+     ],
+     [
+      "creatina monoidrato",
+      5
      ]
     ],
     "Spuntino pomeriggio (tascabile)": [
@@ -974,20 +1037,24 @@ window.PIANO = {
    "Lunedì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -1026,6 +1093,10 @@ window.PIANO = {
       15
      ],
      [
+      "creatina monoidrato",
+      5
+     ],
+     [
       "succo di frutta 100%",
       500
      ]
@@ -1053,20 +1124,24 @@ window.PIANO = {
    "Martedì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -1105,6 +1180,10 @@ window.PIANO = {
       15
      ],
      [
+      "creatina monoidrato",
+      5
+     ],
+     [
       "succo di frutta 100%",
       500
      ]
@@ -1136,20 +1215,24 @@ window.PIANO = {
    "Mercoledì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -1188,6 +1271,10 @@ window.PIANO = {
       5
      ],
      [
+      "creatina monoidrato",
+      5
+     ],
+     [
       "succo di frutta 100%",
       500
      ]
@@ -1219,20 +1306,24 @@ window.PIANO = {
    "Giovedì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -1279,6 +1370,10 @@ window.PIANO = {
       5
      ],
      [
+      "creatina monoidrato",
+      5
+     ],
+     [
       "succo di frutta 100%",
       500
      ]
@@ -1310,20 +1405,24 @@ window.PIANO = {
    "Venerdì": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -1362,6 +1461,10 @@ window.PIANO = {
       100
      ],
      [
+      "creatina monoidrato",
+      5
+     ],
+     [
       "succo di frutta 100%",
       500
      ]
@@ -1393,20 +1496,24 @@ window.PIANO = {
    "Sabato": {
     "Colazione": [
      [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "uova",
-      "3 pz"
+      "2 pz"
      ],
      [
       "pane",
-      100
+      120
      ],
      [
       "miele",
       30
-     ],
-     [
-      "succo di frutta 100%",
-      250
      ]
     ],
     "Spuntino mattina": [
@@ -1442,6 +1549,10 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
+      5
+     ],
+     [
+      "creatina monoidrato",
       5
      ],
      [
@@ -1499,36 +1610,48 @@ window.PIANO = {
  "alternative": {
   "Colazione": [
    [
-    "Latte e cereali",
+    "Latte, caffè e biscotti",
     [
      [
       "latte parzialmente scremato",
-      300
+      250
      ],
      [
-      "cereali corn flakes",
-      80
-     ],
-     [
-      "banana",
+      "caffè",
       "1 pz"
      ],
      [
-      "proteine whey",
-      20
+      "biscotti secchi",
+      80
+     ],
+     [
+      "yogurt greco 0%",
+      170
      ],
      [
       "miele",
-      15
+      20
+     ],
+     [
+      "mandorle",
+      10
      ]
     ]
    ],
    [
-    "Pane, marmellata e yogurt",
+    "Latte, caffè e fette biscottate",
     [
      [
-      "pane",
-      100
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
+      "fette biscottate",
+      "8 pz"
      ],
      [
       "marmellata",
@@ -1539,12 +1662,37 @@ window.PIANO = {
       170
      ],
      [
-      "succo di frutta 100%",
-      200
+      "mandorle",
+      15
+     ]
+    ]
+   ],
+   [
+    "Latte, caffè e cereali",
+    [
+     [
+      "latte parzialmente scremato",
+      300
      ],
      [
-      "mandorle",
-      20
+      "caffè",
+      "1 pz"
+     ],
+     [
+      "cereali corn flakes",
+      80
+     ],
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "miele",
+      15
+     ],
+     [
+      "yogurt greco 0%",
+      170
      ]
     ]
    ],
@@ -1560,6 +1708,10 @@ window.PIANO = {
       300
      ],
      [
+      "caffè",
+      "1 pz"
+     ],
+     [
       "banana",
       "1 pz"
      ],
@@ -1568,8 +1720,62 @@ window.PIANO = {
       15
      ],
      [
-      "proteine whey",
-      20
+      "yogurt greco 0%",
+      150
+     ]
+    ]
+   ],
+   [
+    "Pane, marmellata e yogurt",
+    [
+     [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "marmellata",
+      40
+     ],
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "mandorle",
+      10
+     ]
+    ]
+   ],
+   [
+    "Pane, prosciutto cotto e latte",
+    [
+     [
+      "latte parzialmente scremato",
+      250
+     ],
+     [
+      "caffè",
+      "1 pz"
+     ],
+     [
+      "pane",
+      120
+     ],
+     [
+      "prosciutto cotto",
+      80
+     ],
+     [
+      "miele",
+      30
      ]
     ]
    ]
@@ -1580,15 +1786,15 @@ window.PIANO = {
     [
      [
       "latte parzialmente scremato",
-      300
+      250
+     ],
+     [
+      "yogurt greco 0%",
+      100
      ],
      [
       "banana",
       "1 pz"
-     ],
-     [
-      "proteine whey",
-      15
      ]
     ]
    ],
@@ -1606,6 +1812,23 @@ window.PIANO = {
      [
       "gallette di riso",
       "3 pz"
+     ]
+    ]
+   ],
+   [
+    "Skyr, miele e fette biscottate",
+    [
+     [
+      "skyr",
+      150
+     ],
+     [
+      "miele",
+      15
+     ],
+     [
+      "fette biscottate",
+      "4 pz"
      ]
     ]
    ],
@@ -1636,6 +1859,23 @@ window.PIANO = {
      [
       "bresaola",
       40
+     ],
+     [
+      "succo di frutta 100%",
+      100
+     ]
+    ]
+   ],
+   [
+    "Panino con prosciutto cotto",
+    [
+     [
+      "pane",
+      60
+     ],
+     [
+      "prosciutto cotto",
+      50
      ],
      [
       "succo di frutta 100%",
@@ -1749,6 +1989,36 @@ window.PIANO = {
      [
       "cracker",
       40
+     ]
+    ]
+   ],
+   [
+    "Biscotti e succo",
+    [
+     [
+      "biscotti secchi",
+      40
+     ],
+     [
+      "succo di frutta 100%",
+      150
+     ]
+    ]
+   ],
+   [
+    "Panino con marmellata",
+    [
+     [
+      "pane",
+      60
+     ],
+     [
+      "marmellata",
+      30
+     ],
+     [
+      "mandorle",
+      5
      ]
     ]
    ]
@@ -1877,6 +2147,19 @@ window.PIANO = {
     [
      "miele",
      20
+    ]
+   ]
+  ],
+  [
+   "Panino con prosciutto cotto",
+   [
+    [
+     "pane",
+     80
+    ],
+    [
+     "prosciutto cotto",
+     50
     ]
    ]
   ]
@@ -2045,7 +2328,4109 @@ window.PIANO = {
   "proteine whey": [
    "Integratori",
    "online (es. MyProtein, Prozis) o in negozio di sport"
+  ],
+  "creatina monoidrato": [
+   "Integratori",
+   "la compra Andrea"
+  ],
+  "prosciutto cotto": [
+   "Salumi e formaggi",
+   "magro, al banco salumi o in vaschetta"
+  ],
+  "biscotti secchi": [
+   "Dispensa",
+   "secchi semplici (tipo Oro Saiwa o marca del supermercato)"
+  ],
+  "fette biscottate": [
+   "Dispensa",
+   "Mulino Bianco o marca del supermercato"
+  ],
+  "cioccolato fondente 70%": [
+   "Dispensa",
+   ""
   ]
+ },
+ "altPiatti": {
+  "OFF": {
+   "Lunedì": {
+    "Pranzo": [
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "fesa di tacchino",
+        180
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "merluzzo o nasello",
+        250
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "bresaola",
+        95
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "petto di pollo",
+        135
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        195
+       ],
+       [
+        "tartare di manzo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        335
+       ],
+       [
+        "merluzzo o nasello",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        115
+       ],
+       [
+        "petto di pollo",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        115
+       ],
+       [
+        "fesa di tacchino",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        140
+       ],
+       [
+        "bresaola",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        140
+       ],
+       [
+        "petto di pollo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        155
+       ],
+       [
+        "tartare di manzo",
+        215
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        115
+       ],
+       [
+        "manzo magro",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ]
+    ]
+   },
+   "Martedì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "bresaola",
+        110
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "petto di pollo",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        195
+       ],
+       [
+        "tartare di manzo",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        335
+       ],
+       [
+        "merluzzo o nasello",
+        245
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        110
+       ],
+       [
+        "petto di pollo",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        110
+       ],
+       [
+        "fesa di tacchino",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        135
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        145
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        135
+       ],
+       [
+        "bresaola",
+        115
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        135
+       ],
+       [
+        "petto di pollo",
+        160
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        150
+       ],
+       [
+        "tartare di manzo",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        265
+       ],
+       [
+        "merluzzo o nasello",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        110
+       ],
+       [
+        "manzo magro",
+        215
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Mercoledì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "fesa di tacchino",
+        135
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "merluzzo o nasello",
+        185
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        80
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "petto di pollo",
+        85
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        195
+       ],
+       [
+        "tartare di manzo",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        335
+       ],
+       [
+        "merluzzo o nasello",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        115
+       ],
+       [
+        "fesa di tacchino",
+        260
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        140
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        140
+       ],
+       [
+        "bresaola",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        140
+       ],
+       [
+        "petto di pollo",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Giovedì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "petto di pollo",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "fesa di tacchino",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        160
+       ],
+       [
+        "bresaola",
+        120
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "petto di pollo",
+        170
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        185
+       ],
+       [
+        "tartare di manzo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        315
+       ],
+       [
+        "merluzzo o nasello",
+        260
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "manzo magro",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "petto di pollo",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "fesa di tacchino",
+        190
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "merluzzo o nasello",
+        260
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        150
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        150
+       ],
+       [
+        "bresaola",
+        110
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        150
+       ],
+       [
+        "petto di pollo",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        165
+       ],
+       [
+        "tartare di manzo",
+        190
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        290
+       ],
+       [
+        "merluzzo o nasello",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "manzo magro",
+        215
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ]
+    ]
+   },
+   "Venerdì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "petto di pollo",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "fesa di tacchino",
+        185
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "merluzzo o nasello",
+        255
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        130
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "bresaola",
+        100
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "petto di pollo",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        185
+       ],
+       [
+        "tartare di manzo",
+        180
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        320
+       ],
+       [
+        "merluzzo o nasello",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "manzo magro",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        125
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        125
+       ],
+       [
+        "fesa di tacchino",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        155
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        155
+       ],
+       [
+        "bresaola",
+        115
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        155
+       ],
+       [
+        "petto di pollo",
+        160
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        175
+       ],
+       [
+        "tartare di manzo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        300
+       ],
+       [
+        "merluzzo o nasello",
+        250
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        125
+       ],
+       [
+        "manzo magro",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Sabato": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "fesa di tacchino",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "bresaola",
+        110
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        190
+       ],
+       [
+        "tartare di manzo",
+        190
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        330
+       ],
+       [
+        "merluzzo o nasello",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "fesa di tacchino",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        145
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        145
+       ],
+       [
+        "bresaola",
+        120
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        145
+       ],
+       [
+        "petto di pollo",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        165
+       ],
+       [
+        "tartare di manzo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        280
+       ],
+       [
+        "merluzzo o nasello",
+        255
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "manzo magro",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ]
+    ]
+   }
+  },
+  "ON": {
+   "Lunedì": {
+    "Pranzo": [
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "fesa di tacchino",
+        180
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "merluzzo o nasello",
+        250
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "bresaola",
+        95
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "petto di pollo",
+        135
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        195
+       ],
+       [
+        "tartare di manzo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        335
+       ],
+       [
+        "merluzzo o nasello",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "petto di pollo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "fesa di tacchino",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        185
+       ],
+       [
+        "bresaola",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        185
+       ],
+       [
+        "petto di pollo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "manzo magro",
+        250
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Martedì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "bresaola",
+        110
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        175
+       ],
+       [
+        "petto di pollo",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        195
+       ],
+       [
+        "tartare di manzo",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        335
+       ],
+       [
+        "merluzzo o nasello",
+        245
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "fesa di tacchino",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        185
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        185
+       ],
+       [
+        "bresaola",
+        110
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        185
+       ],
+       [
+        "petto di pollo",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        360
+       ],
+       [
+        "merluzzo o nasello",
+        245
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "manzo magro",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Mercoledì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "fesa di tacchino",
+        135
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "merluzzo o nasello",
+        185
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        80
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "petto di pollo",
+        85
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        195
+       ],
+       [
+        "tartare di manzo",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        335
+       ],
+       [
+        "merluzzo o nasello",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        190
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        185
+       ],
+       [
+        "bresaola",
+        160
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        190
+       ],
+       [
+        "petto di pollo",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Giovedì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "petto di pollo",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "fesa di tacchino",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        160
+       ],
+       [
+        "bresaola",
+        120
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "petto di pollo",
+        170
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        185
+       ],
+       [
+        "tartare di manzo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        315
+       ],
+       [
+        "merluzzo o nasello",
+        260
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "manzo magro",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        160
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        160
+       ],
+       [
+        "fesa di tacchino",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        385
+       ],
+       [
+        "merluzzo o nasello",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        160
+       ],
+       [
+        "manzo magro",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ]
+    ]
+   },
+   "Venerdì": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "petto di pollo",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "fesa di tacchino",
+        185
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e merluzzo",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "merluzzo o nasello",
+        255
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        130
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "bresaola",
+        100
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta integrale",
+        165
+       ],
+       [
+        "petto di pollo",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        185
+       ],
+       [
+        "tartare di manzo",
+        180
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        320
+       ],
+       [
+        "merluzzo o nasello",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "manzo magro",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        165
+       ],
+       [
+        "petto di pollo",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        165
+       ],
+       [
+        "fesa di tacchino",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        395
+       ],
+       [
+        "merluzzo o nasello",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        165
+       ],
+       [
+        "manzo magro",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ]
+    ]
+   },
+   "Sabato": {
+    "Pranzo": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "fesa di tacchino",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        140
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta integrale",
+        170
+       ],
+       [
+        "bresaola",
+        110
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pane e tartare di manzo",
+      [
+       [
+        "pane",
+        190
+       ],
+       [
+        "tartare di manzo",
+        190
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        330
+       ],
+       [
+        "merluzzo o nasello",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "manzo magro",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ]
+    ],
+    "Cena": [
+     [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        155
+       ],
+       [
+        "petto di pollo",
+        220
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        155
+       ],
+       [
+        "fesa di tacchino",
+        210
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        375
+       ],
+       [
+        "merluzzo o nasello",
+        255
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Riso e manzo",
+      [
+       [
+        "riso bianco",
+        155
+       ],
+       [
+        "manzo magro",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ]
+    ]
+   }
+  }
  },
  "reparti": [
   "Frutta e verdura",
@@ -2077,8 +6462,8 @@ window.PIANO = {
    "pollo, tacchino, manzo e la tartare (macinato magro di manzo)."
   ],
   [
-   "Online o negozio di sport",
-   "solo le proteine in polvere (whey), se Andrea le usa."
+   "Farmacia, online o negozio di sport",
+   "la creatina (la compra Andrea)."
   ]
  ]
 };

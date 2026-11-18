@@ -362,6 +362,13 @@ body.cucina{font-size:17px}
 .compra[aria-pressed="true"] .ck svg{opacity:1}
 .compra[aria-pressed="true"] .n b{text-decoration:line-through;color:var(--ink-2)}
 
+.idee{margin-top:-4px}
+.idee>summary{list-style:none;min-height:52px;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:16px;border:1px dashed var(--line-2);color:var(--accent-ink);font-weight:600;font-size:16px;cursor:pointer}
+.idee>summary::-webkit-details-marker{display:none}
+.idee>summary::before{content:"+";font-family:var(--f-tit);font-size:24px;line-height:1}
+.idee[open]>summary::before{content:"−"}
+.idee>summary small{color:var(--ink-3);font-weight:500;font-size:13.5px}
+.idee[open]{display:flex;flex-direction:column;gap:9px}
 @media(max-width:360px){
   .ing .q{flex-basis:84px;font-size:22px}
   .scelta b{font-size:21px}
@@ -586,8 +593,13 @@ function pianoPasto(d, p){
   if (tipoDi(d) === "LIBERO") return [];
   const base = pastoBase(d, p); if (!base.length) return [];
   const rec = recPasto(d, p);
-  const alt = rec.alt && (P.alternative[p] || []).find(a => a[0] === rec.alt);
+  const alt = rec.alt && alternativeDi(d, p).find(a => a[0] === rec.alt);
   return daLista(alt ? alt[1] : base);
+}
+/* Le alternative di un pasto: per colazione e spuntini sempre le stesse, per pranzo e cena quelle del giorno. */
+function alternativeDi(d, p){
+  if (p === "Pranzo" || p === "Cena"){ const t = tipoDi(d) === "ON" ? "ON" : "OFF"; return (((P.altPiatti || {})[t] || {})[nomeMenu(d)] || {})[p] || []; }
+  return P.alternative[p] || [];
 }
 /* Orario di un pasto in quel giorno: nei giorni ON il pranzo e' piu' tardi (allenamento in pausa pranzo). */
 function pranzoTardi(d){ return tipoDi(d) === "ON" && (stato.impost.pranzoTardi || []).includes(daIso(d).getDay()); }
@@ -775,7 +787,7 @@ function vistaBenvenuto(){
 }
 
 /* ---------- Cucina: cosa preparare (per la mamma) ---------- */
-const NOMI_CUCINA = {"tonno al naturale (sgocciolato)": "tonno al naturale", "succo di frutta 100%": "succo di frutta 100%"};
+const NOMI_CUCINA = {"tonno al naturale (sgocciolato)": "tonno al naturale", "succo di frutta 100%": "succo di frutta 100%", "creatina monoidrato": "creatina (la prende Andrea)"};
 const CRUDI = ["riso bianco", "pasta integrale", "patate", "gnocchi di patate", "ravioli ricotta e spinaci", "petto di pollo", "fesa di tacchino", "manzo magro", "tartare di manzo", "merluzzo o nasello"];
 /* Una riga facile da leggere: quantita' grande a sinistra, nome a destra, nota piccola sotto. */
 function rigaCucina(v, pasto){
@@ -808,15 +820,19 @@ function vistaCucina(){
     '<button class="icobtn" data-giorno="1" aria-label="Giorno dopo">' + ICO.dx + '</button></div>';
   h += giornataHTML(d);
   if (tipoDi(d) !== "LIBERO"){
-    h += piattoHTML("Pranzo", orarioDi(d, "Pranzo"), pianoPasto(d, "Pranzo"));
-    h += piattoHTML("Cena", orarioDi(d, "Cena"), pianoPasto(d, "Cena"));
+    for (const p of ["Pranzo", "Cena"]){
+      h += piattoHTML(p, orarioDi(d, p), pianoPasto(d, p));
+      const alt = alternativeDi(d, p);
+      if (alt.length) h += '<details class="idee"><summary>Altre idee per ' + p.toLowerCase() + ' <small>(se manca qualcosa)</small></summary>' +
+        alt.map(([nome, l]) => piattoHTML(nome, "", daLista(l).filter(v => v.n !== P.verdure && !/succo|creatina/.test(v.n)), true)).join("") + '</details>';
+    }
     h += '<p class="nota">Le quantità sono solo per Andrea. Riso, pasta, patate, carne e pesce si pesano <b>crudi</b>.</p>';
     const fissi = PASTI.filter(p => p !== "Pranzo" && p !== "Cena" && pianoPasto(d, p).length);
     h += fissi.map(p => piattoHTML(nomeCorto(p), orarioDi(d, p), pianoPasto(d, p), true)).join("");
   }
   if (!eOggi && d !== piuGiorni(oggi(), -1)) h += '<button class="btn block big" data-oggi>Torna a oggi</button>';
   else if (tipoDi(domani) !== "LIBERO"){
-    const corto = vv => vv.filter(v => v.n !== P.olio && v.n !== P.verdure && !/succo/.test(v.n)).map(v => { const r = rigaCucina(v); return r.q + " " + r.n; }).join(", ");
+    const corto = vv => vv.filter(v => v.n !== P.olio && v.n !== P.verdure && !/succo|creatina|caffè/.test(v.n)).map(v => { const r = rigaCucina(v); return r.q + " " + r.n; }).join(", ");
     h += '<div class="card pad stack"><div class="eyebrow">Per domani (' + esc(tipoDi(domani) === "ON" ? "si allena" : "riposo") + ')</div>' +
       '<p class="domani"><b>Pranzo:</b> ' + esc(corto(pianoPasto(domani, "Pranzo"))) + '</p><p class="domani"><b>Cena:</b> ' + esc(corto(pianoPasto(domani, "Cena"))) + '</p>' +
       '<button class="btn" data-giorno="1">Vedi domani</button></div>';
@@ -829,7 +845,7 @@ function vistaSettimana(){
   let h = '<div class="stack"><h1>La settimana</h1><p class="muted">Tocca un giorno per vedere tutto. Il menù è uguale tutte le settimane.</p>';
   for (let i = 0; i < 6; i++){
     const d = piuGiorni(lun, i), t = tipoDi(d);
-    const corto = vv => vv.filter(v => v.n !== P.olio && v.n !== P.verdure && !/succo/.test(v.n)).map(v => { const r = rigaCucina(v); return r.q + " " + r.n; }).join(", ");
+    const corto = vv => vv.filter(v => v.n !== P.olio && v.n !== P.verdure && !/succo|creatina|caffè/.test(v.n)).map(v => { const r = rigaCucina(v); return r.q + " " + r.n; }).join(", ");
     h += '<button class="sett-g" data-vai="' + d + '"' + (d === oggi() ? ' aria-current="date"' : "") + '><span class="t"><b>' + esc(GIORNI_SETT[daIso(d).getDay()]) + (d === oggi() ? " · oggi" : "") + '</b>' +
       '<span class="pill ' + (t === "ON" ? "on" : "off") + '">' + (t === "ON" ? "si allena" : "riposo") + '</span></span>' +
       '<span class="lab">Pranzo ' + esc(orarioDi(d, "Pranzo")) + ':</span> ' + esc(corto(pianoPasto(d, "Pranzo"))) + '<br>' +
@@ -946,7 +962,7 @@ function macroBox(nome, val, ob, col){
 }
 function pastoHTML(d, p){
   const r = recPasto(d, p), voci = vociPasto(d, p), m = macroDi(voci), st = r.st || "";
-  const alt = pastoBase(d, p).length ? (P.alternative[p] || []) : [];
+  const alt = pastoBase(d, p).length ? alternativeDi(d, p) : [];
   const quota = st === "fatto" && r.quota != null && r.quota < 1 ? (QUOTE.find(x => x[0] === r.quota) || [0, ""])[1].toLowerCase() + " · " : "";
   let h = '<div class="pasto" data-pasto="' + esc(p) + '" data-st="' + st + '" data-aperto="' + (aperto === p ? 1 : 0) + '">' +
     '<div class="p-riga">' + cerchio(st) +
@@ -957,8 +973,9 @@ function pastoHTML(d, p){
     '<button class="tick" data-fatto="' + esc(p) + '" aria-pressed="' + (st === "fatto") + '" aria-label="' + esc(nomeCorto(p)) + ' mangiato"' + (voci.length ? "" : " disabled") + '>' + ICO.tick + '</button></div>';
   h += '<div class="p-corpo">';
   if (alt.length){
-    h += '<div class="eyebrow">Versione</div><div class="chips" role="group" aria-label="Versione dello spuntino">' +
-      '<button class="chip" data-alt="" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (!r.alt) + '">Classica</button>' +
+    const piatto = p === "Pranzo" || p === "Cena";
+    h += '<div class="eyebrow">' + (piatto ? "Cambia piatto (stessi macro)" : "Versione") + '</div><div class="chips" role="group" aria-label="Versione del pasto">' +
+      '<button class="chip" data-alt="" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (!r.alt) + '">' + (piatto ? "Del giorno" : "Classica") + '</button>' +
       alt.map(a => '<button class="chip" data-alt="' + esc(a[0]) + '" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (r.alt === a[0]) + '">' + esc(a[0]) + '</button>').join("") + '</div>';
   }
   if (st !== "saltato") h += voci.map((v, i) => ciboHTML(v, p, i)).join("");
