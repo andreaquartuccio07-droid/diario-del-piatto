@@ -1,7 +1,7 @@
 /* Service worker del Diario del Piatto.
    Tiene l'app in cache cosi' parte subito e funziona anche senza campo.
    VERSIONE si alza a mano a ogni modifica dell'app; DATI lo riscrive genera.py quando cambia il piano. */
-const VERSIONE = "piatto-v3";
+const VERSIONE = "piatto-v4";
 const DATI = "d7677d16";
 const CACHE_APP = VERSIONE + "-" + DATI;
 
@@ -13,7 +13,7 @@ const GUSCIO = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-maskable-512.png",
-  "./icons/piatto-home-180.png",
+  "./icons/piatto-home-180-v2.png",
   "./icons/favicon-32.png",
   "./fonts/barlow-condensed-600.woff2",
   "./fonts/barlow-condensed-700.woff2",
