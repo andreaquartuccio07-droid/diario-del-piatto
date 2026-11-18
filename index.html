@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Diario del Piatto</title>
+<meta name="description" content="Calorie e macro di ogni pasto, peso e progressi verso l'obiettivo.">
+<meta name="theme-color" content="#A9E9F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B3A48" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Piatto">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/piatto-home-180.png">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<style>
+/* Font in locale (gli stessi del Diario di Ghisa): ci sono anche senza campo. */
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-condensed-600.woff2) format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/barlow-condensed-700.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/ibm-plex-sans.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-500.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-mono-600.woff2) format("woff2")}
+
+/* Stile "Abisso", lo stesso del Diario di Ghisa: fondo chiaro con luce ciano in alto, vetro chiaro
+   per i riquadri normali, vetro scuro solo per cio' che conta (le kcal che mancano, la barra in basso). */
+:root{
+  --f-tit:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --bg:#F1F5F6; --surface:#FFFFFF; --surface-2:#E3EAED; --surface-3:#F6F9FA;
+  --glass:rgba(255,255,255,.8); --edge:rgba(6,32,43,.3);
+  --ink:#06202B; --ink-2:#3E5560; --ink-3:#5E747E;
+  --line:#AEBDC5; --line-2:#90A3AD;
+  --accent:#19D3F3; --accent-soft:rgba(25,211,243,.16); --accent-ink:#00697F; --on-accent:#03202A;
+  --up:#0B7A54; --up-soft:rgba(11,122,84,.11); --on-up:#FFFFFF; --down:#B0402C;
+  --vol:#D5E0E5; --dato:#008CA6;
+  --deep:rgba(5,30,41,.9); --deep-ink:#EAF8FC; --deep-ink-2:#A9C6D0; --deep-fill:rgba(255,255,255,.11); --glow:#5BE6FF;
+  --aurora-top:#A9E9F6; --aurora-2:rgba(40,150,220,.3);
+  --shadow:0 6px 22px rgba(6,32,43,.1); --shadow-alta:0 20px 60px rgba(6,32,43,.3); --scrim:rgba(4,20,27,.5);
+  --r:20px;
+  --m-carbo:#008CA6; --m-prote:#0B7A54; --m-grassi:#C08A06;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#040B0E; --surface:#101C22; --surface-2:#1B2A32; --surface-3:#16242B;
+    --glass:rgba(255,255,255,.06); --edge:rgba(255,255,255,.22);
+    --ink:#E8F6FA; --ink-2:#A3BEC8; --ink-3:#7C98A3;
+    --line:#34474F; --line-2:#475D68;
+    --accent:#2BD9F5; --accent-soft:rgba(43,217,245,.15); --accent-ink:#5FE3F8; --on-accent:#03181E;
+    --up:#4FD69A; --up-soft:rgba(79,214,154,.14); --on-up:#03181E; --down:#E2705C;
+    --vol:#22323A; --dato:#2BD9F5;
+    --deep:rgba(20,60,74,.74); --deep-ink:#EAF8FC; --deep-ink-2:#A9C6D0; --deep-fill:rgba(255,255,255,.11); --glow:#5BE6FF;
+    --aurora-top:#0B3A48; --aurora-2:rgba(30,100,170,.24);
+    --shadow:0 6px 22px rgba(0,0,0,.45); --shadow-alta:0 20px 60px rgba(0,0,0,.6); --scrim:rgba(0,0,0,.6);
+    --m-carbo:#2BD9F5; --m-prote:#4FD69A; --m-grassi:#F0B838;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#040B0E; --surface:#101C22; --surface-2:#1B2A32; --surface-3:#16242B;
+  --glass:rgba(255,255,255,.06); --edge:rgba(255,255,255,.22);
+  --ink:#E8F6FA; --ink-2:#A3BEC8; --ink-3:#7C98A3;
+  --line:#34474F; --line-2:#475D68;
+  --accent:#2BD9F5; --accent-soft:rgba(43,217,245,.15); --accent-ink:#5FE3F8; --on-accent:#03181E;
+  --up:#4FD69A; --up-soft:rgba(79,214,154,.14); --on-up:#03181E; --down:#E2705C;
+  --vol:#22323A; --dato:#2BD9F5;
+  --deep:rgba(20,60,74,.74); --deep-ink:#EAF8FC; --deep-ink-2:#A9C6D0; --deep-fill:rgba(255,255,255,.11); --glow:#5BE6FF;
+  --aurora-top:#0B3A48; --aurora-2:rgba(30,100,170,.24);
+  --shadow:0 6px 22px rgba(0,0,0,.45); --shadow-alta:0 20px 60px rgba(0,0,0,.6); --scrim:rgba(0,0,0,.6);
+  --m-carbo:#2BD9F5; --m-prote:#4FD69A; --m-grassi:#F0B838;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;font-size:15px;line-height:1.5;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(280px 150px at 6% 170px,var(--aurora-2),transparent 100%),
+  linear-gradient(180deg,var(--aurora-top),transparent 360px)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button,.tab,.eyebrow{-webkit-user-select:none;user-select:none}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px;border-radius:4px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 max(13px,env(safe-area-inset-right)) 0 max(13px,env(safe-area-inset-left))}
+header.top{position:sticky;top:0;z-index:40;padding-top:env(safe-area-inset-top);background:linear-gradient(180deg,var(--aurora-top) 30%,color-mix(in srgb,var(--aurora-top) 72%,transparent));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.top-in{display:flex;align-items:center;gap:9px;height:54px}
+.brand{font-family:var(--f-tit);font-weight:700;font-size:19px;letter-spacing:.03em;margin-right:auto;display:flex;align-items:center;gap:8px}
+.brand .bar{width:22px;height:8px;border-radius:4px;background:var(--accent-ink)}
+.menu{position:relative}
+.menu>summary{list-style:none;width:44px;height:44px;display:grid;place-items:center;border-radius:14px;border:1px solid var(--edge);background:var(--glass)}
+.menu>summary::-webkit-details-marker{display:none}
+.menu-pop{position:absolute;right:0;top:50px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-alta);padding:6px;min-width:250px;z-index:50}
+.menu-pop button{display:block;width:100%;min-height:44px;text-align:left;background:none;border:0;padding:9px 11px;border-radius:11px;font-size:14.5px}
+.menu-pop button:hover{background:var(--surface-2)}
+.menu-pop hr{border:0;border-top:1px solid var(--line);margin:5px 2px}
+
+main{padding:15px 0 calc(110px + env(safe-area-inset-bottom))}
+nav.tabs{position:fixed;left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));bottom:calc(6px + env(safe-area-inset-bottom));z-index:45;max-width:740px;margin:0 auto;background:var(--deep);border:1px solid var(--deep-fill);border-radius:22px;padding:4px;box-shadow:var(--shadow);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
+.tabs-in{display:grid;grid-template-columns:repeat(3,1fr)}
+.tab{background:none;border:0;min-height:48px;padding:5px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--deep-ink-2);font-size:11.5px;font-weight:600;border-radius:17px;transition:background-color .15s ease-out}
+.tab svg{width:21px;height:21px}
+.tab[aria-selected="true"]{color:var(--deep-ink);background:var(--deep-fill)}
+.tab[aria-selected="true"] svg{color:var(--glow)}
+@media(min-width:760px){
+  nav.tabs{position:sticky;top:calc(54px + env(safe-area-inset-top));bottom:auto;left:auto;right:auto;max-width:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0;background:color-mix(in srgb,var(--aurora-top) 72%,transparent);box-shadow:none;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+  .tabs-in{grid-template-columns:repeat(3,max-content);gap:2px;max-width:760px;margin:0 auto}
+  .tab{flex-direction:row;gap:7px;padding:10px 15px;border-radius:0;color:var(--ink-3);font-size:13px;border-bottom:2px solid transparent}
+  .tab[aria-selected="true"]{color:var(--ink);background:none;border-bottom-color:var(--dato)}
+  .tab[aria-selected="true"] svg{color:var(--accent-ink)}
+  main{padding-bottom:40px}
+}
+
+.card{background:var(--glass);border:1px solid var(--edge);border-radius:var(--r);box-shadow:var(--shadow)}
+.pad{padding:13px 14px}
+.eyebrow{font-weight:600;font-size:12.5px;color:var(--ink-2)}
+h1,h2,h3{font-family:var(--f-tit);margin:0;text-wrap:balance;letter-spacing:.005em}
+h1{font-size:32px;font-weight:700;line-height:1.1}
+h2{font-size:23px;font-weight:700;line-height:1.15}
+h3{font-size:20px;font-weight:700;line-height:1.2}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.tiny{font-size:11.5px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:8px}
+.spread{display:flex;align-items:center;justify-content:space-between;gap:10px}
+p{margin:0}
+
+.btn{border:1px solid var(--line-2);background:var(--surface);border-radius:14px;min-height:44px;padding:9px 14px;font-weight:600;font-size:14px;transition:background-color .15s ease-out,transform .15s ease-out}
+.btn:hover{background:var(--surface-2)}
+.btn:active,.tick:active,.seg button:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-family:var(--f-tit);font-weight:700;font-size:19px;letter-spacing:.02em;line-height:1.2;box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 38%,transparent)}
+.btn.primary:hover{background:var(--accent);filter:brightness(1.06)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn.ghost:hover{background:var(--surface-2);color:var(--ink)}
+.btn.sm{padding:6px 12px;font-size:13px;border-radius:12px}
+.btn.block{width:100%}
+.btn.big{min-height:52px;border-radius:17px}
+.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.icobtn{width:44px;height:44px;flex:0 0 auto;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);border-radius:14px;color:var(--ink-2)}
+.icobtn:hover{color:var(--ink);background:var(--surface-2)}
+.icobtn svg{width:18px;height:18px}
+
+/* data e tipo di giorno */
+.datanav{display:flex;align-items:center;gap:8px}
+.datanav .t{flex:1;min-width:0;text-align:center}
+.datanav .t h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.datanav .t .tiny{color:var(--ink-2)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg button{min-height:48px;border:1px solid var(--edge);background:var(--glass);border-radius:14px;font-weight:600;font-size:14px;line-height:1.2;transition:background-color .15s ease-out,transform .15s ease-out}
+.seg button small{display:block;font-size:11px;font-weight:500;color:var(--ink-3)}
+.seg button[aria-pressed="true"]{background:var(--deep);color:var(--deep-ink);border-color:transparent}
+.seg button[aria-pressed="true"] small{color:var(--deep-ink-2)}
+
+/* il riquadro che conta: quante kcal mancano */
+.hero{background:var(--deep);color:var(--deep-ink);border-radius:var(--r);padding:14px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.hero .lbl{font-size:12.5px;font-weight:600;color:var(--glow)}
+.hero .big{font-family:var(--f-tit);font-size:44px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.hero .big small{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:14px;font-weight:500;color:var(--deep-ink-2);margin-left:4px}
+.hero .sub{font-size:13px;color:var(--deep-ink-2)}
+.hbar{height:10px;border-radius:6px;background:var(--deep-fill);overflow:hidden}
+.hbar i{display:block;height:100%;background:var(--accent);border-radius:6px}
+.macros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mac .k{font-size:11.5px;font-weight:600;color:var(--deep-ink-2)}
+.mac .v{font-family:var(--f-tit);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15}
+.mac .v small{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;font-weight:500;color:var(--deep-ink-2)}
+.mac .b{height:5px;border-radius:3px;background:var(--deep-fill);overflow:hidden;margin-top:4px}
+.mac .b i{display:block;height:100%;border-radius:3px}
+.marcia{display:flex;align-items:center;gap:10px;border-top:1px solid var(--deep-fill);padding-top:10px;font-size:13.5px;line-height:1.35}
+.marcia span{flex:1}
+.marcia b{color:var(--glow)}
+.marcia button{flex:0 0 auto;background:var(--accent);color:var(--on-accent);border:0;border-radius:13px;min-height:44px;padding:7px 14px;font-weight:700;font-size:14px}
+
+/* pasti */
+.pasto{background:var(--glass);border:1px solid var(--edge);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.p-riga{display:flex;align-items:stretch;min-height:64px}
+.cerchio{flex:0 0 50px;display:grid;place-items:center;color:var(--on-up)}
+.cerchio svg{width:28px;height:28px}
+.cerchio .base{fill:var(--surface);stroke:var(--line-2);stroke-width:2}
+.cerchio .segno{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.cerchio[data-st="fatto"] .base{fill:var(--up);stroke:var(--up)}
+.cerchio[data-st="saltato"] .base{fill:var(--surface-2);stroke:var(--line-2)}
+.cerchio[data-st="saltato"]{color:var(--ink-3)}
+.p-apri{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:1px;background:none;border:0;text-align:left;padding:9px 6px 9px 0}
+.p-nome{display:flex;align-items:baseline;gap:8px;min-width:0}
+.p-nome b{font-family:var(--f-tit);font-size:20px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-nome .ora{flex:0 0 auto;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
+.p-cosa{font-size:12.5px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-kcal{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:8px;font-family:var(--f-tit);font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.p-kcal small{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11px;font-weight:500;color:var(--ink-3)}
+.tick{flex:0 0 auto;align-self:center;margin-right:10px;width:52px;height:50px;border-radius:15px;border:1px solid var(--line-2);background:var(--surface);display:grid;place-items:center;color:var(--ink-3);transition:background-color .15s ease-out,transform .15s ease-out}
+.tick svg{width:22px;height:22px}
+.tick[aria-pressed="true"]{background:var(--up);border-color:var(--up);color:var(--on-up)}
+.tick:disabled{opacity:.4}
+.pasto[data-st="saltato"] .p-nome b{color:var(--ink-2);text-decoration:line-through;text-decoration-thickness:1.5px}
+.p-corpo{display:none;flex-direction:column;gap:8px;padding:4px 13px 13px;border-top:1px solid var(--line)}
+.pasto[data-aperto="1"] .p-corpo{display:flex}
+.cibo{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.cibo .info{flex:1;min-width:0}
+.cibo .nome{font-size:14px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.cibo .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3)}
+.gr{position:relative;flex:0 0 96px}
+.gr input{width:100%;height:46px;border:1px solid var(--line-2);background:var(--surface);border-radius:12px;padding:0 24px 0 6px;text-align:center;font-family:var(--f-tit);font-size:21px;font-weight:700;font-variant-numeric:tabular-nums}
+.gr input:focus{border-color:var(--accent-ink);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.gr u{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11.5px;color:var(--ink-3);text-decoration:none;pointer-events:none}
+.p-az{display:flex;gap:6px;flex-wrap:wrap}
+.p-az .btn{min-height:48px;flex:1 1 auto}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:44px;padding:7px 14px;border:1px solid var(--line-2);background:var(--surface);border-radius:100px;font-size:13.5px;font-weight:600;color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent-ink);color:var(--accent-ink)}
+.nota{font-size:12.5px;color:var(--ink-2);background:var(--surface-3);border:1px dashed var(--line-2);border-radius:12px;padding:8px 10px}
+
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+@media(min-width:560px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--glass);border:1px solid var(--edge);border-radius:16px;padding:10px 12px;box-shadow:var(--shadow)}
+.tile .k{font-size:12px;color:var(--ink-3);font-weight:600}
+.tile .v{font-family:var(--f-tit);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:2px}
+.tile .v small{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.tile .d{font-size:11.5px;font-weight:600;color:var(--ink-2)}
+.d[data-dir="su"],.delta[data-dir="su"]{color:var(--up)}
+.d[data-dir="giu"],.delta[data-dir="giu"]{color:var(--down)}
+.delta{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numeric:tabular-nums}
+
+.verdetto{border-radius:var(--r);padding:13px 15px;display:flex;flex-direction:column;gap:6px}
+.verdetto[data-tipo="azione"]{background:var(--deep);color:var(--deep-ink)}
+.verdetto[data-tipo="azione"] .eyebrow{color:var(--glow)}
+.verdetto[data-tipo="ok"]{background:var(--glass);border:1px solid var(--edge);box-shadow:var(--shadow)}
+.verdetto p{font-size:14px;line-height:1.45}
+
+.fld{position:relative}
+.fld input{width:100%;height:56px;border:1px solid var(--line-2);background:var(--surface);border-radius:15px;padding:0 34px 0 10px;text-align:center;font-family:var(--f-tit);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.fld input:focus{border-color:var(--accent-ink);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.fld u{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--ink-3);text-decoration:none;pointer-events:none}
+
+.chart{width:100%}
+.chart svg{display:block}
+.legenda{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2)}
+.legenda i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+table.st{width:100%;border-collapse:collapse;font-size:13px}
+table.st th{text-align:left;font-size:11.5px;color:var(--ink-3);font-weight:600;padding:8px 7px;border-bottom:1px solid var(--line)}
+table.st td{padding:8px 7px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.st tr:last-child td{border-bottom:0}
+table.st .n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+table.st th.n{text-align:right}
+.tab-scroll{overflow-x:auto}
+
+.vuoto{text-align:center;padding:22px 16px;color:var(--ink-2)}
+.vuoto h3{margin-bottom:8px;color:var(--ink)}
+
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);padding:0;width:min(460px,calc(100vw - 24px));box-shadow:var(--shadow-alta)}
+dialog::backdrop{background:var(--scrim)}
+dialog.foglio{width:100%;max-width:760px;max-height:90vh;max-height:90dvh;margin:auto auto 0;border-bottom:0;border-radius:24px 24px 0 0;padding-bottom:env(safe-area-inset-bottom)}
+dialog.foglio[open]{display:flex;flex-direction:column}
+@media(min-width:760px){dialog.foglio{margin:auto;width:min(620px,calc(100vw - 24px));border-bottom:1px solid var(--line);border-radius:var(--r)}}
+.dlg-head{display:flex;align-items:center;gap:10px;padding:13px 15px;border-bottom:1px solid var(--line)}
+.dlg-head .icobtn{margin-left:auto}
+.dlg-body{padding:13px 15px;display:flex;flex-direction:column;gap:11px;overflow:auto;flex:1;min-height:0;overscroll-behavior:contain}
+.dlg-foot{padding:11px 15px;border-top:1px solid var(--line);display:flex;gap:8px}
+.dlg-foot .btn{flex:1;min-height:48px}
+dialog.foglio.alto{height:calc(var(--vvh,100dvh) - 10px - env(safe-area-inset-top));max-height:none;margin:calc(10px + env(safe-area-inset-top) + var(--vvt,0px)) auto auto}
+@media(min-width:760px){dialog.foglio.alto{height:min(700px,calc(var(--vvh,100dvh) - 24px));margin:calc(12px + var(--vvt,0px)) auto auto}}
+.cerca{position:relative}
+.cerca svg{position:absolute;left:13px;top:14px;width:20px;height:20px;color:var(--ink-3);pointer-events:none}
+.cerca input{-webkit-appearance:none;appearance:none;width:100%;min-height:48px;border:1px solid var(--line-2);background:var(--surface-3);border-radius:14px;padding:10px 12px 10px 42px;font-size:16px;font-weight:500}
+.filtri{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:0 0 auto}
+.filtri::-webkit-scrollbar{display:none}
+.filtri .chip{flex:0 0 auto}
+.voce{display:flex;align-items:center;gap:11px;width:100%;min-height:56px;padding:8px 4px;background:none;border:0;border-bottom:1px solid var(--line);text-align:left}
+.voce:hover{background:var(--surface-2)}
+.voce .info{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.voce .nome{font-size:15px;font-weight:600;line-height:1.3}
+.voce .meta{font-size:12px;color:var(--ink-2)}
+.voce .piu{flex:0 0 auto;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink)}
+.voce .piu svg{width:16px;height:16px}
+.voce .k{flex:0 0 auto;font-family:var(--f-tit);font-size:19px;font-weight:700;font-variant-numeric:tabular-nums}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--ink-3);font-weight:600}
+label.f input,label.f select{min-height:46px;border:1px solid var(--line-2);background:var(--surface-3);border-radius:12px;padding:10px 11px;font-size:16px;font-weight:500;color:var(--ink);min-width:0;width:100%}
+label.ck{display:flex;align-items:center;gap:10px;min-height:44px;font-size:14.5px;font-weight:500}
+label.ck input{width:22px;height:22px;accent-color:var(--accent-ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.anteprima{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;background:var(--surface-3);border-radius:14px;padding:10px 6px}
+.anteprima b{display:block;font-family:var(--f-tit);font-size:21px;font-variant-numeric:tabular-nums}
+.anteprima span{font-size:11.5px;color:var(--ink-3);font-weight:600}
+.giorni7{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.giorni7 .chip{padding:0;min-height:48px;border-radius:14px}
+
+.toast{position:fixed;left:13px;right:13px;margin:0 auto;width:fit-content;top:calc(64px + env(safe-area-inset-top));z-index:60;background:var(--deep);color:var(--deep-ink);padding:10px 16px;border-radius:100px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow);max-width:min(92vw,520px);text-align:center;pointer-events:none;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.aggiorna{position:fixed;left:13px;right:13px;top:calc(62px + env(safe-area-inset-top));z-index:70;max-width:734px;margin:0 auto;background:var(--deep);color:var(--deep-ink);border-radius:18px;padding:8px 8px 8px 15px;display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow-alta);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.aggiorna span{margin-right:auto}
+.aggiorna button{background:var(--accent);color:var(--on-accent);border:0;border-radius:12px;min-height:44px;padding:7px 14px;font-size:14px;font-weight:700}
+
+@media(max-width:360px){
+  .hero .big{font-size:38px}
+  .gr{flex-basis:84px}
+  .p-kcal{font-size:17px}
+  .p-nome .ora{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .btn,.tick,.tab,.seg button{transition:none}
+  .btn:active,.tick:active,.seg button:active{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><span class="bar"></span>Diario del Piatto</div>
+    <details class="menu" id="menu">
+      <summary aria-label="Menu" title="Menu">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>
+      </summary>
+      <div class="menu-pop">
+        <button data-azione="allenamento">Giorni di allenamento…</button>
+        <button data-azione="orari">Orari dei pasti…</button>
+        <button data-azione="calendario">Promemoria nel calendario…</button>
+        <hr>
+        <button data-azione="esporta">Esporta backup (.json)</button>
+        <button data-azione="importa">Importa backup…</button>
+        <hr>
+        <button data-azione="azzera">Azzera tutto</button>
+      </div>
+    </details>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-in" role="tablist">
+    <button class="tab" role="tab" data-vista="oggi" aria-selected="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><path d="M2.5 4v5M2.5 9v11M21.5 4c-1.5 1-2 3-2 5h2M21.5 4v16"/></svg>
+      Oggi
+    </button>
+    <button class="tab" role="tab" data-vista="peso" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="4"/><path d="M8.5 9.5a4.5 4.5 0 017 0M12 9.5l1.5-2"/></svg>
+      Peso
+    </button>
+    <button class="tab" role="tab" data-vista="report" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5M4 19.5h16M7.5 16l3.5-4.5 3 2.5 4.5-6"/></svg>
+      Report
+    </button>
+  </div>
+</nav>
+
+<main><div class="wrap" id="app"></div></main>
+
+<dialog id="dlg-cibo" class="foglio alto" aria-labelledby="cb-titolo">
+  <div class="dlg-head">
+    <div><div class="eyebrow" id="cb-dove"></div><h2 id="cb-titolo">Aggiungi cibo</h2></div>
+    <button class="icobtn" data-chiudi aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="dlg-body" id="cb-corpo"></div>
+  <div class="dlg-foot" id="cb-piede"></div>
+</dialog>
+
+<dialog id="dlg-foglio" class="foglio" aria-labelledby="fg-titolo">
+  <div class="dlg-head">
+    <div><div class="eyebrow" id="fg-sopra"></div><h2 id="fg-titolo"></h2></div>
+    <button class="icobtn" data-chiudi aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="dlg-body" id="fg-corpo"></div>
+  <div class="dlg-foot" id="fg-piede"></div>
+</dialog>
+
+<input type="file" id="file-import" accept="application/json,.json" hidden>
+
+<script src="dati.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ===================== dati del piano (da dati.js, generato da genera.py) ===================== */
+const P = window.PIANO;
+const CHIAVE = "diario-piatto-v1";
+const PASTI = ["Colazione", "Spuntino mattina", "Pranzo", "Spuntino pomeriggio (tascabile)", "Cena"];
+const CORTO = {"Spuntino pomeriggio (tascabile)": "Spuntino pomeriggio"};
+const GIORNI_SETT = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+const KCAL_PER_KG = 7700;        // kcal in un kg di peso corporeo (stima classica)
+const RITMO_MIN = 0.2, RITMO_MAX = 0.5, RITMO_OK = [0.25, 0.35];
+
+/* ===================== piccoli aiuti ===================== */
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (n, d) => (n == null || isNaN(n)) ? "–" : Number(n).toLocaleString("it-IT", {minimumFractionDigits: d || 0, maximumFractionDigits: d || 0});
+const segno = (n, d) => (n > 0 ? "+" : n < 0 ? "−" : "±") + fmt(Math.abs(n), d);
+const num = s => { const v = parseFloat(String(s).replace(",", ".")); return isNaN(v) ? null : v; };
+const nomeCorto = p => CORTO[p] || p;
+
+function iso(d){ return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+function daIso(s){ const [a, m, g] = s.split("-").map(Number); return new Date(a, m - 1, g); }
+function oggi(){ return iso(new Date()); }
+function piuGiorni(s, n){ const d = daIso(s); d.setDate(d.getDate() + n); return iso(d); }
+function diffGiorni(a, b){ return Math.round((daIso(b) - daIso(a)) / 864e5); }
+function dataLunga(s){ return daIso(s).toLocaleDateString("it-IT", {weekday: "long", day: "numeric", month: "long"}); }
+function dataBreve(s){ return daIso(s).toLocaleDateString("it-IT", {day: "2-digit", month: "2-digit"}); }
+function lunediDi(s){ const d = daIso(s); const g = (d.getDay() + 6) % 7; d.setDate(d.getDate() - g); return iso(d); }
+function minuti(hhmm){ const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; }
+function adessoMin(){ const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+
+/* ===================== conti sui cibi ===================== */
+function valori(nome){ return (stato.miei[nome] && stato.miei[nome].v) || P.alimenti[nome] || null; }
+function pezzoG(nome){ return (stato.miei[nome] && stato.miei[nome].pz) || P.pezzi[nome] || null; }
+function grammi(nome, q){
+  if (typeof q === "string"){ const n = parseFloat(q); return n * (pezzoG(nome) || 0); }
+  return Number(q);
+}
+function macroDi(voci){
+  let p = 0, c = 0, f = 0;
+  for (const v of voci){
+    const val = valori(v.n); if (!val) continue;
+    p += val[0] * v.g / 100; c += val[1] * v.g / 100; f += val[2] * v.g / 100;
+  }
+  return {p, c, f, k: 4 * p + 4 * c + 9 * f};
+}
+const somma = (a, b) => ({p: a.p + b.p, c: a.c + b.c, f: a.f + b.f, k: a.k + b.k});
+const ZERO = {p: 0, c: 0, f: 0, k: 0};
+function daLista(l){ return l.map(([n, q]) => ({n, g: Math.round(grammi(n, q))})); }
+function etichetta(v){
+  const pz = pezzoG(v.n);
+  const nome = v.n === P.verdure ? "verdure" : v.n === P.olio ? "olio EVO" : v.n;
+  if (pz && v.g % pz === 0 && v.g / pz <= 12) return (v.g / pz) + " " + nome + " (" + v.g + " g)";
+  if (v.n === P.olio) return v.g + " g " + nome + " (" + fmt(v.g / 10, 1).replace(",0", "") + " cucch.)";
+  const ml = /succo|latte/.test(v.n) ? " ml " : " g ";
+  return v.g + ml + nome;
+}
+function testoVoci(voci){ return voci.length ? voci.map(etichetta).join(" · ") : "niente"; }
+
+/* ===================== stato salvato sul telefono ===================== */
+function nuovoStato(){
+  const s = {v: 1, giorni: {}, pesi: {}, miei: {}, recenti: [],
+    impost: {allenamento: null, extraA: "Pranzo", orari: Object.assign({}, P.orari)}};
+  s.pesi["2026-11-18"] = P.profilo.peso_iniziale;
+  return s;
+}
+function carica(){
+  try {
+    const s = JSON.parse(localStorage.getItem(CHIAVE));
+    if (s && s.v === 1){
+      const b = nuovoStato();
+      s.giorni = s.giorni || {}; s.pesi = s.pesi || {}; s.miei = s.miei || {}; s.recenti = s.recenti || [];
+      s.impost = Object.assign(b.impost, s.impost || {});
+      s.impost.orari = Object.assign({}, P.orari, s.impost.orari || {});
+      // giorni scritti male (backup vecchi o modificati a mano) non devono bloccare l'app
+      for (const d of Object.keys(s.giorni)){
+        const g = s.giorni[d];
+        if (!/^\d{4}-\d\d-\d\d$/.test(d) || !g || typeof g !== "object"){ delete s.giorni[d]; continue; }
+        if (!g.pasti || typeof g.pasti !== "object") g.pasti = {};
+        if (!Array.isArray(g.extra)) g.extra = [];
+        g.extra = g.extra.filter(v => v && typeof v.n === "string" && v.g > 0);
+        for (const p of Object.keys(g.pasti)){ const r = g.pasti[p]; if (!r || typeof r !== "object") g.pasti[p] = {}; else if (r.voci && !Array.isArray(r.voci)) delete r.voci; }
+      }
+      for (const d of Object.keys(s.pesi)) if (typeof s.pesi[d] !== "number") delete s.pesi[d];
+      return s;
+    }
+  } catch (e) {}
+  return nuovoStato();
+}
+let stato = carica();
+function salva(){ try { localStorage.setItem(CHIAVE, JSON.stringify(stato)); } catch (e) { avviso("Non riesco a salvare sul telefono"); } }
+
+function giorno(d, crea){
+  if (!stato.giorni[d] && crea) stato.giorni[d] = {pasti: {}, extra: []};
+  return stato.giorni[d] || {pasti: {}, extra: []};
+}
+function recPasto(d, p, crea){
+  const g = giorno(d, crea);
+  if (!g.pasti[p] && crea) g.pasti[p] = {};
+  return g.pasti[p] || {};
+}
+/* Tipo del giorno: quello scelto a mano, altrimenti dai giorni di allenamento; la domenica e' libera. */
+function tipoDi(d){
+  const g = stato.giorni[d];
+  if (g && g.tipo) return g.tipo;
+  const w = daIso(d).getDay();
+  if (w === 0) return "LIBERO";
+  const al = stato.impost.allenamento;
+  return al && al.includes(w) ? "ON" : "OFF";
+}
+function obiettivoDi(d){ return P.obiettivi[tipoDi(d) === "ON" ? "ON" : "OFF"]; }
+
+/* Pranzo e cena della domenica (se non e' libera): quelli del sabato. */
+function nomeMenu(d){ const w = daIso(d).getDay(); return GIORNI_SETT[w === 0 ? 6 : w]; }
+function pastoBaseOff(d, p){
+  const fisso = P.pastiFissi.find(x => x[0] === p);
+  if (fisso) return fisso[1];
+  return (P.giorni[nomeMenu(d)] || {})[p] || [];
+}
+/* Il piano di un pasto per quel giorno: pasti fissi + pranzo/cena del giorno, con lo scambio ON. */
+function pianoPasto(d, p){
+  const tipo = tipoDi(d);
+  if (tipo === "LIBERO") return [];
+  const rec = recPasto(d, p);
+  const alt = rec.alt && (P.alternative[p] || []).find(a => a[0] === rec.alt);
+  let voci = daLista(alt ? alt[1] : pastoBaseOff(d, p));
+  if (tipo === "ON"){
+    const s = scambioGiorno(d)[p];
+    for (const v of s.add) voci = voci.concat([Object.assign({}, v)]);
+    for (const nome in s.rem){
+      let resto = s.rem[nome];
+      voci = voci.map(v => { if (v.n !== nome || resto <= 0) return v; const t = Math.min(v.g, resto); resto -= t; return Object.assign({}, v, {g: v.g - t}); }).filter(v => v.g > 0);
+    }
+  }
+  return voci;
+}
+/* Giorno ON: +riso al pasto prima dell'allenamento, olio tolto partendo da quel pasto.
+   I pasti gia' congelati (segnati o modificati) si ricordano in r.scambio quanto dello scambio
+   contengono: ai pasti ancora da fare va solo il resto, cosi' lo scambio non si conta mai due volte. */
+function scambioGiorno(d){
+  const extraA = stato.impost.extraA;
+  const ordine = [extraA].concat(["Pranzo", "Cena"].filter(x => x !== extraA));
+  const alloc = {}; for (const p of PASTI) alloc[p] = {add: [], rem: {}};
+  const congelati = PASTI.filter(p => recPasto(d, p).voci);
+  const gia = (tipo, nome) => congelati.reduce((s, p) => { const sc = recPasto(d, p).scambio; if (!sc) return s;
+    return s + (tipo === "add" ? sc.add.filter(v => v.n === nome).reduce((a, v) => a + v.g, 0) : (sc.rem[nome] || 0)); }, 0);
+  for (const [nome, q] of P.scambioOn.modifiche){
+    if (q > 0){
+      const resto = q - gia("add", nome), dove = ordine.find(p => !congelati.includes(p));
+      if (resto > 0 && dove) alloc[dove].add.push({n: nome, g: resto});
+      continue;
+    }
+    let resto = -q - gia("rem", nome);
+    for (const p of ordine){
+      if (resto <= 0) break;
+      if (congelati.includes(p)) continue;
+      const base = daLista(pastoBaseOff(d, p)).filter(v => v.n === nome).reduce((s, v) => s + v.g, 0);
+      const t = Math.min(base, resto);
+      if (t > 0){ alloc[p].rem[nome] = t; resto -= t; }
+    }
+  }
+  return alloc;
+}
+/* Congela un pasto (prima modifica o spunta): da qui in poi contano le sue voci, non il piano.
+   Anche il tipo del giorno resta fissato, cosi' cambiare i giorni di allenamento non riscrive il passato. */
+function congela(d, p){
+  const g = giorno(d, true), r = recPasto(d, p, true);
+  if (!g.tipo) g.tipo = tipoDi(d);
+  if (!r.voci){
+    r.scambio = tipoDi(d) === "ON" ? scambioGiorno(d)[p] : null;
+    r.voci = pianoPasto(d, p);
+  }
+  return r;
+}
+/* Le voci di un pasto: quelle modificate a mano se ci sono, altrimenti il piano. */
+function vociPasto(d, p){ const r = recPasto(d, p); return r.voci ? r.voci : pianoPasto(d, p); }
+function mangiato(d){
+  const g = stato.giorni[d]; if (!g) return ZERO;
+  let t = ZERO;
+  for (const p of PASTI) if ((g.pasti[p] || {}).st === "fatto") t = somma(t, macroDi(vociPasto(d, p)));
+  return somma(t, macroDi(g.extra || []));
+}
+function segnato(d){
+  const g = stato.giorni[d]; if (!g) return false;
+  return (g.extra || []).length > 0 || PASTI.some(p => { const st = (g.pasti[p] || {}).st;
+    return st === "saltato" || (st === "fatto" && vociPasto(d, p).length > 0); });
+}
+/* Tabella di marcia: quante kcal del piano dovrebbero gia' essere state mangiate a quest'ora. */
+function attesoOra(d){
+  const ora = adessoMin();
+  let k = 0;
+  for (const p of PASTI) if (minuti(stato.impost.orari[p]) + 30 <= ora) k += macroDi(vociPasto(d, p)).k;
+  if (tipoDi(d) === "LIBERO"){
+    const ob = obiettivoDi(d).kcal, ini = minuti(stato.impost.orari.Colazione), fine = minuti(stato.impost.orari.Cena) + 30;
+    k = ob * Math.max(0, Math.min(1, (ora - ini) / (fine - ini)));
+  }
+  return k;
+}
+
+/* ===================== peso: medie, ritmo, previsioni ===================== */
+function pesiOrdinati(){ return Object.keys(stato.pesi).sort().map(d => ({d, kg: stato.pesi[d]})); }
+function media7(d){
+  const v = pesiOrdinati().filter(x => x.d <= d && diffGiorni(x.d, d) < 7);
+  return v.length ? v.reduce((s, x) => s + x.kg, 0) / v.length : null;
+}
+function settimane(){
+  const m = new Map();
+  for (const x of pesiOrdinati()){ const l = lunediDi(x.d); if (!m.has(l)) m.set(l, []); m.get(l).push(x.kg); }
+  return [...m.entries()].sort((a, b) => a[0] < b[0] ? -1 : 1).map(([l, v]) => ({lun: l, n: v.length, media: v.reduce((s, x) => s + x, 0) / v.length}));
+}
+/* Ritmo in kg a settimana: retta dei minimi quadrati sulle pesate degli ultimi 21 giorni. */
+function ritmo(){
+  const fine = oggi(), v = pesiOrdinati().filter(x => diffGiorni(x.d, fine) <= 21);
+  if (v.length < 5 || diffGiorni(v[0].d, v[v.length - 1].d) < 10) return null;
+  const xs = v.map(x => diffGiorni(v[0].d, x.d)), ys = v.map(x => x.kg);
+  const mx = xs.reduce((a, b) => a + b) / xs.length, my = ys.reduce((a, b) => a + b) / ys.length;
+  let nu = 0, de = 0;
+  for (let i = 0; i < xs.length; i++){ nu += (xs[i] - mx) * (ys[i] - my); de += (xs[i] - mx) ** 2; }
+  return de ? nu / de * 7 : null;
+}
+/* Mantenimento stimato: kcal medie mangiate meno quelle finite nel peso guadagnato. */
+function mantenimento(){
+  const r = ritmo(); if (r == null) return null;
+  const fine = oggi(); const giorniOk = [];
+  for (let i = 1; i <= 21; i++){ const d = piuGiorni(fine, -i); if (segnato(d) && mangiato(d).k > 800) giorniOk.push(mangiato(d).k); }
+  if (giorniOk.length < 10) return {mancano: 10 - giorniOk.length};
+  const media = giorniOk.reduce((a, b) => a + b) / giorniOk.length;
+  return {media, giorni: giorniOk.length, tdee: media - r * KCAL_PER_KG / 7, ritmo: r};
+}
+function verdetto(){
+  // le 3 settimane complete subito prima di questa, una dopo l'altra, ognuna con almeno 3 pesate
+  const st = settimane(), lun0 = lunediDi(oggi());
+  const tre = [-21, -14, -7].map(n => st.find(s => s.lun === piuGiorni(lun0, n)));
+  const buone = tre.filter(s => s && s.n >= 3).length;
+  if (buone < 3) return {tipo: "attesa", testo: "Servono 3 settimane complete di fila con almeno 3 pesate ciascuna per decidere se cambiare le calorie. Delle ultime 3 ne hai " + buone + "."};
+  const [a, b, c] = tre, r2 = x => Math.round(x * 100) / 100, v1 = r2(b.media - a.media), v2 = r2(c.media - b.media);
+  const dett = "Ultime due settimane: " + segno(v1, 2) + " kg e " + segno(v2, 2) + " kg.";
+  if (v1 < RITMO_MIN && v2 < RITMO_MIN) return {tipo: "azione", titolo: "Il peso sale troppo piano", testo: dett + " Proponi al personal trainer +150 kcal di carboidrati (circa +40 g di riso o pasta crudi al giorno)."};
+  if (v1 > RITMO_MAX && v2 > RITMO_MAX) return {tipo: "azione", titolo: "Il peso sale troppo in fretta", testo: dett + " Proponi al personal trainer di togliere circa 100 kcal."};
+  if (v2 < RITMO_MIN) return {tipo: "ok", titolo: "Da tenere d'occhio", testo: dett + " L'ultima settimana è sotto +0,2 kg: se anche la prossima va così, proponi al personal trainer +150 kcal."};
+  if (v2 > RITMO_MAX) return {tipo: "ok", titolo: "Da tenere d'occhio", testo: dett + " L'ultima settimana è sopra +0,5 kg: se anche la prossima va così, proponi al personal trainer −100 kcal."};
+  return {tipo: "ok", titolo: "Sei sul ritmo giusto", testo: dett + " Nessuna modifica: continua così."};
+}
+
+/* ===================== interfaccia ===================== */
+let vista = "oggi", dataSel = oggi(), aperto = null, periodo = 7;
+const app = $("#app");
+const ICO = {
+  tick: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  piu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  sx: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></svg>',
+  dx: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>',
+  cerca: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
+};
+function cerchio(st){
+  const segnoSvg = st === "fatto" ? '<path class="segno" d="M10 16.5l4 4 8-9"/>' : st === "saltato" ? '<path class="segno" d="M11 11l10 10M21 11L11 21"/>' : "";
+  return '<span class="cerchio" data-st="' + (st || "") + '" aria-hidden="true"><svg viewBox="0 0 32 32"><circle class="base" cx="16" cy="16" r="13"/>' + segnoSvg + '</svg></span>';
+}
+function barra(val, max, colore){ const pc = max ? Math.max(0, Math.min(100, val / max * 100)) : 0; return '<div class="b"><i style="width:' + pc + '%;background:' + colore + '"></i></div>'; }
+
+function render(){
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.vista === vista)));
+  if (vista === "oggi") app.innerHTML = vistaOggi();
+  else if (vista === "peso"){ app.innerHTML = vistaPeso(); disegnaGraficoPeso(); }
+  else { app.innerHTML = vistaReport(); disegnaGraficoKcal(); }
+}
+
+/* ---------- Oggi ---------- */
+function vistaOggi(){
+  const d = dataSel, tipo = tipoDi(d), ob = obiettivoDi(d), m = mangiato(d), g = giorno(d);
+  const manca = ob.kcal - m.k, eOggi = d === oggi();
+  let h = '<div class="stack">';
+
+  h += '<div class="datanav"><button class="icobtn" data-giorno="-1" aria-label="Giorno prima">' + ICO.sx + '</button>' +
+    '<div class="t"><h2>' + esc(eOggi ? "Oggi" : dataLunga(d)) + '</h2><div class="tiny">' + esc(eOggi ? dataLunga(d) : (d < oggi() ? "giorno passato" : "giorno futuro")) + '</div></div>' +
+    '<button class="icobtn" data-giorno="1" aria-label="Giorno dopo"' + (eOggi ? " disabled" : "") + '>' + ICO.dx + '</button></div>';
+
+  h += '<div class="seg" role="group" aria-label="Tipo di giorno">' +
+    ['ON', 'OFF', 'LIBERO'].map(t => '<button data-tipo="' + t + '" aria-pressed="' + (tipo === t) + '">' +
+      (t === "ON" ? "Allenamento" : t === "OFF" ? "Riposo" : "Libero") +
+      '<small>' + (t === "LIBERO" ? "senza menù" : fmt(P.obiettivi[t].kcal) + " kcal") + '</small></button>').join("") + '</div>';
+
+  if (stato.impost.allenamento === null)
+    h += '<div class="card pad stack"><p><b>In che giorni ti alleni?</b> Così l\'app sa da sola quando è un giorno ON (più carboidrati, meno olio).</p><button class="btn block" data-azione="allenamento">Scegli i giorni</button></div>';
+
+  // il riquadro che conta
+  const pc = Math.max(0, Math.min(100, m.k / ob.kcal * 100));
+  h += '<div class="hero" aria-live="polite">';
+  if (manca > 0) h += '<div class="lbl">Mancano</div><div class="big">' + fmt(manca) + '<small>kcal su ' + fmt(ob.kcal) + '</small></div>';
+  else h += '<div class="lbl">Obiettivo raggiunto</div><div class="big">' + fmt(m.k) + '<small>kcal (' + segno(-manca) + ')</small></div>';
+  h += '<div class="hbar"><i style="width:' + pc + '%"></i></div>';
+  h += '<div class="macros">' +
+    macroBox("Carbo", m.c, ob.carbo, "var(--m-carbo)") + macroBox("Proteine", m.p, ob.prote, "var(--m-prote)") + macroBox("Grassi", m.f, ob.grassi, "var(--m-grassi)") + '</div>';
+  if (eOggi){
+    const atteso = attesoOra(d), dietro = atteso - m.k;
+    const dopoCena = adessoMin() > minuti(stato.impost.orari.Cena) + 60;
+    if (dopoCena && manca > 150)
+      h += '<div class="marcia"><span>Giornata quasi finita: chiudila con <b>' + fmt(manca) + ' kcal</b>.</span><button data-azione="ricarica">Chiudi</button></div>';
+    else if (dietro > 150)
+      h += '<div class="marcia"><span>Sei indietro di <b>' + fmt(dietro) + ' kcal</b> sulla tabella di marcia.</span><button data-azione="ricarica">Recupera</button></div>';
+    else {
+      const prossimo = PASTI.find(p => !recPasto(d, p).st && minuti(stato.impost.orari[p]) + 30 > adessoMin());
+      if (prossimo) h += '<div class="marcia"><span>Prossimo: <b>' + esc(nomeCorto(prossimo)) + '</b> alle ' + esc(stato.impost.orari[prossimo]) + '</span></div>';
+    }
+  }
+  h += '</div>';
+
+  if (tipo === "ON") h += '<p class="nota">Giorno ON: ' + esc(P.scambioOn.testo.replace("al pasto prima dell'allenamento", "a " + stato.impost.extraA.toLowerCase())) + ' È già nel menù qui sotto.</p>';
+  if (tipo === "LIBERO") h += '<p class="nota">' + esc(P.domenica) + ' Segna quello che mangi con il + di ogni pasto.</p>';
+
+  for (const p of PASTI) h += pastoHTML(d, p);
+
+  // fuori piano
+  const ex = g.extra || [], mex = macroDi(ex);
+  h += '<div class="pasto" data-pasto="extra" data-aperto="' + (aperto === "extra" ? 1 : 0) + '">' +
+    '<div class="p-riga">' + cerchio(ex.length ? "fatto" : "") +
+    '<button class="p-apri" data-apri="extra" aria-expanded="' + (aperto === "extra") + '"><span class="p-nome"><b>Fuori piano</b></span><span class="p-cosa">' + esc(ex.length ? testoVoci(ex) : "Ricariche, extra, sgarri") + '</span></button>' +
+    '<span class="p-kcal">' + fmt(mex.k) + '<small>kcal</small></span>' +
+    '<button class="tick" data-cibo="extra" aria-label="Aggiungi un cibo fuori piano">' + ICO.piu + '</button></div>' +
+    '<div class="p-corpo">' + ex.map((v, i) => ciboHTML(v, "extra", i)).join("") +
+    '<div class="p-az"><button class="btn" data-cibo="extra">+ Aggiungi cibo</button><button class="btn" data-azione="ricarica">Ricariche veloci</button></div></div></div>';
+
+  h += '</div>';
+  return h;
+}
+function macroBox(nome, val, ob, col){
+  return '<div class="mac"><div class="k">' + nome + '</div><div class="v">' + fmt(val) + '<small> / ' + ob + ' g</small></div>' + barra(val, ob, col) + '</div>';
+}
+function pastoHTML(d, p){
+  const r = recPasto(d, p), voci = vociPasto(d, p), m = macroDi(voci), st = r.st || "";
+  const alt = P.alternative[p] || [];
+  let h = '<div class="pasto" data-pasto="' + esc(p) + '" data-st="' + st + '" data-aperto="' + (aperto === p ? 1 : 0) + '">' +
+    '<div class="p-riga">' + cerchio(st) +
+    '<button class="p-apri" data-apri="' + esc(p) + '" aria-expanded="' + (aperto === p) + '">' +
+    '<span class="p-nome"><b>' + esc(nomeCorto(p)) + '</b><span class="ora">' + esc(stato.impost.orari[p]) + '</span></span>' +
+    '<span class="p-cosa">' + esc(st === "saltato" ? "saltato" : (r.alt ? r.alt + ": " : "") + testoVoci(voci)) + '</span></button>' +
+    '<span class="p-kcal">' + fmt(st === "saltato" ? 0 : m.k) + '<small>kcal</small></span>' +
+    '<button class="tick" data-fatto="' + esc(p) + '" aria-pressed="' + (st === "fatto") + '" aria-label="' + esc(nomeCorto(p)) + ' mangiato"' + (voci.length ? "" : " disabled") + '>' + ICO.tick + '</button></div>';
+  h += '<div class="p-corpo">';
+  if (alt.length){
+    h += '<div class="eyebrow">Versione</div><div class="chips" role="group" aria-label="Versione dello spuntino">' +
+      '<button class="chip" data-alt="" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (!r.alt) + '">Classica</button>' +
+      alt.map(a => '<button class="chip" data-alt="' + esc(a[0]) + '" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (r.alt === a[0]) + '">' + esc(a[0]) + '</button>').join("") + '</div>';
+  }
+  h += voci.map((v, i) => ciboHTML(v, p, i)).join("");
+  h += '<div class="small muted mono">C ' + fmt(m.c) + ' · P ' + fmt(m.p) + ' · G ' + fmt(m.f) + ' g</div>';
+  h += '<div class="p-az"><button class="btn" data-cibo="' + esc(p) + '">+ Aggiungi</button>' +
+    (st === "saltato" ? '<button class="btn" data-salta="' + esc(p) + '">Non saltato</button>' : '<button class="btn" data-salta="' + esc(p) + '">Saltato</button>') +
+    (r.voci ? '<button class="btn ghost" data-ripristina="' + esc(p) + '">Torna al piano</button>' : '') + '</div>';
+  h += '</div></div>';
+  return h;
+}
+function ciboHTML(v, dove, i){
+  const m = macroDi([v]);
+  return '<div class="cibo"><div class="info"><div class="nome">' + esc(v.n === P.verdure ? "verdure (pomodori, carote, insalata, rucola)" : v.n) + '</div>' +
+    '<div class="meta">' + fmt(m.k) + ' kcal · C' + fmt(m.c) + ' P' + fmt(m.p) + ' G' + fmt(m.f) + '</div></div>' +
+    '<label class="gr"><input inputmode="numeric" pattern="[0-9]*" value="' + v.g + '" data-gr="' + esc(dove) + '" data-i="' + i + '" aria-label="Grammi di ' + esc(v.n) + '"><u>' + (/succo|latte/.test(v.n) ? "ml" : "g") + '</u></label>' +
+    '<button class="icobtn" data-togli="' + esc(dove) + '" data-i="' + i + '" aria-label="Togli ' + esc(v.n) + '">' + ICO.x + '</button></div>';
+}
+
+/* ---------- Peso ---------- */
+function vistaPeso(){
+  const ord = pesiOrdinati(), ultimo = ord[ord.length - 1], d = oggi();
+  const m7 = media7(d) || (ultimo && ultimo.kg), r = ritmo(), ob = P.profilo.obiettivo;
+  let h = '<div class="stack"><h1>Peso</h1>';
+  h += '<div class="card pad stack"><div class="eyebrow">Peso di stamattina</div>' +
+    '<div class="grid2"><div class="fld"><input id="in-peso" inputmode="decimal" placeholder="' + (ultimo ? fmt(ultimo.kg, 1) : "66,0") + '" value="' + (stato.pesi[d] != null ? fmt(stato.pesi[d], 1) : "") + '" aria-label="Peso in kg"><u>kg</u></div>' +
+    '<button class="btn primary big" data-azione="salva-peso">Salva</button></div>' +
+    '<p class="small muted">Appena sveglio, dopo il bagno, prima di mangiare. Almeno 4 mattine a settimana: conta la media, non il giorno.</p></div>';
+
+  let eta = "–", etaD = "";
+  if (r != null && m7 != null){
+    if (r > 0.05){ const sett = (ob - m7) / r; const arr = piuGiorni(d, Math.round(sett * 7)); eta = daIso(arr).toLocaleDateString("it-IT", {month: "short", year: "numeric"}); etaD = "a " + fmt(r, 2).replace("-", "−") + " kg/sett"; }
+    else { eta = "mai"; etaD = "a questo ritmo"; }
+  }
+  const dir = r == null ? "" : r >= RITMO_MIN ? "su" : r < 0 ? "giu" : "";
+  h += '<div class="tiles">' +
+    tile("Media 7 giorni", m7 != null ? fmt(m7, 1) : "–", "kg", ultimo ? "ultima " + fmt(ultimo.kg, 1) + " il " + dataBreve(ultimo.d) : "") +
+    tile("Ritmo", r != null ? segno(r, 2) : "–", "kg/sett", r != null ? "obiettivo +0,25 / +0,35" : "servono 5 pesate in 10+ giorni", dir) +
+    tile("Mancano", m7 != null ? fmt(Math.max(0, ob - m7), 1) : "–", "kg", "a " + fmt(ob) + " kg") +
+    tile("Arrivo stimato", eta, "", etaD) + '</div>';
+
+  const v = verdetto();
+  h += '<div class="verdetto" data-tipo="' + (v.tipo === "azione" ? "azione" : "ok") + '"><div class="eyebrow">' + esc(v.titolo || "Regola del peso") + '</div><p>' + esc(v.testo) + '</p></div>';
+
+  h += '<div class="card pad stack"><div class="spread"><h3>Andamento</h3></div><div class="chart" id="graf-peso"></div>' +
+    '<div class="legenda"><span><i style="background:var(--dato)"></i>media 7 giorni</span><span><i style="background:var(--ink-3);height:6px;width:6px;border-radius:50%"></i>pesata</span><span><i style="background:var(--accent-soft);height:8px"></i>ritmo giusto (+0,25 / +0,35 a sett.)</span></div></div>';
+
+  const mt = mantenimento();
+  h += '<div class="card pad stack"><h3>Il tuo metabolismo, calcolato</h3>';
+  if (!mt) h += '<p class="small muted">Si calcola dalle calorie che segni e da come si muove il peso. Servono almeno 5 pesate in 10 giorni.</p>';
+  else if (mt.mancano) h += '<p class="small muted">Servono ancora ' + mt.mancano + ' giorni con i pasti segnati (sugli ultimi 21) per calcolarlo.</p>';
+  else {
+    const per03 = mt.tdee + 0.3 * KCAL_PER_KG / 7;
+    h += '<div class="tiles">' + tile("Mantenimento", fmt(Math.round(mt.tdee / 10) * 10), "kcal", "il peso resta fermo") + tile("Per +0,3 kg/sett", fmt(Math.round(per03 / 10) * 10), "kcal", "al giorno") + '</div>' +
+      '<p class="small muted">Calcolato su ' + mt.giorni + ' giorni segnati: hai mangiato in media ' + fmt(mt.media) + ' kcal e il peso si è mosso di ' + segno(mt.ritmo, 2) + ' kg a settimana. Più segni con precisione, più il numero è affidabile. Da mostrare al personal trainer.</p>';
+  }
+  h += '</div>';
+
+  const st = settimane().slice(-10).reverse();
+  if (st.length){
+    h += '<div class="card pad stack"><h3>Settimane</h3><div class="tab-scroll"><table class="st"><tr><th>Dal</th><th class="n">Pesate</th><th class="n">Media</th><th class="n">Var.</th><th class="n">kcal medie</th></tr>';
+    st.forEach((s, i) => {
+      // variazione riportata a una settimana: se in mezzo manca una settimana non sembra il doppio
+      const prec = st[i + 1], dv = prec ? (s.media - prec.media) / (diffGiorni(prec.lun, s.lun) / 7) : null;
+      const km = kcalMedie(s.lun, 7);
+      h += '<tr><td>' + dataBreve(s.lun) + '</td><td class="n">' + s.n + '</td><td class="n">' + fmt(s.media, 1) + '</td><td class="n">' +
+        (dv == null ? "–" : '<span class="delta" data-dir="' + (dv >= RITMO_MIN ? "su" : dv < 0 ? "giu" : "") + '">' + segno(dv, 2) + '</span>') + '</td><td class="n">' + (km ? fmt(km) : "–") + '</td></tr>';
+    });
+    h += '</table></div></div>';
+  }
+  h += '<div class="card pad stack"><h3>Pesate</h3>' + (ord.length ? ord.slice(-14).reverse().map(x =>
+    '<div class="spread" style="min-height:44px"><span>' + esc(dataLunga(x.d)) + '</span><span class="row"><b class="mono">' + fmt(x.kg, 1) + ' kg</b><button class="icobtn" data-togli-peso="' + x.d + '" aria-label="Elimina la pesata del ' + esc(dataBreve(x.d)) + '">' + ICO.x + '</button></span></div>').join("") : '<p class="muted small">Nessuna pesata.</p>') + '</div>';
+  h += '</div>';
+  return h;
+}
+function tile(k, v, u, d, dir){
+  return '<div class="tile"><div class="k">' + esc(k) + '</div><div class="v">' + esc(v) + (u ? ' <small>' + esc(u) + '</small>' : "") + '</div>' + (d ? '<div class="d"' + (dir ? ' data-dir="' + dir + '"' : "") + '>' + esc(d) + '</div>' : "") + '</div>';
+}
+function kcalMedie(da, n){
+  const v = [];
+  for (let i = 0; i < n; i++){ const d = piuGiorni(da, i); if (d > oggi()) break; if (segnato(d)) v.push(mangiato(d).k); }
+  return v.length ? v.reduce((a, b) => a + b) / v.length : null;
+}
+
+function disegnaGraficoPeso(){
+  const box = $("#graf-peso"); if (!box) return;
+  const ord = pesiOrdinati();
+  if (ord.length < 2){ box.innerHTML = '<p class="small muted">Il grafico compare dalla seconda pesata.</p>'; return; }
+  const W = Math.max(280, box.clientWidth), H = 210, L = 38, R = 10, T = 10, B = 26;
+  const ini = ord[0], fine = oggi(), span = Math.max(14, diffGiorni(ini.d, fine));
+  const x = d => L + diffGiorni(ini.d, d) / span * (W - L - R);
+  const corr = g => [ini.kg + RITMO_OK[0] * g / 7, ini.kg + RITMO_OK[1] * g / 7];
+  const kgs = ord.map(o => o.kg).concat(corr(span));
+  let lo = Math.floor(Math.min(...kgs) - 0.3), hi = Math.ceil(Math.max(...kgs) + 0.3);
+  if (hi - lo < 2) hi = lo + 2;
+  const y = kg => T + (hi - kg) / (hi - lo) * (H - T - B);
+  let s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Andamento del peso">';
+  const passo = (hi - lo) > 6 ? 2 : (hi - lo) > 3 ? 1 : 0.5;
+  for (let k = lo; k <= hi + 1e-9; k += passo){
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(k) + '" y2="' + y(k) + '" stroke="var(--line)" stroke-width="1" opacity=".6"/>' +
+      '<text x="' + (L - 6) + '" y="' + (y(k) + 4) + '" text-anchor="end" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace">' + fmt(k, passo < 1 ? 1 : 0) + '</text>';
+  }
+  const c0 = corr(0), c1 = corr(span), fineD = piuGiorni(ini.d, span);
+  s += '<polygon points="' + x(ini.d) + ',' + y(c0[0]) + ' ' + x(fineD) + ',' + y(c1[0]) + ' ' + x(fineD) + ',' + y(c1[1]) + ' ' + x(ini.d) + ',' + y(c0[1]) + '" fill="var(--accent-soft)"/>';
+  for (const o of ord) s += '<circle cx="' + x(o.d) + '" cy="' + y(o.kg) + '" r="3" fill="var(--ink-3)" opacity=".7"/>';
+  const pts = ord.map(o => x(o.d) + "," + y(media7(o.d))).join(" ");
+  s += '<polyline points="' + pts + '" fill="none" stroke="var(--dato)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+  s += '<text x="' + L + '" y="' + (H - 6) + '" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace">' + dataBreve(ini.d) + '</text>' +
+    '<text x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace">' + dataBreve(fineD) + '</text></svg>';
+  box.innerHTML = s;
+}
+
+/* ---------- Report ---------- */
+function datiPeriodo(n){
+  const giorni = [];
+  for (let i = n - 1; i >= 0; i--){ const d = piuGiorni(oggi(), -i); giorni.push({d, tipo: tipoDi(d), ob: obiettivoDi(d), m: mangiato(d), seg: segnato(d)}); }
+  const seg = giorni.filter(g => g.seg && g.tipo !== "LIBERO" && g.d !== oggi());
+  const med = k => seg.length ? seg.reduce((s, g) => s + g.m[k], 0) / seg.length : null;
+  const obMed = seg.length ? seg.reduce((s, g) => s + g.ob.kcal, 0) / seg.length : null;
+  const nelTarget = seg.filter(g => Math.abs(g.m.k - g.ob.kcal) <= g.ob.kcal * 0.05 || g.m.k > g.ob.kcal).length;
+  const conta = {};
+  for (const p of PASTI) conta[p] = {fatto: 0, saltato: 0, vuoto: 0};
+  for (const g of giorni){
+    if (g.d === oggi() || g.tipo === "LIBERO" || !g.seg) continue;
+    for (const p of PASTI){ const st = recPasto(g.d, p).st; conta[p][st === "fatto" ? "fatto" : st === "saltato" ? "saltato" : "vuoto"]++; }
+  }
+  return {giorni, seg, k: med("k"), c: med("c"), p: med("p"), f: med("f"), obMed, nelTarget, conta};
+}
+function vistaReport(){
+  const r = datiPeriodo(periodo);
+  let h = '<div class="stack"><h1>Report</h1><div class="seg" role="group" aria-label="Periodo">' +
+    [7, 14, 28].map(n => '<button data-periodo="' + n + '" aria-pressed="' + (periodo === n) + '">' + n + ' giorni</button>').join("") + '</div>';
+  if (!r.seg.length){
+    h += '<div class="card vuoto"><h3>Ancora niente da mostrare</h3><p>Segna i pasti in Oggi: qui vedrai le medie, i pasti che salti più spesso e il riepilogo per il personal trainer.</p></div></div>';
+    return h;
+  }
+  const pc = r.k / r.obMed * 100;
+  h += '<div class="tiles">' +
+    tile("kcal medie", fmt(r.k), "", fmt(pc) + "% dell'obiettivo", pc >= 95 ? "su" : "giu") +
+    tile("Proteine medie", fmt(r.p), "g", "obiettivo 170") +
+    tile("Giorni nel target", r.nelTarget + "/" + r.seg.length, "", "almeno il 95% delle kcal") +
+    tile("Carbo / grassi", fmt(r.c) + " / " + fmt(r.f), "g", "medie") + '</div>';
+
+  const peggiori = PASTI.map(p => ({p, n: r.conta[p].saltato + r.conta[p].vuoto, tot: r.conta[p].fatto + r.conta[p].saltato + r.conta[p].vuoto})).filter(x => x.n > 0).sort((a, b) => b.n - a.n);
+  if (peggiori.length && peggiori[0].n >= 2)
+    h += '<div class="verdetto" data-tipo="azione"><div class="eyebrow">Dove perdi calorie</div><p><b>' + esc(nomeCorto(peggiori[0].p)) + '</b>: saltato o non segnato ' + peggiori[0].n + ' volte su ' + peggiori[0].tot + '. ' +
+      (P.alternative[peggiori[0].p] ? 'Prova una versione più comoda (' + esc(P.alternative[peggiori[0].p].map(a => a[0]).join(", ")) + ') o mettiti un promemoria dal menu ⋯.' : 'Mettiti un promemoria dal menu ⋯.') + '</p></div>';
+
+  h += '<div class="card pad stack"><h3>Calorie giorno per giorno</h3><div class="chart" id="graf-kcal"></div><div class="legenda"><span><i style="background:var(--dato)"></i>mangiate</span><span><i style="background:var(--ink-2)"></i>obiettivo</span></div></div>';
+
+  h += '<div class="card pad stack"><h3>Pasti</h3><div class="tab-scroll"><table class="st"><tr><th>Pasto</th><th class="n">Fatto</th><th class="n">Saltato</th><th class="n">Non segnato</th></tr>' +
+    PASTI.map(p => '<tr><td>' + esc(nomeCorto(p)) + '</td><td class="n">' + r.conta[p].fatto + '</td><td class="n">' + r.conta[p].saltato + '</td><td class="n">' + r.conta[p].vuoto + '</td></tr>').join("") +
+    '</table></div><p class="tiny muted">Oggi (ancora in corso) e i giorni liberi non entrano nelle medie.</p></div>';
+
+  h += '<div class="card pad stack"><h3>Giorni</h3><div class="tab-scroll"><table class="st"><tr><th>Giorno</th><th>Tipo</th><th class="n">kcal</th><th class="n">%</th><th class="n">Peso</th></tr>' +
+    r.giorni.slice().reverse().map(g => '<tr><td>' + esc(GIORNI_SETT[daIso(g.d).getDay()].slice(0, 3) + " " + dataBreve(g.d)) + '</td><td>' + (g.tipo === "LIBERO" ? "libero" : g.tipo) + '</td><td class="n">' + (g.seg ? fmt(g.m.k) : "–") + '</td><td class="n">' +
+      (g.seg ? fmt(g.m.k / g.ob.kcal * 100) : "–") + '</td><td class="n">' + (stato.pesi[g.d] != null ? fmt(stato.pesi[g.d], 1) : "") + '</td></tr>').join("") + '</table></div></div>';
+
+  h += '<button class="btn primary big block" data-azione="per-coach">Manda il riepilogo al personal trainer</button></div>';
+  return h;
+}
+function disegnaGraficoKcal(){
+  const box = $("#graf-kcal"); if (!box) return;
+  const r = datiPeriodo(periodo), W = Math.max(280, box.clientWidth), H = 180, L = 40, R = 6, T = 8, B = 22;
+  const max = Math.max(3500, ...r.giorni.map(g => g.m.k)) * 1.05;
+  const bw = (W - L - R) / r.giorni.length, y = k => T + (1 - k / max) * (H - T - B);
+  let s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Calorie mangiate per giorno">';
+  for (const k of [1000, 2000, 3000]) s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(k) + '" y2="' + y(k) + '" stroke="var(--line)" opacity=".6"/><text x="' + (L - 6) + '" y="' + (y(k) + 4) + '" text-anchor="end" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace">' + fmt(k) + '</text>';
+  r.giorni.forEach((g, i) => {
+    const x0 = L + i * bw + bw * 0.18, w = bw * 0.64;
+    if (g.seg) s += '<rect x="' + x0 + '" y="' + y(g.m.k) + '" width="' + w + '" height="' + (y(0) - y(g.m.k)) + '" rx="' + Math.min(4, w / 2) + '" fill="var(--dato)" opacity="' + (g.tipo === "LIBERO" ? .45 : 1) + '"/>';
+    s += '<line x1="' + (L + i * bw + 2) + '" x2="' + (L + (i + 1) * bw - 2) + '" y1="' + y(g.ob.kcal) + '" y2="' + y(g.ob.kcal) + '" stroke="var(--ink-2)" stroke-width="2"/>';
+    if (r.giorni.length <= 14 || i % 4 === 0) s += '<text x="' + (L + i * bw + bw / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="10.5" fill="var(--ink-3)" font-family="IBM Plex Mono,monospace">' + daIso(g.d).getDate() + '</text>';
+  });
+  box.innerHTML = s + '</svg>';
+}
+function testoCoach(){
+  // peso: ultima settimana finita contro quella subito prima (la settimana in corso non e' ancora completa)
+  const r = datiPeriodo(periodo), st = settimane(), lun0 = lunediDi(oggi());
+  const u = st.find(s => s.lun === piuGiorni(lun0, -7)), pr = st.find(s => s.lun === piuGiorni(lun0, -14));
+  const righe = ["Riepilogo dieta: ultimi " + periodo + " giorni (" + dataBreve(r.giorni[0].d) + " – " + dataBreve(r.giorni[r.giorni.length - 1].d) + ")"];
+  if (r.seg.length){
+    righe.push("Kcal medie: " + fmt(r.k) + " su " + fmt(r.obMed) + " (" + fmt(r.k / r.obMed * 100) + "%)");
+    righe.push("Medie: carbo " + fmt(r.c) + " g · proteine " + fmt(r.p) + " g · grassi " + fmt(r.f) + " g");
+    righe.push("Giorni nel target: " + r.nelTarget + " su " + r.seg.length);
+    const salt = PASTI.filter(p => r.conta[p].saltato + r.conta[p].vuoto).map(p => nomeCorto(p) + " " + (r.conta[p].saltato + r.conta[p].vuoto));
+    righe.push("Pasti saltati o non segnati: " + (salt.length ? salt.join(", ") : "nessuno"));
+  } else righe.push("Nessun giorno segnato nel periodo.");
+  if (u) righe.push("Peso: media della settimana scorsa " + fmt(u.media, 1) + " kg" + (pr ? " (" + segno(u.media - pr.media, 2) + " kg sulla settimana prima)" : ""));
+  const rt = ritmo(); if (rt != null) righe.push("Ritmo ultime 3 settimane: " + segno(rt, 2) + " kg/settimana");
+  const mt = mantenimento(); if (mt && mt.tdee) righe.push("Mantenimento stimato: ~" + fmt(Math.round(mt.tdee / 10) * 10) + " kcal");
+  return righe.join("\n");
+}
+
+/* Nel backup va anche il riepilogo gia' calcolato di ogni giorno: lo legge pesate.py sul computer. */
+function calcolatoPerAnalisi(){
+  const giorni = {};
+  for (const d of Object.keys(stato.giorni).sort()){
+    if (!segnato(d)) continue;
+    const m = mangiato(d), ob = obiettivoDi(d), pasti = {};
+    for (const p of PASTI) pasti[nomeCorto(p)] = recPasto(d, p).st || "non segnato";
+    giorni[d] = {tipo: tipoDi(d), kcal: Math.round(m.k), carbo: Math.round(m.c), prote: Math.round(m.p), grassi: Math.round(m.f), obiettivo: ob.kcal, pasti};
+  }
+  return {creato: new Date().toISOString(), giorni, pesi: stato.pesi};
+}
+
+/* ===================== dialog: aggiungi cibo ===================== */
+const dlgCibo = $("#dlg-cibo");
+let cb = {dove: null, filtro: "tutti", cerca: "", scelto: null, modo: "lista"};
+function categoria(nome){
+  const v = valori(nome), k = 4 * v[0] + 4 * v[1] + 9 * v[2];
+  if (stato.miei[nome]) return "miei";
+  if (k <= 0) return "altro";
+  if (v[1] * 4 / k >= 0.55) return "carbo";
+  if (v[0] * 4 / k >= 0.4) return "prote";
+  if (v[2] * 9 / k >= 0.55) return "grassi";
+  return "misti";
+}
+function apriCibo(dove){
+  cb = {dove, filtro: "tutti", cerca: "", scelto: null, modo: "lista"};
+  $("#cb-dove").textContent = dove === "extra" ? "Fuori piano" : nomeCorto(dove);
+  disegnaCibo(); dlgCibo.showModal(); misuraSchermo();
+}
+function disegnaCibo(){
+  const corpo = $("#cb-corpo"), piede = $("#cb-piede");
+  if (cb.modo === "lista"){
+    $("#cb-titolo").textContent = "Aggiungi cibo";
+    const tutti = Object.keys(P.alimenti).concat(Object.keys(stato.miei).filter(n => !P.alimenti[n]));
+    const q = cb.cerca.trim().toLowerCase();
+    let lista = tutti.filter(n => (!q || n.toLowerCase().includes(q)) && (cb.filtro === "tutti" || categoria(n) === cb.filtro));
+    lista.sort((a, b) => a.localeCompare(b, "it"));
+    const recenti = (!q && cb.filtro === "tutti") ? stato.recenti.filter(n => valori(n)).slice(0, 6) : [];
+    const voce = n => { const v = valori(n), k = 4 * v[0] + 4 * v[1] + 9 * v[2];
+      return '<button class="voce" data-scegli="' + esc(n) + '"><span class="info"><span class="nome">' + esc(n) + '</span><span class="meta">100 g: ' + fmt(k) + ' kcal · C ' + fmt(v[1]) + ' · P ' + fmt(v[0]) + ' · G ' + fmt(v[2]) + '</span></span><span class="piu">' + ICO.piu + '</span></button>'; };
+    corpo.innerHTML = '<div class="cerca">' + ICO.cerca + '<input id="cb-cerca" type="search" placeholder="Cerca un cibo" value="' + esc(cb.cerca) + '" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="Cerca un cibo"></div>' +
+      '<div class="filtri" role="group" aria-label="Filtra">' + [["tutti", "Tutti"], ["carbo", "Carboidrati"], ["prote", "Proteine"], ["grassi", "Grassi"], ["misti", "Misti"], ["miei", "Miei"]].map(([k, t]) =>
+        '<button class="chip" data-filtro="' + k + '" aria-pressed="' + (cb.filtro === k) + '">' + t + '</button>').join("") + '</div>' +
+      (recenti.length ? '<div class="eyebrow">Usati di recente</div><div>' + recenti.map(voce).join("") + '</div><div class="eyebrow">Tutti</div>' : "") +
+      '<div>' + (lista.length ? lista.map(voce).join("") : '<p class="small muted" style="padding:10px 0">Nessun cibo trovato. Crealo con i valori dell\'etichetta.</p>') + '</div>';
+    piede.innerHTML = '<button class="btn" data-crea>Crea un cibo dall\'etichetta</button>';
+  } else if (cb.modo === "quantita"){
+    const n = cb.scelto, pz = pezzoG(n), g = cb.g;
+    $("#cb-titolo").textContent = n;
+    const m = macroDi([{n, g: g || 0}]);
+    corpo.innerHTML = '<div class="fld"><input id="cb-g" inputmode="numeric" pattern="[0-9]*" value="' + (g || "") + '" aria-label="Quantità"><u>' + (/succo|latte/.test(n) ? "ml" : "g") + '</u></div>' +
+      (pz ? '<div class="chips">' + [1, 2, 3, 4, 5, 6].map(k => '<button class="chip" data-pz="' + k * pz + '" aria-pressed="' + (g === k * pz) + '">' + k + ' pz</button>').join("") + '</div>' :
+        '<div class="chips">' + [50, 100, 150, 200, 250].map(k => '<button class="chip" data-pz="' + k + '" aria-pressed="' + (g === k) + '">' + k + ' g</button>').join("") + '</div>') +
+      '<div class="anteprima" id="cb-ant">' + anteprima(m) + '</div>' +
+      '<p class="small muted">Riso, pasta, patate, carne e pesce: peso a crudo.</p>';
+    piede.innerHTML = '<button class="btn" data-indietro>Indietro</button><button class="btn primary" data-aggiungi>Aggiungi</button>';
+  } else {
+    $("#cb-titolo").textContent = "Cibo dall'etichetta";
+    corpo.innerHTML = '<p class="small muted">Copia i valori "per 100 g" dalla confezione. Le kcal le calcola l\'app.</p>' +
+      '<label class="f">Nome<input id="mi-nome" maxlength="60" value="' + esc(cb.cerca) + '"></label>' +
+      '<div class="grid3"><label class="f">Carboidrati<input id="mi-c" inputmode="decimal"></label><label class="f">Proteine<input id="mi-p" inputmode="decimal"></label><label class="f">Grassi<input id="mi-f" inputmode="decimal"></label></div>' +
+      '<label class="f">Peso di un pezzo in g (facoltativo)<input id="mi-pz" inputmode="decimal" placeholder="es. 25 per una barretta"></label>';
+    piede.innerHTML = '<button class="btn" data-indietro>Indietro</button><button class="btn primary" data-salva-mio>Salva</button>';
+  }
+}
+function anteprima(m){ return '<div><b>' + fmt(m.k) + '</b><span>kcal</span></div><div><b>' + fmt(m.c) + '</b><span>carbo</span></div><div><b>' + fmt(m.p) + '</b><span>prote</span></div><div><b>' + fmt(m.f) + '</b><span>grassi</span></div>'; }
+
+function aggiungiVoce(dove, v){
+  const d = dataSel, g = giorno(d, true);
+  if (!g.tipo) g.tipo = tipoDi(d);
+  if (dove === "extra"){ g.extra = (g.extra || []).concat([v]); }
+  else {
+    const r0 = recPasto(d, dove, true);
+    if (r0.st === "saltato"){
+      // il pasto previsto e' saltato, ma qualcosa al suo posto si e' mangiato: conta solo quello
+      r0.voci = [v]; r0.scambio = null; r0.st = "fatto";
+    } else {
+      const vuoto = !vociPasto(d, dove).length, r = congela(d, dove);
+      r.voci = r.voci.concat([v]);
+      // un pasto senza menu' (giorno libero) si considera mangiato; uno col menu' si spunta a parte
+      if (vuoto) r.st = "fatto";
+    }
+  }
+  stato.recenti = [v.n].concat(stato.recenti.filter(n => n !== v.n)).slice(0, 12);
+  salva();
+}
+
+/* ===================== dialog generico (ricariche, impostazioni, coach) ===================== */
+const dlg = $("#dlg-foglio");
+function apriFoglio(sopra, titolo, corpo, piede){
+  $("#fg-sopra").textContent = sopra; $("#fg-titolo").textContent = titolo;
+  $("#fg-corpo").innerHTML = corpo; $("#fg-piede").innerHTML = piede || '<button class="btn" data-chiudi>Chiudi</button>';
+  if (!dlg.open) dlg.showModal();
+}
+function apriRicariche(){
+  const d = dataSel, ob = obiettivoDi(d), m = mangiato(d), manca = Math.round(ob.kcal - m.k), mp = Math.round(ob.prote - m.p);
+  const opz = P.ricariche.map(([nome, l]) => { const voci = daLista(l); return {nome, voci, m: macroDi(voci)}; });
+  opz.forEach(o => { o.score = manca > 0 ? Math.abs(o.m.k - manca) + (o.m.k > manca + 80 ? 400 : 0) - (mp > 25 ? o.m.p * 4 : 0) : o.m.k; });
+  opz.sort((a, b) => a.score - b.score);
+  const corpo = '<p class="small muted">' + (manca > 0 ? "Ti mancano <b>" + fmt(manca) + " kcal</b>" + (mp > 10 ? " e " + mp + " g di proteine" : "") + ". In cima le scelte più vicine. Un tocco e sono segnate in Fuori piano." : "Hai già raggiunto le kcal di oggi.") + '</p>' +
+    opz.map((o, i) => '<button class="voce" data-ricarica="' + i + '"><span class="info"><span class="nome">' + esc(o.nome) + '</span><span class="meta">' + esc(testoVoci(o.voci)) + '</span><span class="meta mono">C' + fmt(o.m.c) + ' P' + fmt(o.m.p) + ' G' + fmt(o.m.f) + '</span></span><span class="k">' + fmt(o.m.k) + '</span><span class="piu">' + ICO.piu + '</span></button>').join("");
+  apriFoglio("Recupera le calorie", "Ricariche veloci", corpo);
+  dlg._ricariche = opz;
+}
+function apriAllenamento(){
+  const al = stato.impost.allenamento || [];
+  const nomi = ["L", "M", "M", "G", "V", "S"];
+  const corpo = '<p class="small muted">Nei giorni scelti l\'app usa i macro ON (più carboidrati, meno grassi). Puoi sempre cambiare il singolo giorno da Oggi.</p>' +
+    '<div class="giorni7" role="group" aria-label="Giorni di allenamento">' + [1, 2, 3, 4, 5, 6].map((w, i) => '<button class="chip" data-gs="' + w + '" aria-pressed="' + al.includes(w) + '" aria-label="' + GIORNI_SETT[w] + '">' + nomi[i] + '</button>').join("") + '<button class="chip" disabled aria-label="Domenica, libera">D</button></div>' +
+    '<label class="f">I 60 g di riso in più nei giorni ON vanno a<select id="sel-extra"><option value="Pranzo"' + (stato.impost.extraA === "Pranzo" ? " selected" : "") + '>Pranzo (ti alleni nel pomeriggio)</option><option value="Cena"' + (stato.impost.extraA === "Cena" ? " selected" : "") + '>Cena (ti alleni la sera tardi o il giorno dopo presto)</option></select></label>';
+  apriFoglio("Impostazioni", "Giorni di allenamento", corpo, '<button class="btn primary" data-salva-allenamento>Salva</button>');
+}
+function apriOrari(){
+  const corpo = '<p class="small muted">Servono per la tabella di marcia ("sei indietro di…") e per i promemoria.</p>' +
+    PASTI.map(p => '<label class="f">' + esc(nomeCorto(p)) + '<input type="time" data-orario="' + esc(p) + '" value="' + esc(stato.impost.orari[p]) + '"></label>').join("");
+  apriFoglio("Impostazioni", "Orari dei pasti", corpo, '<button class="btn primary" data-salva-orari>Salva</button>');
+}
+function apriCalendario(){
+  const corpo = '<p class="small muted">Crea promemoria che si ripetono da lunedì a sabato nel calendario del telefono: suonano anche ad app chiusa. Consigliati gli spuntini, quelli che salti di più.</p>' +
+    PASTI.map(p => '<label class="ck"><input type="checkbox" data-cal="' + esc(p) + '"' + (/Spuntino/.test(p) ? " checked" : "") + '> ' + esc(nomeCorto(p)) + ' alle ' + esc(stato.impost.orari[p]) + '</label>').join("") +
+    '<p class="tiny muted">Su iPhone si apre un file: tocca "Aggiungi tutto" per salvarlo nel Calendario. Se cambi gli orari, cancella i vecchi eventi e rifallo.</p>';
+  apriFoglio("Non saltare i pasti", "Promemoria nel calendario", corpo, '<button class="btn primary" data-crea-ics>Crea promemoria</button>');
+}
+/* Promemoria in formato iCalendar (RFC 5545): eventi da 15 minuti ripetuti da lunedi' a sabato. */
+function creaIcs(pasti){
+  let inizio = piuGiorni(oggi(), 1);
+  while (daIso(inizio).getDay() === 0) inizio = piuGiorni(inizio, 1);   // il primo evento cade in un giorno della regola
+  const data = inizio.replace(/-/g, "");
+  const ora = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+  const testo = s => String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  // righe oltre 75 byte spezzate con a capo + spazio, senza tagliare a meta' un carattere
+  const piega = riga => {
+    const enc = new TextEncoder(); let out = "", cur = "", n = 0;
+    for (const ch of riga){ const b = enc.encode(ch).length; if (n + b > 75){ out += cur + "\r\n "; cur = ""; n = 1; } cur += ch; n += b; }
+    return out + cur;
+  };
+  const righe = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Diario del Piatto//IT", "CALSCALE:GREGORIAN"];
+  for (const p of pasti){
+    const hhmm = stato.impost.orari[p].replace(":", "");
+    const fisso = P.pastiFissi.find(x => x[0] === p);
+    righe.push("BEGIN:VEVENT", "UID:piatto-" + hhmm + "-" + p.replace(/\W/g, "") + "@diario-del-piatto", "DTSTAMP:" + ora,
+      "DTSTART:" + data + "T" + hhmm + "00", "DURATION:PT15M",
+      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA", "SUMMARY:" + testo(nomeCorto(p)),
+      "DESCRIPTION:" + testo(fisso ? testoVoci(daLista(fisso[1])) : "Segna il pasto nel Diario del Piatto"),
+      "BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + testo(nomeCorto(p)), "TRIGGER:PT0M", "END:VALARM", "END:VEVENT");
+  }
+  righe.push("END:VCALENDAR");
+  return righe.map(piega).join("\r\n") + "\r\n";
+}
+async function scarica(nome, testo, tipo){
+  const file = new File([testo], nome, {type: tipo});
+  if (navigator.canShare && navigator.canShare({files: [file]}) && /iPhone|iPad|Android/.test(navigator.userAgent)){
+    try { await navigator.share({files: [file], title: nome}); return; } catch (e) { if (e.name === "AbortError") return; }
+  }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(file); a.download = nome;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+
+/* ===================== eventi ===================== */
+let tAvviso;
+function avviso(t){
+  let el = $(".toast"); if (!el){ el = document.createElement("div"); el.className = "toast"; el.setAttribute("role", "status"); document.body.appendChild(el); }
+  el.textContent = t; clearTimeout(tAvviso); tAvviso = setTimeout(() => el.remove(), 2400);
+}
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { vista = t.dataset.vista; aperto = null; render(); window.scrollTo(0, 0); }));
+
+/* Grammi scritti in un campo: si salvano subito; la pagina si ridisegna poco dopo, cosi' un tocco
+   su un bottone fatto subito dopo (es. la spunta) non va perso a meta'. */
+let tRidisegna = null;
+function applicaGrammi(inp){
+  if (!inp || !inp.dataset.gr || inp.dataset.applicato === inp.value) return false;
+  inp.dataset.applicato = inp.value;
+  const dove = inp.dataset.gr, i = Number(inp.dataset.i), g = Math.round(num(inp.value) || 0), d = dataSel;
+  if (dove === "extra"){ const gg = giorno(d, true); if (!gg.extra[i]) return false; if (g > 0) gg.extra[i].g = g; else gg.extra.splice(i, 1); }
+  else {
+    const r = congela(d, dove); if (!r.voci[i]) return false;
+    r.voci = r.voci.map(v => Object.assign({}, v));
+    if (g > 0) r.voci[i].g = g; else r.voci.splice(i, 1);
+  }
+  salva(); return true;
+}
+app.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  clearTimeout(tRidisegna);
+  applicaGrammi(document.activeElement);   // su iPhone il campo non perde il fuoco prima del tocco
+  const d = dataSel;
+  if (b.dataset.giorno){ dataSel = piuGiorni(d, Number(b.dataset.giorno)); if (dataSel > oggi()) dataSel = oggi(); aperto = null; render(); return; }
+  if (b.dataset.tipo){
+    const g = giorno(d, true);
+    g.tipo = b.dataset.tipo;
+    for (const p of PASTI){ const r = g.pasti[p]; if (r && r.voci && r.st !== "fatto"){ delete r.voci; delete r.scambio; } }
+    salva(); render(); return;
+  }
+  if (b.dataset.apri){ aperto = aperto === b.dataset.apri ? null : b.dataset.apri; render(); return; }
+  if (b.dataset.fatto){
+    const p = b.dataset.fatto, r = recPasto(d, p, true);
+    if (r.st === "fatto"){ r.st = undefined; avviso(nomeCorto(p) + ": tolto"); }
+    else { congela(d, p).st = "fatto"; avviso(nomeCorto(p) + ": " + fmt(macroDi(r.voci).k) + " kcal segnate"); }
+    salva(); render(); return;
+  }
+  if (b.dataset.salta){ const p = b.dataset.salta, r = recPasto(d, p, true);
+    if (r.st === "saltato") r.st = undefined; else { congela(d, p).st = "saltato"; }
+    salva(); render(); return; }
+  if (b.dataset.ripristina){ const r = recPasto(d, b.dataset.ripristina, true); delete r.voci; delete r.scambio; salva(); render(); return; }
+  if (b.dataset.pastoAlt !== undefined){ const r = recPasto(d, b.dataset.pastoAlt, true); r.alt = b.dataset.alt || undefined; delete r.voci; delete r.scambio; salva(); render(); return; }
+  if (b.dataset.cibo){ apriCibo(b.dataset.cibo); return; }
+  if (b.dataset.togli){
+    const dove = b.dataset.togli, i = Number(b.dataset.i), g = giorno(d, true);
+    if (dove === "extra") g.extra.splice(i, 1);
+    else { const r = congela(d, dove); r.voci = r.voci.filter((_, j) => j !== i); }
+    salva(); render(); return;
+  }
+  if (b.dataset.periodo){ periodo = Number(b.dataset.periodo); render(); return; }
+  if (b.dataset.togliPeso){ delete stato.pesi[b.dataset.togliPeso]; salva(); render(); avviso("Pesata eliminata"); return; }
+  if (b.dataset.azione){ azione(b.dataset.azione); return; }
+  render();
+});
+app.addEventListener("change", e => {
+  if (applicaGrammi(e.target)){ clearTimeout(tRidisegna); tRidisegna = setTimeout(render, 350); }
+});
+app.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.id === "in-peso") azione("salva-peso"); });
+
+function azione(a){
+  $("#menu").open = false;
+  if (a === "allenamento") apriAllenamento();
+  else if (a === "orari") apriOrari();
+  else if (a === "calendario") apriCalendario();
+  else if (a === "ricarica") apriRicariche();
+  else if (a === "esporta") scarica("diario-del-piatto-" + oggi() + ".json", JSON.stringify(Object.assign({}, stato, {calcolato: calcolatoPerAnalisi()}), null, 1), "application/json");
+  else if (a === "importa") $("#file-import").click();
+  else if (a === "azzera"){
+    apriFoglio("Attenzione", "Azzera tutto", '<p>Cancella pasti, pesate e impostazioni salvati su questo telefono. Non si può annullare: prima conviene fare <b>Esporta backup</b>.</p>',
+      '<button class="btn" data-chiudi>Annulla</button><button class="btn" data-conferma-azzera style="color:var(--down)">Azzera</button>');
+  }
+  else if (a === "salva-peso"){
+    const kg = num($("#in-peso").value);
+    if (kg == null || kg < 30 || kg > 200){ avviso("Scrivi il peso in kg, es. 66,4"); return; }
+    stato.pesi[oggi()] = Math.round(kg * 10) / 10; salva(); render(); avviso("Peso salvato: " + fmt(kg, 1) + " kg");
+  }
+  else if (a === "per-coach"){
+    const t = testoCoach();
+    apriFoglio("Da mandare su WhatsApp", "Riepilogo per il coach", '<pre style="white-space:pre-wrap;font-family:IBM Plex Mono,monospace;font-size:13px;margin:0;background:var(--surface-3);border-radius:12px;padding:12px">' + esc(t) + '</pre>',
+      '<button class="btn" data-copia>Copia</button>' + (navigator.share ? '<button class="btn primary" data-condividi>Condividi</button>' : ""));
+    dlg._testo = t;
+  }
+}
+document.querySelector(".menu-pop").addEventListener("click", e => { const b = e.target.closest("button[data-azione]"); if (b) azione(b.dataset.azione); });
+document.addEventListener("click", e => { const m = $("#menu"); if (m.open && !m.contains(e.target)) m.open = false; });
+
+$("#file-import").addEventListener("change", async e => {
+  const f = e.target.files[0]; e.target.value = ""; if (!f) return;
+  let s;
+  try {
+    s = JSON.parse(await f.text());
+    if (!s || s.v !== 1 || typeof s.giorni !== "object" || typeof s.pesi !== "object") throw new Error("formato");
+  } catch (err) { avviso("Questo file non è un backup del Diario del Piatto"); return; }
+  const date = Object.keys(s.giorni).concat(Object.keys(s.pesi)).sort();
+  const quando = s.calcolato && s.calcolato.creato ? new Date(s.calcolato.creato).toLocaleDateString("it-IT") : (date.length ? dataBreve(date[date.length - 1]) : "?");
+  delete s.calcolato;
+  dlg._import = s;
+  apriFoglio("Importa backup", "Sostituire i dati?", '<p>Il backup è del <b>' + esc(quando) + '</b>: ' + Object.keys(s.giorni).length + ' giorni e ' + Object.keys(s.pesi).length + ' pesate.</p><p class="small muted">Prende il posto di tutto quello che c\'è adesso su questo telefono. Se i dati di adesso sono più recenti, prima fai Esporta backup.</p>',
+    '<button class="btn" data-chiudi>Annulla</button><button class="btn primary" data-conferma-import>Importa</button>');
+});
+
+// dialog del cibo
+dlgCibo.addEventListener("click", e => {
+  if (e.target === dlgCibo){ dlgCibo.close(); return; }
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.hasAttribute("data-chiudi")){ dlgCibo.close(); return; }
+  if (b.dataset.filtro){ cb.filtro = b.dataset.filtro; disegnaCibo(); return; }
+  if (b.dataset.scegli){ cb.scelto = b.dataset.scegli; cb.g = pezzoG(cb.scelto) || 100; cb.modo = "quantita"; disegnaCibo(); const i = $("#cb-g"); i && i.select(); return; }
+  if (b.dataset.pz){ cb.g = Number(b.dataset.pz); disegnaCibo(); return; }
+  if (b.hasAttribute("data-indietro")){ cb.modo = "lista"; disegnaCibo(); return; }
+  if (b.hasAttribute("data-crea")){ cb.modo = "crea"; disegnaCibo(); return; }
+  if (b.hasAttribute("data-aggiungi")){
+    const g = Math.round(num($("#cb-g").value) || 0); if (g <= 0){ avviso("Scrivi la quantità"); return; }
+    aggiungiVoce(cb.dove, {n: cb.scelto, g}); dlgCibo.close();
+    if (cb.dove !== "extra") aperto = cb.dove;
+    render(); avviso(cb.scelto + ": " + fmt(macroDi([{n: cb.scelto, g}]).k) + " kcal"); return;
+  }
+  if (b.hasAttribute("data-salva-mio")){
+    const nome = $("#mi-nome").value.trim().toLowerCase(), c = num($("#mi-c").value), p = num($("#mi-p").value), f = num($("#mi-f").value), pz = num($("#mi-pz").value);
+    if (!nome || c == null || p == null || f == null){ avviso("Servono nome, carboidrati, proteine e grassi"); return; }
+    if (c + p + f > 100){ avviso("Controlla i valori: sono per 100 g"); return; }
+    stato.miei[nome] = {v: [p, c, f], pz: pz || null}; salva();
+    cb.scelto = nome; cb.g = pz || 100; cb.modo = "quantita"; disegnaCibo(); return;
+  }
+});
+dlgCibo.addEventListener("input", e => {
+  if (e.target.id === "cb-cerca"){ cb.cerca = e.target.value; const pos = e.target.selectionStart; disegnaCibo(); const i = $("#cb-cerca"); i.focus(); i.setSelectionRange(pos, pos); }
+  if (e.target.id === "cb-g"){ cb.g = Math.round(num(e.target.value) || 0); $("#cb-ant").innerHTML = anteprima(macroDi([{n: cb.scelto, g: cb.g}])); }
+});
+dlgCibo.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.id === "cb-g"){ e.preventDefault(); dlgCibo.querySelector("[data-aggiungi]").click(); } });
+
+// dialog generico
+dlg.addEventListener("click", async e => {
+  if (e.target === dlg){ dlg.close(); return; }
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.hasAttribute("data-chiudi")){ dlg.close(); return; }
+  if (b.dataset.ricarica){
+    const o = dlg._ricariche[Number(b.dataset.ricarica)], g = giorno(dataSel, true);
+    g.extra = (g.extra || []).concat(o.voci.map(v => Object.assign({}, v))); salva(); dlg.close(); render(); avviso(o.nome + ": " + fmt(o.m.k) + " kcal segnate"); return;
+  }
+  if (b.dataset.gs){ b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); return; }
+  if (b.hasAttribute("data-salva-allenamento")){
+    // i giorni passati gia' segnati tengono il tipo che avevano: cambiare i giorni vale da oggi in poi
+    for (const d of Object.keys(stato.giorni)) if (d < oggi() && !stato.giorni[d].tipo) stato.giorni[d].tipo = tipoDi(d);
+    stato.impost.allenamento = [...dlg.querySelectorAll("[data-gs]")].filter(x => x.getAttribute("aria-pressed") === "true").map(x => Number(x.dataset.gs));
+    stato.impost.extraA = $("#sel-extra").value; salva(); dlg.close(); render(); avviso("Giorni di allenamento salvati"); return;
+  }
+  if (b.hasAttribute("data-salva-orari")){
+    dlg.querySelectorAll("[data-orario]").forEach(i => { if (/^\d\d:\d\d$/.test(i.value)) stato.impost.orari[i.dataset.orario] = i.value; });
+    salva(); dlg.close(); render(); avviso("Orari salvati"); return;
+  }
+  if (b.hasAttribute("data-crea-ics")){
+    const scelti = [...dlg.querySelectorAll("[data-cal]")].filter(i => i.checked).map(i => i.dataset.cal);
+    if (!scelti.length){ avviso("Scegli almeno un pasto"); return; }
+    await scarica("promemoria-pasti.ics", creaIcs(scelti), "text/calendar"); return;
+  }
+  if (b.hasAttribute("data-copia")){ try { await navigator.clipboard.writeText(dlg._testo); avviso("Copiato: incollalo su WhatsApp"); } catch (err) { avviso("Copia non riuscita: tieni premuto sul testo"); } return; }
+  if (b.hasAttribute("data-condividi")){ try { await navigator.share({text: dlg._testo}); } catch (err) {} return; }
+  if (b.hasAttribute("data-conferma-import")){
+    try { localStorage.setItem(CHIAVE, JSON.stringify(dlg._import)); }
+    catch (err) { avviso("Spazio sul telefono pieno: backup non importato"); return; }
+    stato = carica(); salva(); dlg.close(); dataSel = oggi(); render(); avviso("Backup importato");
+    return;
+  }
+  if (b.hasAttribute("data-conferma-azzera")){ stato = nuovoStato(); salva(); dlg.close(); dataSel = oggi(); render(); avviso("Tutto azzerato"); return; }
+});
+
+// pannello alto quanto lo schermo visibile, anche con la tastiera aperta
+function misuraSchermo(){
+  const vv = window.visualViewport; if (!vv) return;
+  document.documentElement.style.setProperty("--vvh", vv.height + "px");
+  document.documentElement.style.setProperty("--vvt", vv.offsetTop + "px");
+}
+if (window.visualViewport){ visualViewport.addEventListener("resize", misuraSchermo); visualViewport.addEventListener("scroll", misuraSchermo); }
+
+// a mezzanotte o tornando sull'app il giorno dopo, "Oggi" deve essere davvero oggi
+let ultimoGiorno = oggi();
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") return;
+  if (oggi() !== ultimoGiorno){ if (dataSel === ultimoGiorno) dataSel = oggi(); ultimoGiorno = oggi(); }
+  if (!dlg.open && !dlgCibo.open && document.activeElement.tagName !== "INPUT") render();
+});
+setInterval(() => { if (vista === "oggi" && !dlg.open && !dlgCibo.open && document.activeElement.tagName !== "INPUT") render(); }, 5 * 60 * 1000);
+let larghezza = window.innerWidth;
+window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - larghezza) > 40){ larghezza = window.innerWidth; if (vista !== "oggi") render(); } });
+
+window.__piatto = {stato: () => stato, mangiato, vociPasto, tipoDi, ritmo, mantenimento, verdetto, settimane, creaIcs, calcolato: calcolatoPerAnalisi};
+render();
+})();
+</script>
+<script>
+/* Service worker: l'app funziona anche senza campo. Quando c'e' una versione nuova compare una striscia. */
+if ("serviceWorker" in navigator && location.protocol !== "file:"){
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").then(reg => {
+      const mostra = w => {
+        if (document.querySelector(".aggiorna")) return;
+        const el = document.createElement("div");
+        el.className = "aggiorna";
+        el.innerHTML = '<span>Nuova versione disponibile</span><button>Aggiorna</button>';
+        el.querySelector("button").onclick = () => w.postMessage({tipo: "ATTIVA_SUBITO"});
+        document.body.appendChild(el);
+      };
+      if (reg.waiting && navigator.serviceWorker.controller) mostra(reg.waiting);
+      reg.addEventListener("updatefound", () => {
+        const w = reg.installing;
+        w && w.addEventListener("statechange", () => { if (w.state === "installed" && navigator.serviceWorker.controller) mostra(w); });
+      });
+      document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") reg.update().catch(() => {}); });
+    }).catch(() => {});
+    let ricaricata = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (!ricaricata){ ricaricata = true; location.reload(); } });
+  });
+}
+</script>
+</body>
+</html>

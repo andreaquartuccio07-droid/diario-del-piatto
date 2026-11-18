@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- Sorgente dell'icona: un piatto visto dall'alto, bordo ciano, su fondo blu abisso (stesso stile del Diario di Ghisa).
+     Per rifare i PNG: genera.py non serve, si usa lo screenshot di Chrome headless a misura (vedi CLAUDE.md).
+     ?m=1 = versione maskable, col piatto dentro l'80% centrale. -->
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0;padding:0;background:#051E29;overflow:hidden}
+svg{display:block;width:100vw;height:100vh}
+</style></head><body>
+<svg viewBox="0 0 100 100" id="ic">
+  <defs>
+    <radialGradient id="fondo" cx="30%" cy="20%" r="95%">
+      <stop offset="0" stop-color="#0E4A5C"/><stop offset=".55" stop-color="#062634"/><stop offset="1" stop-color="#03141C"/>
+    </radialGradient>
+    <radialGradient id="piatto" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#F4FBFD"/><stop offset="1" stop-color="#C7DDE4"/>
+    </radialGradient>
+  </defs>
+  <rect width="100" height="100" fill="url(#fondo)"/>
+  <g id="g" transform="translate(50 50)">
+    <circle r="33" fill="url(#piatto)"/>
+    <circle r="33" fill="none" stroke="#19D3F3" stroke-width="3.2"/>
+    <circle r="23" fill="none" stroke="#9FC3CE" stroke-width="1.4"/>
+    <!-- tre spicchi: carbo, proteine, grassi -->
+    <path d="M0 0 L0 -17 A17 17 0 0 1 14.72 8.5 Z" fill="#19D3F3"/>
+    <path d="M0 0 L14.72 8.5 A17 17 0 0 1 -14.72 8.5 Z" fill="#0B7A54"/>
+    <path d="M0 0 L-14.72 8.5 A17 17 0 0 1 0 -17 Z" fill="#06202B"/>
+  </g>
+</svg>
+<script>
+if (new URLSearchParams(location.search).get("m") === "1")
+  document.getElementById("g").setAttribute("transform", "translate(50 50) scale(.8)");
+</script>
+</body></html>

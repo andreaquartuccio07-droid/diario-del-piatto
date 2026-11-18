@@ -1,0 +1,20 @@
+{
+  "name": "Diario del Piatto",
+  "short_name": "Piatto",
+  "description": "Calorie e macro di ogni pasto, peso e progressi verso l'obiettivo.",
+  "lang": "it",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "id": "diario-del-piatto",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F1F5F6",
+  "theme_color": "#A9E9F6",
+  "categories": ["food", "health", "fitness"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
