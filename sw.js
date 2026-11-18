@@ -1,8 +1,8 @@
 /* Service worker del Diario del Piatto.
    Tiene l'app in cache cosi' parte subito e funziona anche senza campo.
    VERSIONE si alza a mano a ogni modifica dell'app; DATI lo riscrive genera.py quando cambia il piano. */
-const VERSIONE = "piatto-v1";
-const DATI = "1788d945";
+const VERSIONE = "piatto-v2";
+const DATI = "31b414c4";
 const CACHE_APP = VERSIONE + "-" + DATI;
 
 const GUSCIO = [

@@ -428,7 +428,7 @@ function testoVoci(voci){ return voci.length ? voci.map(etichetta).join(" · ") 
 /* ===================== stato salvato sul telefono ===================== */
 function nuovoStato(){
   const s = {v: 1, giorni: {}, pesi: {}, miei: {}, recenti: [],
-    impost: {allenamento: null, extraA: "Pranzo", orari: Object.assign({}, P.orari)}};
+    impost: {allenamento: null, orari: Object.assign({}, P.orari), orariOn: Object.assign({}, P.orariOn)}};
   s.pesi["2026-11-18"] = P.profilo.peso_iniziale;
   return s;
 }
@@ -440,6 +440,7 @@ function carica(){
       s.giorni = s.giorni || {}; s.pesi = s.pesi || {}; s.miei = s.miei || {}; s.recenti = s.recenti || [];
       s.impost = Object.assign(b.impost, s.impost || {});
       s.impost.orari = Object.assign({}, P.orari, s.impost.orari || {});
+      s.impost.orariOn = Object.assign({}, P.orariOn, s.impost.orariOn || {});
       // giorni scritti male (backup vecchi o modificati a mano) non devono bloccare l'app
       for (const d of Object.keys(s.giorni)){
         const g = s.giorni[d];
@@ -480,65 +481,82 @@ function obiettivoDi(d){ return P.obiettivi[tipoDi(d) === "ON" ? "ON" : "OFF"]; 
 
 /* Pranzo e cena della domenica (se non e' libera): quelli del sabato. */
 function nomeMenu(d){ const w = daIso(d).getDay(); return GIORNI_SETT[w === 0 ? 6 : w]; }
-function pastoBaseOff(d, p){
-  const fisso = P.pastiFissi.find(x => x[0] === p);
-  if (fisso) return fisso[1];
-  return (P.giorni[nomeMenu(d)] || {})[p] || [];
+/* Il menu' di un pasto cosi' come lo scrive piano.py (gia' calcolato per ON e OFF da genera.py). */
+function pastoBase(d, p){
+  const tipo = tipoDi(d) === "ON" ? "ON" : "OFF";
+  return ((P.menu[tipo] || {})[nomeMenu(d)] || {})[p] || [];
 }
-/* Il piano di un pasto per quel giorno: pasti fissi + pranzo/cena del giorno, con lo scambio ON. */
+/* Il piano di un pasto per quel giorno, con la versione alternativa se scelta. */
 function pianoPasto(d, p){
-  const tipo = tipoDi(d);
-  if (tipo === "LIBERO") return [];
+  if (tipoDi(d) === "LIBERO") return [];
+  const base = pastoBase(d, p); if (!base.length) return [];
   const rec = recPasto(d, p);
   const alt = rec.alt && (P.alternative[p] || []).find(a => a[0] === rec.alt);
-  let voci = daLista(alt ? alt[1] : pastoBaseOff(d, p));
-  if (tipo === "ON"){
-    const s = scambioGiorno(d)[p];
-    for (const v of s.add) voci = voci.concat([Object.assign({}, v)]);
-    for (const nome in s.rem){
-      let resto = s.rem[nome];
-      voci = voci.map(v => { if (v.n !== nome || resto <= 0) return v; const t = Math.min(v.g, resto); resto -= t; return Object.assign({}, v, {g: v.g - t}); }).filter(v => v.g > 0);
-    }
-  }
-  return voci;
+  return daLista(alt ? alt[1] : base);
 }
-/* Giorno ON: +riso al pasto prima dell'allenamento, olio tolto partendo da quel pasto.
-   I pasti gia' congelati (segnati o modificati) si ricordano in r.scambio quanto dello scambio
-   contengono: ai pasti ancora da fare va solo il resto, cosi' lo scambio non si conta mai due volte. */
-function scambioGiorno(d){
-  const extraA = stato.impost.extraA;
-  const ordine = [extraA].concat(["Pranzo", "Cena"].filter(x => x !== extraA));
-  const alloc = {}; for (const p of PASTI) alloc[p] = {add: [], rem: {}};
-  const congelati = PASTI.filter(p => recPasto(d, p).voci);
-  const gia = (tipo, nome) => congelati.reduce((s, p) => { const sc = recPasto(d, p).scambio; if (!sc) return s;
-    return s + (tipo === "add" ? sc.add.filter(v => v.n === nome).reduce((a, v) => a + v.g, 0) : (sc.rem[nome] || 0)); }, 0);
-  for (const [nome, q] of P.scambioOn.modifiche){
-    if (q > 0){
-      const resto = q - gia("add", nome), dove = ordine.find(p => !congelati.includes(p));
-      if (resto > 0 && dove) alloc[dove].add.push({n: nome, g: resto});
-      continue;
-    }
-    let resto = -q - gia("rem", nome);
-    for (const p of ordine){
-      if (resto <= 0) break;
-      if (congelati.includes(p)) continue;
-      const base = daLista(pastoBaseOff(d, p)).filter(v => v.n === nome).reduce((s, v) => s + v.g, 0);
-      const t = Math.min(base, resto);
-      if (t > 0){ alloc[p].rem[nome] = t; resto -= t; }
-    }
-  }
-  return alloc;
+/* Orario di un pasto in quel giorno: nei giorni ON il pranzo e' piu' tardi (allenamento in pausa pranzo). */
+function orarioDi(d, p){
+  if (tipoDi(d) === "ON" && stato.impost.orariOn[p]) return stato.impost.orariOn[p];
+  return stato.impost.orari[p];
 }
 /* Congela un pasto (prima modifica o spunta): da qui in poi contano le sue voci, non il piano.
    Anche il tipo del giorno resta fissato, cosi' cambiare i giorni di allenamento non riscrive il passato. */
 function congela(d, p){
   const g = giorno(d, true), r = recPasto(d, p, true);
   if (!g.tipo) g.tipo = tipoDi(d);
-  if (!r.voci){
-    r.scambio = tipoDi(d) === "ON" ? scambioGiorno(d)[p] : null;
-    r.voci = pianoPasto(d, p);
-  }
+  if (!r.voci) r.voci = pianoPasto(d, p);
   return r;
+}
+
+/* ---------- pasto mangiato solo in parte ---------- */
+const QUOTE = [[1, "Tutto"], [0.75, "¾"], [0.5, "Metà"], [0.25, "¼"]];
+/* Segna il pasto mangiato per una parte (1, 0.75, 0.5, 0.25): i grammi si riducono in proporzione. */
+function mangiaQuota(d, p, q){
+  const r = congela(d, p);
+  if (!r.pieno) r.pieno = r.voci.map(v => Object.assign({}, v));
+  r.voci = r.pieno.map(v => ({n: v.n, g: Math.round(v.g * q / 5) * 5 || (q > 0 ? 5 : 0)})).filter(v => v.g > 0);
+  r.quota = q; r.st = "fatto"; delete r.recuperato;
+}
+/* Quanto manca di un pasto rispetto a quello previsto (saltato o mangiato in parte). */
+function mancaDi(d, p){
+  const r = recPasto(d, p);
+  if (r.st === "saltato"){ const piano = r.pieno || pianoPasto(d, p); return macroDi(piano); }
+  if (r.st === "fatto" && r.pieno && r.quota < 1){ const a = macroDi(r.pieno), b = macroDi(r.voci); return {p: a.p - b.p, c: a.c - b.c, f: a.f - b.f, k: a.k - b.k}; }
+  return null;
+}
+/* Il recupero va sul pasto principale successivo ancora da fare: piu' carboidrato principale
+   (riso, pasta, patate… o pane) per le kcal mancanti e piu' fonte proteica per le proteine mancanti. */
+function pianoRecupero(d, p){
+  const m = mancaDi(d, p); if (!m || m.k < 60) return null;
+  const dopo = PASTI.slice(PASTI.indexOf(p) + 1).filter(x => x === "Pranzo" || x === "Cena");
+  const dove = dopo.find(x => !recPasto(d, x).st && vociPasto(d, x).length);
+  if (!dove) return {dove: null, m};
+  const voci = vociPasto(d, dove), agg = [];
+  const k100 = n => macroDi([{n, g: 100}]);                 // macro di 100 g di un cibo
+  const cb = P.carboPrincipali.map(n => voci.find(v => v.n === n)).find(Boolean) || {n: "pane"};
+  // 1) tutte le kcal mancanti col carboidrato; 2) se mancano ancora proteine, fonte proteica;
+  // 3) il carboidrato si riduce di quanto pesa la fonte proteica, cosi' il totale resta quello mancante
+  const cbM = k100(cb.n), pConCarbo = m.k / cbM.k * cbM.p;
+  const pz = m.p - pConCarbo >= 6 ? voci.filter(v => { const val = valori(v.n); return val && val[0] >= 10 && val[1] < 5 && !pezzoG(v.n); }).sort((a, b) => b.g - a.g)[0] : null;
+  let kRestanti = m.k;
+  if (pz){
+    const pzM = k100(pz.n), g = Math.round((m.p - pConCarbo) / pzM.p * 100 / 5) * 5;
+    if (g > 0){ agg.push({n: pz.n, g}); kRestanti -= pzM.k * g / 100; }
+  }
+  const gC = Math.round(kRestanti / cbM.k * 100 / 5) * 5;
+  if (gC > 0) agg.unshift({n: cb.n, g: gC});
+  return agg.length ? {dove, agg, m} : null;
+}
+function applicaRecupero(d, p){
+  const piano = pianoRecupero(d, p); if (!piano || !piano.dove) return null;
+  const r = congela(d, piano.dove);
+  for (const a of piano.agg){
+    const v = r.voci.find(x => x.n === a.n);
+    if (v) v.g += a.g; else r.voci.push({n: a.n, g: a.g});
+  }
+  delete r.pieno; delete r.quota;
+  recPasto(d, p, true).recuperato = piano.dove;
+  return piano;
 }
 /* Le voci di un pasto: quelle modificate a mano se ci sono, altrimenti il piano. */
 function vociPasto(d, p){ const r = recPasto(d, p); return r.voci ? r.voci : pianoPasto(d, p); }
@@ -557,9 +575,9 @@ function segnato(d){
 function attesoOra(d){
   const ora = adessoMin();
   let k = 0;
-  for (const p of PASTI) if (minuti(stato.impost.orari[p]) + 30 <= ora) k += macroDi(vociPasto(d, p)).k;
+  for (const p of PASTI) if (minuti(orarioDi(d, p)) + 30 <= ora) k += macroDi(recPasto(d, p).pieno || vociPasto(d, p)).k;
   if (tipoDi(d) === "LIBERO"){
-    const ob = obiettivoDi(d).kcal, ini = minuti(stato.impost.orari.Colazione), fine = minuti(stato.impost.orari.Cena) + 30;
+    const ob = obiettivoDi(d).kcal, ini = minuti(orarioDi(d, "Colazione")), fine = minuti(orarioDi(d, "Cena")) + 30;
     k = ob * Math.max(0, Math.min(1, (ora - ini) / (fine - ini)));
   }
   return k;
@@ -662,22 +680,27 @@ function vistaOggi(){
     macroBox("Carbo", m.c, ob.carbo, "var(--m-carbo)") + macroBox("Proteine", m.p, ob.prote, "var(--m-prote)") + macroBox("Grassi", m.f, ob.grassi, "var(--m-grassi)") + '</div>';
   if (eOggi){
     const atteso = attesoOra(d), dietro = atteso - m.k;
-    const dopoCena = adessoMin() > minuti(stato.impost.orari.Cena) + 60;
+    const dopoCena = adessoMin() > minuti(orarioDi(d, "Cena")) + 60;
     if (dopoCena && manca > 150)
       h += '<div class="marcia"><span>Giornata quasi finita: chiudila con <b>' + fmt(manca) + ' kcal</b>.</span><button data-azione="ricarica">Chiudi</button></div>';
     else if (dietro > 150)
       h += '<div class="marcia"><span>Sei indietro di <b>' + fmt(dietro) + ' kcal</b> sulla tabella di marcia.</span><button data-azione="ricarica">Recupera</button></div>';
     else {
-      const prossimo = PASTI.find(p => !recPasto(d, p).st && minuti(stato.impost.orari[p]) + 30 > adessoMin());
-      if (prossimo) h += '<div class="marcia"><span>Prossimo: <b>' + esc(nomeCorto(prossimo)) + '</b> alle ' + esc(stato.impost.orari[prossimo]) + '</span></div>';
+      const prossimo = PASTI.find(p => !recPasto(d, p).st && vociPasto(d, p).length && minuti(orarioDi(d, p)) + 30 > adessoMin());
+      if (prossimo) h += '<div class="marcia"><span>Prossimo: <b>' + esc(nomeCorto(prossimo)) + '</b> alle ' + esc(orarioDi(d, prossimo)) + '</span></div>';
     }
   }
   h += '</div>';
 
-  if (tipo === "ON") h += '<p class="nota">Giorno ON: ' + esc(P.scambioOn.testo.replace("al pasto prima dell'allenamento", "a " + stato.impost.extraA.toLowerCase())) + ' È già nel menù qui sotto.</p>';
+  if (tipo === "ON") h += '<p class="nota">' + esc(P.testoOn) + ' È già tutto nel menù qui sotto.</p>';
   if (tipo === "LIBERO") h += '<p class="nota">' + esc(P.domenica) + ' Segna quello che mangi con il + di ogni pasto.</p>';
 
-  for (const p of PASTI) h += pastoHTML(d, p);
+  for (const p of PASTI){
+    // nei giorni ON lo spuntino del pomeriggio non c'e': la riga sparisce, a meno che ci sia gia' qualcosa
+    const r = recPasto(d, p);
+    if (tipo === "ON" && !pianoPasto(d, p).length && !r.st && !(r.voci || []).length) continue;
+    h += pastoHTML(d, p);
+  }
 
   // fuori piano
   const ex = g.extra || [], mex = macroDi(ex);
@@ -697,12 +720,13 @@ function macroBox(nome, val, ob, col){
 }
 function pastoHTML(d, p){
   const r = recPasto(d, p), voci = vociPasto(d, p), m = macroDi(voci), st = r.st || "";
-  const alt = P.alternative[p] || [];
+  const alt = pastoBase(d, p).length ? (P.alternative[p] || []) : [];
+  const quota = st === "fatto" && r.quota != null && r.quota < 1 ? (QUOTE.find(x => x[0] === r.quota) || [0, ""])[1].toLowerCase() + " · " : "";
   let h = '<div class="pasto" data-pasto="' + esc(p) + '" data-st="' + st + '" data-aperto="' + (aperto === p ? 1 : 0) + '">' +
     '<div class="p-riga">' + cerchio(st) +
     '<button class="p-apri" data-apri="' + esc(p) + '" aria-expanded="' + (aperto === p) + '">' +
-    '<span class="p-nome"><b>' + esc(nomeCorto(p)) + '</b><span class="ora">' + esc(stato.impost.orari[p]) + '</span></span>' +
-    '<span class="p-cosa">' + esc(st === "saltato" ? "saltato" : (r.alt ? r.alt + ": " : "") + testoVoci(voci)) + '</span></button>' +
+    '<span class="p-nome"><b>' + esc(nomeCorto(p)) + '</b><span class="ora">' + esc(orarioDi(d, p)) + '</span></span>' +
+    '<span class="p-cosa">' + esc(st === "saltato" ? "saltato" : quota + (r.alt ? r.alt + ": " : "") + testoVoci(voci)) + '</span></button>' +
     '<span class="p-kcal">' + fmt(st === "saltato" ? 0 : m.k) + '<small>kcal</small></span>' +
     '<button class="tick" data-fatto="' + esc(p) + '" aria-pressed="' + (st === "fatto") + '" aria-label="' + esc(nomeCorto(p)) + ' mangiato"' + (voci.length ? "" : " disabled") + '>' + ICO.tick + '</button></div>';
   h += '<div class="p-corpo">';
@@ -711,10 +735,22 @@ function pastoHTML(d, p){
       '<button class="chip" data-alt="" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (!r.alt) + '">Classica</button>' +
       alt.map(a => '<button class="chip" data-alt="' + esc(a[0]) + '" data-pasto-alt="' + esc(p) + '" aria-pressed="' + (r.alt === a[0]) + '">' + esc(a[0]) + '</button>').join("") + '</div>';
   }
-  h += voci.map((v, i) => ciboHTML(v, p, i)).join("");
-  h += '<div class="small muted mono">C ' + fmt(m.c) + ' · P ' + fmt(m.p) + ' · G ' + fmt(m.f) + ' g</div>';
+  if (st !== "saltato") h += voci.map((v, i) => ciboHTML(v, p, i)).join("");
+  if (st !== "saltato") h += '<div class="small muted mono">C ' + fmt(m.c) + ' · P ' + fmt(m.p) + ' · G ' + fmt(m.f) + ' g</div>';
+  if (voci.length || r.pieno){
+    // quanto ne hai mangiato: un tocco e i grammi si riducono in proporzione
+    const qAtt = st === "fatto" ? (r.quota != null ? r.quota : 1) : st === "saltato" ? 0 : null;
+    h += '<div class="eyebrow">Quanto ne hai mangiato?</div><div class="chips" role="group" aria-label="Quanto ne hai mangiato">' +
+      QUOTE.map(([q, t]) => '<button class="chip" data-quota="' + q + '" data-pasto-q="' + esc(p) + '" aria-pressed="' + (qAtt === q) + '">' + t + '</button>').join("") +
+      '<button class="chip" data-salta="' + esc(p) + '" aria-pressed="' + (st === "saltato") + '">Niente</button></div>' +
+      '<p class="tiny muted">Hai lasciato un cibo? Toccane la ✕. Ne hai mangiato meno? Cambia i grammi.</p>';
+  }
+  const rec = pianoRecupero(d, p);
+  if (rec && !r.recuperato){
+    if (rec.dove) h += '<button class="btn block" data-recupera="' + esc(p) + '" style="min-height:48px">Recupera ' + fmt(rec.m.k) + ' kcal a ' + esc(rec.dove.toLowerCase()) + ': +' + esc(rec.agg.map(a => a.g + " g " + a.n).join(", +")) + '</button>';
+    else h += '<button class="btn block" data-azione="ricarica" style="min-height:48px">Mancano ' + fmt(rec.m.k) + ' kcal di questo pasto: ricariche veloci</button>';
+  } else if (r.recuperato) h += '<p class="tiny muted">Recuperato a ' + esc(r.recuperato.toLowerCase()) + '.</p>';
   h += '<div class="p-az"><button class="btn" data-cibo="' + esc(p) + '">+ Aggiungi</button>' +
-    (st === "saltato" ? '<button class="btn" data-salta="' + esc(p) + '">Non saltato</button>' : '<button class="btn" data-salta="' + esc(p) + '">Saltato</button>') +
     (r.voci ? '<button class="btn ghost" data-ripristina="' + esc(p) + '">Torna al piano</button>' : '') + '</div>';
   h += '</div></div>';
   return h;
@@ -1009,27 +1045,27 @@ function apriRicariche(){
 function apriAllenamento(){
   const al = stato.impost.allenamento || [];
   const nomi = ["L", "M", "M", "G", "V", "S"];
-  const corpo = '<p class="small muted">Nei giorni scelti l\'app usa i macro ON (più carboidrati, meno grassi). Puoi sempre cambiare il singolo giorno da Oggi.</p>' +
-    '<div class="giorni7" role="group" aria-label="Giorni di allenamento">' + [1, 2, 3, 4, 5, 6].map((w, i) => '<button class="chip" data-gs="' + w + '" aria-pressed="' + al.includes(w) + '" aria-label="' + GIORNI_SETT[w] + '">' + nomi[i] + '</button>').join("") + '<button class="chip" disabled aria-label="Domenica, libera">D</button></div>' +
-    '<label class="f">I 60 g di riso in più nei giorni ON vanno a<select id="sel-extra"><option value="Pranzo"' + (stato.impost.extraA === "Pranzo" ? " selected" : "") + '>Pranzo (ti alleni nel pomeriggio)</option><option value="Cena"' + (stato.impost.extraA === "Cena" ? " selected" : "") + '>Cena (ti alleni la sera tardi o il giorno dopo presto)</option></select></label>';
+  const corpo = '<p class="small muted">Nei giorni scelti l\'app usa il menù ON: pranzo alle ' + esc(stato.impost.orariOn.Pranzo || stato.impost.orari.Pranzo) + ' dopo l\'allenamento, niente spuntino del pomeriggio, più carboidrati a pranzo e cena. Puoi sempre cambiare il singolo giorno da Oggi.</p>' +
+    '<div class="giorni7" role="group" aria-label="Giorni di allenamento">' + [1, 2, 3, 4, 5, 6].map((w, i) => '<button class="chip" data-gs="' + w + '" aria-pressed="' + al.includes(w) + '" aria-label="' + GIORNI_SETT[w] + '">' + nomi[i] + '</button>').join("") + '<button class="chip" disabled aria-label="Domenica, libera">D</button></div>';
   apriFoglio("Impostazioni", "Giorni di allenamento", corpo, '<button class="btn primary" data-salva-allenamento>Salva</button>');
 }
 function apriOrari(){
   const corpo = '<p class="small muted">Servono per la tabella di marcia ("sei indietro di…") e per i promemoria.</p>' +
-    PASTI.map(p => '<label class="f">' + esc(nomeCorto(p)) + '<input type="time" data-orario="' + esc(p) + '" value="' + esc(stato.impost.orari[p]) + '"></label>').join("");
+    PASTI.map(p => '<label class="f">' + esc(nomeCorto(p)) + '<input type="time" data-orario="' + esc(p) + '" value="' + esc(stato.impost.orari[p]) + '"></label>').join("") +
+    '<label class="f">Pranzo nei giorni di allenamento<input type="time" data-orario-on="Pranzo" value="' + esc(stato.impost.orariOn.Pranzo || stato.impost.orari.Pranzo) + '"></label>';
   apriFoglio("Impostazioni", "Orari dei pasti", corpo, '<button class="btn primary" data-salva-orari>Salva</button>');
 }
 function apriCalendario(){
-  const corpo = '<p class="small muted">Crea promemoria che si ripetono da lunedì a sabato nel calendario del telefono: suonano anche ad app chiusa. Consigliati gli spuntini, quelli che salti di più.</p>' +
-    PASTI.map(p => '<label class="ck"><input type="checkbox" data-cal="' + esc(p) + '"' + (/Spuntino/.test(p) ? " checked" : "") + '> ' + esc(nomeCorto(p)) + ' alle ' + esc(stato.impost.orari[p]) + '</label>').join("") +
+  const corpo = '<p class="small muted">Crea promemoria che si ripetono da lunedì a sabato nel calendario del telefono: suonano anche ad app chiusa. Consigliati gli spuntini, quelli che salti di più. Nei giorni di allenamento il pranzo suona all\'orario ON e lo spuntino del pomeriggio non suona.' +
+    (stato.impost.allenamento === null ? ' <b>Prima scegli i giorni di allenamento</b> dal menu ⋯.' : '') + '</p>' +
+    PASTI.map(p => '<label class="ck"><input type="checkbox" data-cal="' + esc(p) + '"' + (/Spuntino/.test(p) ? " checked" : "") + '> ' + esc(nomeCorto(p)) + ' alle ' + esc(stato.impost.orari[p]) +
+      (stato.impost.orariOn[p] && stato.impost.orariOn[p] !== stato.impost.orari[p] ? ' (allenamento ' + esc(stato.impost.orariOn[p]) + ')' : '') + '</label>').join("") +
     '<p class="tiny muted">Su iPhone si apre un file: tocca "Aggiungi tutto" per salvarlo nel Calendario. Se cambi gli orari, cancella i vecchi eventi e rifallo.</p>';
   apriFoglio("Non saltare i pasti", "Promemoria nel calendario", corpo, '<button class="btn primary" data-crea-ics>Crea promemoria</button>');
 }
 /* Promemoria in formato iCalendar (RFC 5545): eventi da 15 minuti ripetuti da lunedi' a sabato. */
 function creaIcs(pasti){
-  let inizio = piuGiorni(oggi(), 1);
-  while (daIso(inizio).getDay() === 0) inizio = piuGiorni(inizio, 1);   // il primo evento cade in un giorno della regola
-  const data = inizio.replace(/-/g, "");
+  const inizio = piuGiorni(oggi(), 1);
   const ora = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
   const testo = s => String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
   // righe oltre 75 byte spezzate con a capo + spazio, senza tagliare a meta' un carattere
@@ -1039,14 +1075,28 @@ function creaIcs(pasti){
     return out + cur;
   };
   const righe = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Diario del Piatto//IT", "CALSCALE:GREGORIAN"];
+  // giorni di allenamento e di riposo hanno orari (e pasti) diversi: un evento per gruppo di giorni
+  const SIGLE = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
+  const on = stato.impost.allenamento || [], off = [1, 2, 3, 4, 5, 6].filter(w => !on.includes(w));
+  const haPasto = (tipo, p) => ((P.menu[tipo] || {})["Lunedì"] || {})[p] && P.menu[tipo]["Lunedì"][p].length > 0;
   for (const p of pasti){
-    const hhmm = stato.impost.orari[p].replace(":", "");
+    const gruppi = [];
+    const oOff = stato.impost.orari[p], oOn = stato.impost.orariOn[p] || oOff;
+    const gOn = haPasto("ON", p) ? on : [], gOff = off;
+    if (oOn === oOff) gruppi.push([oOff, gOff.concat(gOn).sort()]);
+    else { gruppi.push([oOff, gOff]); gruppi.push([oOn, gOn]); }
     const fisso = P.pastiFissi.find(x => x[0] === p);
-    righe.push("BEGIN:VEVENT", "UID:piatto-" + hhmm + "-" + p.replace(/\W/g, "") + "@diario-del-piatto", "DTSTAMP:" + ora,
-      "DTSTART:" + data + "T" + hhmm + "00", "DURATION:PT15M",
-      "RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA", "SUMMARY:" + testo(nomeCorto(p)),
-      "DESCRIPTION:" + testo(fisso ? testoVoci(daLista(fisso[1])) : "Segna il pasto nel Diario del Piatto"),
-      "BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + testo(nomeCorto(p)), "TRIGGER:PT0M", "END:VALARM", "END:VEVENT");
+    for (const [orario, giorni] of gruppi){
+      if (!giorni.length) continue;
+      // il primo evento deve cadere in uno dei giorni della regola
+      let primo = inizio; while (!giorni.includes(daIso(primo).getDay())) primo = piuGiorni(primo, 1);
+      const hhmm = orario.replace(":", "");
+      righe.push("BEGIN:VEVENT", "UID:piatto-" + hhmm + "-" + giorni.join("") + "-" + p.replace(/\W/g, "") + "@diario-del-piatto", "DTSTAMP:" + ora,
+        "DTSTART:" + primo.replace(/-/g, "") + "T" + hhmm + "00", "DURATION:PT15M",
+        "RRULE:FREQ=WEEKLY;BYDAY=" + giorni.map(w => SIGLE[w]).join(","), "SUMMARY:" + testo(nomeCorto(p)),
+        "DESCRIPTION:" + testo(fisso ? testoVoci(daLista(fisso[1])) : "Segna il pasto nel Diario del Piatto"),
+        "BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + testo(nomeCorto(p)), "TRIGGER:PT0M", "END:VALARM", "END:VEVENT");
+    }
   }
   righe.push("END:VCALENDAR");
   return righe.map(piega).join("\r\n") + "\r\n";
@@ -1099,14 +1149,24 @@ app.addEventListener("click", e => {
   if (b.dataset.fatto){
     const p = b.dataset.fatto, r = recPasto(d, p, true);
     if (r.st === "fatto"){ r.st = undefined; avviso(nomeCorto(p) + ": tolto"); }
-    else { congela(d, p).st = "fatto"; avviso(nomeCorto(p) + ": " + fmt(macroDi(r.voci).k) + " kcal segnate"); }
+    else { const rr = congela(d, p); rr.st = "fatto"; if (rr.pieno){ rr.voci = rr.pieno.map(v => Object.assign({}, v)); rr.quota = 1; } avviso(nomeCorto(p) + ": " + fmt(macroDi(r.voci).k) + " kcal segnate"); }
     salva(); render(); return;
   }
   if (b.dataset.salta){ const p = b.dataset.salta, r = recPasto(d, p, true);
     if (r.st === "saltato") r.st = undefined; else { congela(d, p).st = "saltato"; }
     salva(); render(); return; }
-  if (b.dataset.ripristina){ const r = recPasto(d, b.dataset.ripristina, true); delete r.voci; delete r.scambio; salva(); render(); return; }
-  if (b.dataset.pastoAlt !== undefined){ const r = recPasto(d, b.dataset.pastoAlt, true); r.alt = b.dataset.alt || undefined; delete r.voci; delete r.scambio; salva(); render(); return; }
+  if (b.dataset.ripristina){ const r = recPasto(d, b.dataset.ripristina, true); for (const k of ["voci", "pieno", "quota", "recuperato", "scambio"]) delete r[k]; salva(); render(); return; }
+  if (b.dataset.pastoAlt !== undefined){ const r = recPasto(d, b.dataset.pastoAlt, true); r.alt = b.dataset.alt || undefined; for (const k of ["voci", "pieno", "quota", "scambio"]) delete r[k]; salva(); render(); return; }
+  if (b.dataset.quota){
+    const p = b.dataset.pastoQ, q = Number(b.dataset.quota);
+    mangiaQuota(d, p, q); salva(); render();
+    avviso(nomeCorto(p) + ": " + fmt(macroDi(recPasto(d, p).voci).k) + " kcal segnate"); return;
+  }
+  if (b.dataset.recupera){
+    const piano = applicaRecupero(d, b.dataset.recupera);
+    if (piano){ aperto = piano.dove; salva(); render(); avviso("Aggiunto a " + piano.dove.toLowerCase() + ": +" + piano.agg.map(a => a.g + " g " + a.n).join(", +")); }
+    return;
+  }
   if (b.dataset.cibo){ apriCibo(b.dataset.cibo); return; }
   if (b.dataset.togli){
     const dove = b.dataset.togli, i = Number(b.dataset.i), g = giorno(d, true);
@@ -1210,10 +1270,11 @@ dlg.addEventListener("click", async e => {
     // i giorni passati gia' segnati tengono il tipo che avevano: cambiare i giorni vale da oggi in poi
     for (const d of Object.keys(stato.giorni)) if (d < oggi() && !stato.giorni[d].tipo) stato.giorni[d].tipo = tipoDi(d);
     stato.impost.allenamento = [...dlg.querySelectorAll("[data-gs]")].filter(x => x.getAttribute("aria-pressed") === "true").map(x => Number(x.dataset.gs));
-    stato.impost.extraA = $("#sel-extra").value; salva(); dlg.close(); render(); avviso("Giorni di allenamento salvati"); return;
+    salva(); dlg.close(); render(); avviso("Giorni di allenamento salvati"); return;
   }
   if (b.hasAttribute("data-salva-orari")){
     dlg.querySelectorAll("[data-orario]").forEach(i => { if (/^\d\d:\d\d$/.test(i.value)) stato.impost.orari[i.dataset.orario] = i.value; });
+    dlg.querySelectorAll("[data-orario-on]").forEach(i => { if (/^\d\d:\d\d$/.test(i.value)) stato.impost.orariOn[i.dataset.orarioOn] = i.value; });
     salva(); dlg.close(); render(); avviso("Orari salvati"); return;
   }
   if (b.hasAttribute("data-crea-ics")){

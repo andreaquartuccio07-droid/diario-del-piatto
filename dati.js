@@ -376,16 +376,20 @@ window.PIANO = {
    "Spuntino mattina",
    [
     [
-     "pane",
-     80
-    ],
-    [
-     "burro d'arachidi",
-     30
-    ],
-    [
      "yogurt greco 0%",
      170
+    ],
+    [
+     "miele",
+     20
+    ],
+    [
+     "cereali corn flakes",
+     20
+    ],
+    [
+     "mandorle",
+     10
     ]
    ]
   ],
@@ -398,7 +402,7 @@ window.PIANO = {
     ],
     [
      "datteri secchi",
-     "4 pz"
+     "2 pz"
     ],
     [
      "mandorle",
@@ -407,265 +411,1079 @@ window.PIANO = {
    ]
   ]
  ],
- "giorni": {
-  "Lunedì": {
-   "Pranzo": [
-    [
-     "riso bianco",
-     120
+ "menu": {
+  "OFF": {
+   "Lunedì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "petto di pollo",
-     170
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "riso bianco",
+      140
+     ],
+     [
+      "petto di pollo",
+      190
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      25
+     ]
     ],
-    [
-     "olio extravergine",
-     20
+    "Spuntino pomeriggio (tascabile)": [
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "datteri secchi",
+      "2 pz"
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ],
+    "Cena": [
+     [
+      "pasta integrale",
+      140
+     ],
+     [
+      "tonno al naturale (sgocciolato)",
+      160
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      25
+     ]
     ]
-   ],
-   "Cena": [
-    [
-     "pasta integrale",
-     120
+   },
+   "Martedì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "tonno al naturale (sgocciolato)",
-     150
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "riso bianco",
+      140
+     ],
+     [
+      "fesa di tacchino",
+      200
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      25
+     ]
     ],
-    [
-     "olio extravergine",
-     20
+    "Spuntino pomeriggio (tascabile)": [
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "datteri secchi",
+      "2 pz"
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ],
+    "Cena": [
+     [
+      "patate",
+      300
+     ],
+     [
+      "pane",
+      60
+     ],
+     [
+      "manzo magro",
+      200
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      25
+     ]
     ]
-   ]
+   },
+   "Mercoledì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
+    ],
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
+    ],
+    "Pranzo": [
+     [
+      "pasta integrale",
+      170
+     ],
+     [
+      "mozzarella light",
+      100
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ]
+    ],
+    "Spuntino pomeriggio (tascabile)": [
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "datteri secchi",
+      "2 pz"
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ],
+    "Cena": [
+     [
+      "ravioli ricotta e spinaci",
+      200
+     ],
+     [
+      "bresaola",
+      150
+     ],
+     [
+      "pane",
+      25
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      10
+     ]
+    ]
+   },
+   "Giovedì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
+    ],
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
+    ],
+    "Pranzo": [
+     [
+      "pasta integrale",
+      160
+     ],
+     [
+      "uova",
+      "2 pz"
+     ],
+     [
+      "albume",
+      200
+     ],
+     [
+      "grana padano",
+      15
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ]
+    ],
+    "Spuntino pomeriggio (tascabile)": [
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "datteri secchi",
+      "2 pz"
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ],
+    "Cena": [
+     [
+      "patate",
+      300
+     ],
+     [
+      "pane",
+      75
+     ],
+     [
+      "merluzzo o nasello",
+      240
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      20
+     ]
+    ]
+   },
+   "Venerdì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
+    ],
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
+    ],
+    "Pranzo": [
+     [
+      "gnocchi di patate",
+      270
+     ],
+     [
+      "torta di ceci (farinata)",
+      100
+     ],
+     [
+      "tonno al naturale (sgocciolato)",
+      140
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      10
+     ]
+    ],
+    "Spuntino pomeriggio (tascabile)": [
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "datteri secchi",
+      "2 pz"
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ],
+    "Cena": [
+     [
+      "riso bianco",
+      125
+     ],
+     [
+      "tartare di manzo",
+      200
+     ],
+     [
+      "grana padano",
+      20
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      20
+     ]
+    ]
+   },
+   "Sabato": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
+    ],
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
+    ],
+    "Pranzo": [
+     [
+      "pasta integrale",
+      170
+     ],
+     [
+      "petto di pollo",
+      150
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ]
+    ],
+    "Spuntino pomeriggio (tascabile)": [
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "datteri secchi",
+      "2 pz"
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ],
+    "Cena": [
+     [
+      "ravioli ricotta e spinaci",
+      250
+     ],
+     [
+      "bresaola",
+      100
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ]
+    ]
+   }
   },
-  "Martedì": {
-   "Pranzo": [
-    [
-     "riso bianco",
-     120
+  "ON": {
+   "Lunedì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "fesa di tacchino",
-     170
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "riso bianco",
+      140
+     ],
+     [
+      "petto di pollo",
+      190
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ],
+     [
+      "succo di frutta 100%",
+      500
+     ]
     ],
-    [
-     "olio extravergine",
-     20
+    "Spuntino pomeriggio (tascabile)": [],
+    "Cena": [
+     [
+      "pasta integrale",
+      185
+     ],
+     [
+      "tonno al naturale (sgocciolato)",
+      160
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      25
+     ]
     ]
-   ],
-   "Cena": [
-    [
-     "patate",
-     450
+   },
+   "Martedì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "manzo magro",
-     180
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "riso bianco",
+      140
+     ],
+     [
+      "fesa di tacchino",
+      200
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ],
+     [
+      "succo di frutta 100%",
+      500
+     ]
     ],
-    [
-     "olio extravergine",
-     15
+    "Spuntino pomeriggio (tascabile)": [],
+    "Cena": [
+     [
+      "patate",
+      300
+     ],
+     [
+      "pane",
+      115
+     ],
+     [
+      "manzo magro",
+      200
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      25
+     ]
     ]
-   ]
-  },
-  "Mercoledì": {
-   "Pranzo": [
-    [
-     "pasta integrale",
-     150
+   },
+   "Mercoledì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "mozzarella light",
-     80
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "pasta integrale",
+      170
+     ],
+     [
+      "mozzarella light",
+      100
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      5
+     ],
+     [
+      "succo di frutta 100%",
+      500
+     ]
     ],
-    [
-     "olio extravergine",
-     10
+    "Spuntino pomeriggio (tascabile)": [],
+    "Cena": [
+     [
+      "ravioli ricotta e spinaci",
+      200
+     ],
+     [
+      "bresaola",
+      150
+     ],
+     [
+      "pane",
+      80
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      10
+     ]
     ]
-   ],
-   "Cena": [
-    [
-     "ravioli ricotta e spinaci",
-     180
+   },
+   "Giovedì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "bresaola",
-     130
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "pasta integrale",
+      160
+     ],
+     [
+      "uova",
+      "2 pz"
+     ],
+     [
+      "albume",
+      200
+     ],
+     [
+      "grana padano",
+      15
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      5
+     ],
+     [
+      "succo di frutta 100%",
+      500
+     ]
     ],
-    [
-     "olio extravergine",
-     10
+    "Spuntino pomeriggio (tascabile)": [],
+    "Cena": [
+     [
+      "patate",
+      300
+     ],
+     [
+      "pane",
+      130
+     ],
+     [
+      "merluzzo o nasello",
+      240
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      20
+     ]
     ]
-   ]
-  },
-  "Giovedì": {
-   "Pranzo": [
-    [
-     "pasta integrale",
-     120
+   },
+   "Venerdì": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "uova",
-     "2 pz"
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "albume",
-     150
+    "Pranzo": [
+     [
+      "gnocchi di patate",
+      270
+     ],
+     [
+      "torta di ceci (farinata)",
+      100
+     ],
+     [
+      "tonno al naturale (sgocciolato)",
+      140
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "succo di frutta 100%",
+      500
+     ]
     ],
-    [
-     "grana padano",
-     15
-    ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
-    ],
-    [
-     "olio extravergine",
-     10
+    "Spuntino pomeriggio (tascabile)": [],
+    "Cena": [
+     [
+      "riso bianco",
+      165
+     ],
+     [
+      "tartare di manzo",
+      200
+     ],
+     [
+      "grana padano",
+      20
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      20
+     ]
     ]
-   ],
-   "Cena": [
-    [
-     "patate",
-     500
+   },
+   "Sabato": {
+    "Colazione": [
+     [
+      "uova",
+      "3 pz"
+     ],
+     [
+      "pane",
+      100
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "succo di frutta 100%",
+      250
+     ]
     ],
-    [
-     "merluzzo o nasello",
-     220
+    "Spuntino mattina": [
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "miele",
+      20
+     ],
+     [
+      "cereali corn flakes",
+      20
+     ],
+     [
+      "mandorle",
+      10
+     ]
     ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
+    "Pranzo": [
+     [
+      "pasta integrale",
+      170
+     ],
+     [
+      "petto di pollo",
+      150
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      5
+     ],
+     [
+      "succo di frutta 100%",
+      500
+     ]
     ],
-    [
-     "olio extravergine",
-     20
+    "Spuntino pomeriggio (tascabile)": [],
+    "Cena": [
+     [
+      "ravioli ricotta e spinaci",
+      250
+     ],
+     [
+      "bresaola",
+      100
+     ],
+     [
+      "verdure (pomodori, carote, insalata, rucola)",
+      100
+     ],
+     [
+      "olio extravergine",
+      15
+     ],
+     [
+      "pane",
+      55
+     ]
     ]
-   ]
-  },
-  "Venerdì": {
-   "Pranzo": [
-    [
-     "gnocchi di patate",
-     230
-    ],
-    [
-     "torta di ceci (farinata)",
-     100
-    ],
-    [
-     "tonno al naturale (sgocciolato)",
-     120
-    ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
-    ],
-    [
-     "olio extravergine",
-     5
-    ]
-   ],
-   "Cena": [
-    [
-     "riso bianco",
-     100
-    ],
-    [
-     "tartare di manzo",
-     180
-    ],
-    [
-     "grana padano",
-     15
-    ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
-    ],
-    [
-     "olio extravergine",
-     15
-    ]
-   ]
-  },
-  "Sabato": {
-   "Pranzo": [
-    [
-     "pasta integrale",
-     140
-    ],
-    [
-     "petto di pollo",
-     120
-    ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
-    ],
-    [
-     "olio extravergine",
-     10
-    ]
-   ],
-   "Cena": [
-    [
-     "ravioli ricotta e spinaci",
-     230
-    ],
-    [
-     "bresaola",
-     100
-    ],
-    [
-     "verdure (pomodori, carote, insalata, rucola)",
-     200
-    ],
-    [
-     "olio extravergine",
-     10
-    ]
-   ]
+   }
   }
  },
- "scambioOn": {
-  "testo": "Togli 2 cucchiai di olio (20 g) dalla giornata e aggiungi 60 g di riso o pasta (crudi) al pasto prima dell'allenamento.",
-  "modifiche": [
-   [
-    "olio extravergine",
-    -20
-   ],
-   [
-    "riso bianco",
-    60
-   ]
-  ]
- },
+ "testoOn": "Giorno di allenamento (pranzo alle 14:30): niente spuntino del pomeriggio, a pranzo lo stesso piatto più mezzo litro di succo, a cena più riso, pasta o pane, un cucchiaio di olio in meno.",
+ "carboPrincipali": [
+  "riso bianco",
+  "pasta integrale",
+  "patate",
+  "gnocchi di patate",
+  "ravioli ricotta e spinaci",
+  "pane"
+ ],
  "olio": "olio extravergine",
  "verdure": "verdure (pomodori, carote, insalata, rucola)",
  "orari": {
@@ -675,10 +1493,90 @@ window.PIANO = {
   "Spuntino pomeriggio (tascabile)": "16:30",
   "Cena": "20:00"
  },
+ "orariOn": {
+  "Pranzo": "14:30"
+ },
  "alternative": {
+  "Colazione": [
+   [
+    "Latte e cereali",
+    [
+     [
+      "latte parzialmente scremato",
+      300
+     ],
+     [
+      "cereali corn flakes",
+      80
+     ],
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "proteine whey",
+      20
+     ],
+     [
+      "miele",
+      15
+     ]
+    ]
+   ],
+   [
+    "Pane, marmellata e yogurt",
+    [
+     [
+      "pane",
+      100
+     ],
+     [
+      "marmellata",
+      40
+     ],
+     [
+      "yogurt greco 0%",
+      170
+     ],
+     [
+      "succo di frutta 100%",
+      200
+     ],
+     [
+      "mandorle",
+      20
+     ]
+    ]
+   ],
+   [
+    "Porridge (3 minuti al microonde)",
+    [
+     [
+      "fiocchi d'avena",
+      80
+     ],
+     [
+      "latte parzialmente scremato",
+      300
+     ],
+     [
+      "banana",
+      "1 pz"
+     ],
+     [
+      "miele",
+      15
+     ],
+     [
+      "proteine whey",
+      20
+     ]
+    ]
+   ]
+  ],
   "Spuntino mattina": [
    [
-    "Frullato (2 minuti, si beve)",
+    "Frullato in bottiglia (fatto la sera)",
     [
      [
       "latte parzialmente scremato",
@@ -689,37 +1587,59 @@ window.PIANO = {
       "1 pz"
      ],
      [
-      "fiocchi d'avena",
-      30
-     ],
-     [
-      "burro d'arachidi",
-      15
-     ],
-     [
       "proteine whey",
       15
      ]
     ]
    ],
    [
-    "Skyr con cereali",
+    "Skyr, banana e gallette",
     [
      [
       "skyr",
-      250
+      150
      ],
      [
-      "cereali corn flakes",
+      "banana",
+      "1 pz"
+     ],
+     [
+      "gallette di riso",
+      "3 pz"
+     ]
+    ]
+   ],
+   [
+    "Cracker, bresaola e succo",
+    [
+     [
+      "cracker",
       40
      ],
      [
-      "miele",
-      20
+      "bresaola",
+      50
      ],
      [
-      "mandorle",
-      20
+      "succo di frutta 100%",
+      100
+     ]
+    ]
+   ],
+   [
+    "Panino veloce con bresaola",
+    [
+     [
+      "pane",
+      60
+     ],
+     [
+      "bresaola",
+      40
+     ],
+     [
+      "succo di frutta 100%",
+      100
      ]
     ]
    ]
@@ -734,24 +1654,101 @@ window.PIANO = {
      ],
      [
       "gallette di riso",
-      "4 pz"
+      "3 pz"
      ],
      [
       "mandorle",
-      20
+      10
      ]
     ]
    ],
    [
-    "Banana e barrette",
+    "Barretta, banana e mandorle",
     [
+     [
+      "barretta ai cereali",
+      "1 pz"
+     ],
      [
       "banana",
       "1 pz"
      ],
      [
+      "mandorle",
+      10
+     ]
+    ]
+   ],
+   [
+    "Cracker, grana e frutto",
+    [
+     [
+      "cracker",
+      30
+     ],
+     [
+      "grana padano",
+      20
+     ],
+     [
+      "frutto (mela/pera/arancia)",
+      "1 pz"
+     ]
+    ]
+   ],
+   [
+    "Datteri e frutta secca",
+    [
+     [
+      "datteri secchi",
+      "6 pz"
+     ],
+     [
+      "frutta secca mista",
+      20
+     ]
+    ]
+   ],
+   [
+    "Skyr, miele e gallette",
+    [
+     [
+      "skyr",
+      150
+     ],
+     [
+      "miele",
+      30
+     ],
+     [
+      "gallette di riso",
+      "2 pz"
+     ]
+    ]
+   ],
+   [
+    "Barrette e frutto",
+    [
+     [
       "barretta ai cereali",
       "2 pz"
+     ],
+     [
+      "frutto (mela/pera/arancia)",
+      "1 pz"
+     ]
+    ]
+   ],
+   [
+    "Succo e cracker",
+    [
+     [
+      "succo di frutta 100%",
+      200
+     ],
+     [
+      "cracker",
+      40
      ]
     ]
    ]
