@@ -135,6 +135,11 @@ window.PIANO = {
    0.0,
    4.0
   ],
+  "macinato magro di manzo": [
+   20.5,
+   0.0,
+   6.0
+  ],
   "tonno al naturale (sgocciolato)": [
    25.0,
    0.0,
@@ -379,7 +384,7 @@ window.PIANO = {
     ],
     [
      "pane",
-     120
+     130
     ],
     [
      "miele",
@@ -444,7 +449,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -475,8 +480,8 @@ window.PIANO = {
       140
      ],
      [
-      "petto di pollo",
-      190
+      "macinato magro di manzo",
+      215
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -484,7 +489,7 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
-      25
+      15
      ],
      [
       "creatina monoidrato",
@@ -507,12 +512,12 @@ window.PIANO = {
     ],
     "Cena": [
      [
-      "pasta integrale",
-      140
+      "pasta di semola",
+      125
      ],
      [
       "tonno al naturale (sgocciolato)",
-      160
+      170
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -540,7 +545,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -640,7 +645,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -667,12 +672,12 @@ window.PIANO = {
     ],
     "Pranzo": [
      [
-      "pasta integrale",
-      170
+      "pasta di semola",
+      160
      ],
      [
       "mozzarella light",
-      100
+      120
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -740,7 +745,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -767,8 +772,8 @@ window.PIANO = {
     ],
     "Pranzo": [
      [
-      "pasta integrale",
-      160
+      "pasta di semola",
+      140
      ],
      [
       "uova",
@@ -776,7 +781,7 @@ window.PIANO = {
      ],
      [
       "albume",
-      200
+      230
      ],
      [
       "grana padano",
@@ -819,8 +824,8 @@ window.PIANO = {
       75
      ],
      [
-      "merluzzo o nasello",
-      240
+      "tartare di manzo",
+      200
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -828,7 +833,7 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
-      20
+      15
      ]
     ]
    },
@@ -848,7 +853,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -952,7 +957,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -979,12 +984,12 @@ window.PIANO = {
     ],
     "Pranzo": [
      [
-      "pasta integrale",
-      170
+      "pasta di semola",
+      150
      ],
      [
-      "petto di pollo",
-      150
+      "macinato magro di manzo",
+      185
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -992,7 +997,7 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
-      15
+      5
      ],
      [
       "creatina monoidrato",
@@ -1050,7 +1055,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -1081,8 +1086,8 @@ window.PIANO = {
       140
      ],
      [
-      "petto di pollo",
-      190
+      "macinato magro di manzo",
+      215
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -1090,7 +1095,7 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
-      15
+      5
      ],
      [
       "creatina monoidrato",
@@ -1104,12 +1109,12 @@ window.PIANO = {
     "Spuntino pomeriggio (tascabile)": [],
     "Cena": [
      [
-      "pasta integrale",
-      185
+      "pasta di semola",
+      165
      ],
      [
       "tonno al naturale (sgocciolato)",
-      160
+      170
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -1137,7 +1142,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -1228,7 +1233,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -1255,12 +1260,12 @@ window.PIANO = {
     ],
     "Pranzo": [
      [
-      "pasta integrale",
-      170
+      "pasta di semola",
+      160
      ],
      [
       "mozzarella light",
-      100
+      120
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -1319,7 +1324,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -1346,8 +1351,8 @@ window.PIANO = {
     ],
     "Pranzo": [
      [
-      "pasta integrale",
-      160
+      "pasta di semola",
+      140
      ],
      [
       "uova",
@@ -1355,7 +1360,7 @@ window.PIANO = {
      ],
      [
       "albume",
-      200
+      230
      ],
      [
       "grana padano",
@@ -1389,8 +1394,8 @@ window.PIANO = {
       130
      ],
      [
-      "merluzzo o nasello",
-      240
+      "tartare di manzo",
+      200
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
@@ -1398,7 +1403,7 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
-      20
+      15
      ]
     ]
    },
@@ -1418,7 +1423,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -1509,7 +1514,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      120
+      130
      ],
      [
       "miele",
@@ -1536,20 +1541,16 @@ window.PIANO = {
     ],
     "Pranzo": [
      [
-      "pasta integrale",
-      170
+      "pasta di semola",
+      150
      ],
      [
-      "petto di pollo",
-      150
+      "macinato magro di manzo",
+      185
      ],
      [
       "verdure (pomodori, carote, insalata, rucola)",
       100
-     ],
-     [
-      "olio extravergine",
-      5
      ],
      [
       "creatina monoidrato",
@@ -1576,7 +1577,7 @@ window.PIANO = {
      ],
      [
       "olio extravergine",
-      15
+      10
      ],
      [
       "pane",
@@ -1589,7 +1590,7 @@ window.PIANO = {
  "testoOn": "Giorno di allenamento (pranzo alle 14:30): niente spuntino del pomeriggio, a pranzo lo stesso piatto più mezzo litro di succo, a cena più riso, pasta o pane, un cucchiaio di olio in meno.",
  "carboPrincipali": [
   "riso bianco",
-  "pasta integrale",
+  "pasta di semola",
   "patate",
   "gnocchi di patate",
   "ravioli ricotta e spinaci",
@@ -1738,7 +1739,7 @@ window.PIANO = {
      ],
      [
       "pane",
-      100
+      110
      ],
      [
       "marmellata",
@@ -2185,6 +2186,14 @@ window.PIANO = {
    "Pasta, riso e pane",
    "Barilla o De Cecco integrale; al Lidl Combino integrale"
   ],
+  "pasta di semola": [
+   "Pasta, riso e pane",
+   "pasta normale: Barilla, De Cecco, Coop o Conad; al Lidl Combino"
+  ],
+  "macinato magro di manzo": [
+   "Carne e pesce",
+   "macinato di manzo magro (scelto al banco); per polpette o ragù"
+  ],
   "pane": [
    "Pasta, riso e pane",
    "dal fornaio o al banco del pane"
@@ -2355,6 +2364,31 @@ window.PIANO = {
    "Lunedì": {
     "Pranzo": [
      [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        190
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
       "Riso e tacchino",
       [
        [
@@ -2363,7 +2397,7 @@ window.PIANO = {
        ],
        [
         "fesa di tacchino",
-        180
+        185
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2408,12 +2442,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
         "tonno al naturale (sgocciolato)",
-        125
+        140
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2433,12 +2467,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        155
        ],
        [
         "bresaola",
-        95
+        110
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2446,7 +2480,32 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        155
+       ],
+       [
+        "macinato magro di manzo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
        ],
        [
         "creatina monoidrato",
@@ -2458,12 +2517,12 @@ window.PIANO = {
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
         "petto di pollo",
-        135
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2471,7 +2530,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        25
        ],
        [
         "creatina monoidrato",
@@ -2488,7 +2547,7 @@ window.PIANO = {
        ],
        [
         "tartare di manzo",
-        175
+        180
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2565,7 +2624,7 @@ window.PIANO = {
        ],
        [
         "petto di pollo",
-        220
+        215
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2586,7 +2645,7 @@ window.PIANO = {
        ],
        [
         "fesa di tacchino",
-        210
+        205
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2602,12 +2661,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        140
+        "pasta di semola",
+        125
        ],
        [
         "bresaola",
-        125
+        135
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2620,15 +2679,57 @@ window.PIANO = {
       ]
      ],
      [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        125
+       ],
+       [
+        "macinato magro di manzo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        115
+       ],
+       [
+        "macinato magro di manzo",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ],
+     [
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        140
+        "pasta di semola",
+        125
        ],
        [
         "petto di pollo",
-        175
+        185
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2645,11 +2746,11 @@ window.PIANO = {
       [
        [
         "pane",
-        155
+        160
        ],
        [
         "tartare di manzo",
-        215
+        210
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2662,6 +2763,27 @@ window.PIANO = {
       ]
      ],
      [
+      "Gnocchi e merluzzo",
+      [
+       [
+        "gnocchi di patate",
+        275
+       ],
+       [
+        "merluzzo o nasello",
+        260
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
       "Riso e manzo",
       [
        [
@@ -2670,7 +2792,7 @@ window.PIANO = {
        ],
        [
         "manzo magro",
-        235
+        230
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2715,12 +2837,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
         "tonno al naturale (sgocciolato)",
-        140
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2728,7 +2850,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        25
        ],
        [
         "creatina monoidrato",
@@ -2740,12 +2862,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        155
        ],
        [
         "bresaola",
-        110
+        125
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2762,15 +2884,15 @@ window.PIANO = {
       ]
      ],
      [
-      "Pasta e pollo",
+      "Pasta al ragù",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
-        "petto di pollo",
-        155
+        "macinato magro di manzo",
+        190
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -2778,7 +2900,57 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "macinato magro di manzo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        155
+       ],
+       [
+        "petto di pollo",
+        170
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
        ],
        [
         "creatina monoidrato",
@@ -2909,53 +3081,11 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        135
+        "pasta di semola",
+        120
        ],
        [
         "tonno al naturale (sgocciolato)",
-        145
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        25
-       ]
-      ]
-     ],
-     [
-      "Pasta e bresaola",
-      [
-       [
-        "pasta integrale",
-        135
-       ],
-       [
-        "bresaola",
-        115
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        25
-       ]
-      ]
-     ],
-     [
-      "Pasta e pollo",
-      [
-       [
-        "pasta integrale",
-        135
-       ],
-       [
-        "petto di pollo",
         160
        ],
        [
@@ -2964,7 +3094,91 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        120
+       ],
+       [
+        "bresaola",
+        125
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
         25
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        120
+       ],
+       [
+        "macinato magro di manzo",
+        195
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        110
+       ],
+       [
+        "macinato magro di manzo",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        120
+       ],
+       [
+        "petto di pollo",
+        170
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
        ]
       ]
      ],
@@ -3040,11 +3254,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "petto di pollo",
-        140
+        145
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3065,7 +3279,7 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "fesa di tacchino",
@@ -3090,11 +3304,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "merluzzo o nasello",
-        185
+        190
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3114,12 +3328,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        160
        ],
        [
         "tonno al naturale (sgocciolato)",
-        80
+        95
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3136,40 +3350,15 @@ window.PIANO = {
       ]
      ],
      [
-      "Pasta e pollo",
+      "Pasta al ragù",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        160
        ],
        [
-        "petto di pollo",
-        85
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        25
-       ],
-       [
-        "creatina monoidrato",
-        5
-       ]
-      ]
-     ],
-     [
-      "Pane e tartare di manzo",
-      [
-       [
-        "pane",
-        195
-       ],
-       [
-        "tartare di manzo",
-        125
+        "macinato magro di manzo",
+        115
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3186,11 +3375,61 @@ window.PIANO = {
       ]
      ],
      [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        145
+       ],
+       [
+        "macinato magro di manzo",
+        160
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        160
+       ],
+       [
+        "petto di pollo",
+        105
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
       "Gnocchi e merluzzo",
       [
        [
         "gnocchi di patate",
-        335
+        355
        ],
        [
         "merluzzo o nasello",
@@ -3215,11 +3454,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "manzo magro",
-        150
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3262,12 +3501,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        140
+        "pasta di semola",
+        125
        ],
        [
         "tonno al naturale (sgocciolato)",
-        210
+        220
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3283,12 +3522,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        140
+        "pasta di semola",
+        120
        ],
        [
         "bresaola",
-        165
+        175
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3304,12 +3543,12 @@ window.PIANO = {
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        140
+        "pasta di semola",
+        125
        ],
        [
         "petto di pollo",
-        225
+        240
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3379,37 +3618,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "tonno al naturale (sgocciolato)",
-        155
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        30
-       ],
-       [
-        "creatina monoidrato",
-        5
-       ]
-      ]
-     ],
-     [
-      "Pasta e bresaola",
-      [
-       [
-        "pasta integrale",
-        160
-       ],
-       [
-        "bresaola",
-        120
+        170
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3426,15 +3640,90 @@ window.PIANO = {
       ]
      ],
      [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        140
+       ],
+       [
+        "bresaola",
+        130
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        145
+       ],
+       [
+        "macinato magro di manzo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "macinato magro di manzo",
+        245
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "petto di pollo",
-        170
+        185
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3455,7 +3744,7 @@ window.PIANO = {
       [
        [
         "pane",
-        185
+        180
        ],
        [
         "tartare di manzo",
@@ -3480,7 +3769,7 @@ window.PIANO = {
       [
        [
         "gnocchi di patate",
-        315
+        310
        ],
        [
         "merluzzo o nasello",
@@ -3594,12 +3883,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        150
+        "pasta di semola",
+        130
        ],
        [
         "tonno al naturale (sgocciolato)",
-        140
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3615,33 +3904,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        150
+        "pasta di semola",
+        130
        ],
        [
         "bresaola",
-        110
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        15
-       ]
-      ]
-     ],
-     [
-      "Pasta e pollo",
-      [
-       [
-        "pasta integrale",
-        150
-       ],
-       [
-        "petto di pollo",
-        150
+        120
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3654,14 +3922,14 @@ window.PIANO = {
       ]
      ],
      [
-      "Pane e tartare di manzo",
+      "Pasta al ragù",
       [
        [
-        "pane",
-        165
+        "pasta di semola",
+        130
        ],
        [
-        "tartare di manzo",
+        "macinato magro di manzo",
         190
        ],
        [
@@ -3670,7 +3938,49 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        15
+        10
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "macinato magro di manzo",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        130
+       ],
+       [
+        "petto di pollo",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
        ]
       ]
      ],
@@ -3799,12 +4109,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "tonno al naturale (sgocciolato)",
-        130
+        145
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3812,7 +4122,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        15
+        20
        ],
        [
         "creatina monoidrato",
@@ -3824,12 +4134,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "bresaola",
-        100
+        115
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3837,7 +4147,57 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        15
+        20
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        145
+       ],
+       [
+        "macinato magro di manzo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "macinato magro di manzo",
+        215
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
        ],
        [
         "creatina monoidrato",
@@ -3849,12 +4209,12 @@ window.PIANO = {
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "petto di pollo",
-        140
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -3862,7 +4222,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        15
+        20
        ],
        [
         "creatina monoidrato",
@@ -3993,12 +4353,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        155
+        "pasta di semola",
+        135
        ],
        [
         "tonno al naturale (sgocciolato)",
-        150
+        165
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4014,12 +4374,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        155
+        "pasta di semola",
+        135
        ],
        [
         "bresaola",
-        115
+        130
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4032,15 +4392,57 @@ window.PIANO = {
       ]
      ],
      [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        135
+       ],
+       [
+        "macinato magro di manzo",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        125
+       ],
+       [
+        "macinato magro di manzo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        155
+        "pasta di semola",
+        135
        ],
        [
         "petto di pollo",
-        160
+        180
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4124,11 +4526,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        135
        ],
        [
         "petto di pollo",
-        205
+        200
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4136,7 +4538,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        15
        ],
        [
         "creatina monoidrato",
@@ -4149,7 +4551,7 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        135
        ],
        [
         "fesa di tacchino",
@@ -4161,7 +4563,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        15
        ],
        [
         "creatina monoidrato",
@@ -4173,12 +4575,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        150
        ],
        [
         "tonno al naturale (sgocciolato)",
-        140
+        150
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4198,12 +4600,62 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        150
        ],
        [
         "bresaola",
-        110
+        120
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "macinato magro di manzo",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        150
+       ],
+       [
+        "petto di pollo",
+        165
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4249,11 +4701,11 @@ window.PIANO = {
       [
        [
         "gnocchi di patate",
-        330
+        325
        ],
        [
         "merluzzo o nasello",
-        240
+        235
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4261,7 +4713,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        15
        ],
        [
         "creatina monoidrato",
@@ -4274,11 +4726,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        135
        ],
        [
         "manzo magro",
-        220
+        215
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4286,7 +4738,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        15
+        10
        ],
        [
         "creatina monoidrato",
@@ -4342,53 +4794,11 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        145
+        "pasta di semola",
+        130
        ],
        [
         "tonno al naturale (sgocciolato)",
-        150
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        30
-       ]
-      ]
-     ],
-     [
-      "Pasta e bresaola",
-      [
-       [
-        "pasta integrale",
-        145
-       ],
-       [
-        "bresaola",
-        120
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        30
-       ]
-      ]
-     ],
-     [
-      "Pasta e pollo",
-      [
-       [
-        "pasta integrale",
-        145
-       ],
-       [
-        "petto di pollo",
         165
        ],
        [
@@ -4397,7 +4807,91 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
+        35
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        130
+       ],
+       [
+        "bresaola",
+        130
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
         30
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        130
+       ],
+       [
+        "macinato magro di manzo",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        120
+       ],
+       [
+        "macinato magro di manzo",
+        240
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        130
+       ],
+       [
+        "petto di pollo",
+        180
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        35
        ]
       ]
      ],
@@ -4471,6 +4965,35 @@ window.PIANO = {
    "Lunedì": {
     "Pranzo": [
      [
+      "Riso e pollo",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "petto di pollo",
+        190
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
       "Riso e tacchino",
       [
        [
@@ -4479,7 +5002,7 @@ window.PIANO = {
        ],
        [
         "fesa di tacchino",
-        180
+        185
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4532,12 +5055,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
         "tonno al naturale (sgocciolato)",
-        125
+        140
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4561,12 +5084,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        155
        ],
        [
         "bresaola",
-        95
+        110
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4574,7 +5097,36 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        10
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        155
+       ],
+       [
+        "macinato magro di manzo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
        ],
        [
         "creatina monoidrato",
@@ -4590,12 +5142,12 @@ window.PIANO = {
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
         "petto di pollo",
-        135
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4603,7 +5155,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        10
+        15
        ],
        [
         "creatina monoidrato",
@@ -4624,7 +5176,7 @@ window.PIANO = {
        ],
        [
         "tartare di manzo",
-        175
+        180
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4713,49 +5265,7 @@ window.PIANO = {
        ],
        [
         "petto di pollo",
-        235
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        30
-       ]
-      ]
-     ],
-     [
-      "Riso e tacchino",
-      [
-       [
-        "riso bianco",
-        150
-       ],
-       [
-        "fesa di tacchino",
         225
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        30
-       ]
-      ]
-     ],
-     [
-      "Pasta e bresaola",
-      [
-       [
-        "pasta integrale",
-        185
-       ],
-       [
-        "bresaola",
-        125
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4768,15 +5278,99 @@ window.PIANO = {
       ]
      ],
      [
+      "Riso e tacchino",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "fesa di tacchino",
+        215
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        165
+       ],
+       [
+        "bresaola",
+        135
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        25
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        165
+       ],
+       [
+        "macinato magro di manzo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "macinato magro di manzo",
+        255
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ]
+      ]
+     ],
+     [
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        185
+        "pasta di semola",
+        165
        ],
        [
         "petto di pollo",
-        175
+        185
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4797,7 +5391,7 @@ window.PIANO = {
        ],
        [
         "manzo magro",
-        250
+        240
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4805,7 +5399,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        25
+        20
        ]
       ]
      ]
@@ -4846,12 +5440,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
         "tonno al naturale (sgocciolato)",
-        140
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4859,7 +5453,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        10
+        15
        ],
        [
         "creatina monoidrato",
@@ -4875,12 +5469,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        155
        ],
        [
         "bresaola",
-        110
+        125
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4901,15 +5495,15 @@ window.PIANO = {
       ]
      ],
      [
-      "Pasta e pollo",
+      "Pasta al ragù",
       [
        [
-        "pasta integrale",
-        175
+        "pasta di semola",
+        155
        ],
        [
-        "petto di pollo",
-        155
+        "macinato magro di manzo",
+        190
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -4917,7 +5511,65 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        10
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        140
+       ],
+       [
+        "macinato magro di manzo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        155
+       ],
+       [
+        "petto di pollo",
+        170
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
        ],
        [
         "creatina monoidrato",
@@ -5064,12 +5716,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        185
+        "pasta di semola",
+        165
        ],
        [
         "tonno al naturale (sgocciolato)",
-        140
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5077,7 +5729,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        25
+        30
        ]
       ]
      ],
@@ -5085,12 +5737,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        185
+        "pasta di semola",
+        165
        ],
        [
         "bresaola",
-        110
+        125
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5103,15 +5755,15 @@ window.PIANO = {
       ]
      ],
      [
-      "Pasta e pollo",
+      "Pasta al ragù",
       [
        [
-        "pasta integrale",
-        185
+        "pasta di semola",
+        165
        ],
        [
-        "petto di pollo",
-        150
+        "macinato magro di manzo",
+        190
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5119,7 +5771,49 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        25
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        150
+       ],
+       [
+        "macinato magro di manzo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        165
+       ],
+       [
+        "petto di pollo",
+        170
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
        ]
       ]
      ],
@@ -5174,11 +5868,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "petto di pollo",
-        140
+        145
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5203,7 +5897,7 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "fesa di tacchino",
@@ -5232,11 +5926,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "merluzzo o nasello",
-        185
+        190
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5260,12 +5954,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        160
        ],
        [
         "tonno al naturale (sgocciolato)",
-        80
+        95
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5286,44 +5980,15 @@ window.PIANO = {
       ]
      ],
      [
-      "Pasta e pollo",
+      "Pasta al ragù",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        160
        ],
        [
-        "petto di pollo",
-        85
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        15
-       ],
-       [
-        "creatina monoidrato",
-        5
-       ],
-       [
-        "succo di frutta 100%",
-        500
-       ]
-      ]
-     ],
-     [
-      "Pane e tartare di manzo",
-      [
-       [
-        "pane",
-        195
-       ],
-       [
-        "tartare di manzo",
-        125
+        "macinato magro di manzo",
+        115
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5344,11 +6009,69 @@ window.PIANO = {
       ]
      ],
      [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        145
+       ],
+       [
+        "macinato magro di manzo",
+        160
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        160
+       ],
+       [
+        "petto di pollo",
+        105
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
       "Gnocchi e merluzzo",
       [
        [
         "gnocchi di patate",
-        335
+        355
        ],
        [
         "merluzzo o nasello",
@@ -5377,11 +6100,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        145
        ],
        [
         "manzo magro",
-        150
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5407,12 +6130,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        190
+        "pasta di semola",
+        165
        ],
        [
         "tonno al naturale (sgocciolato)",
-        200
+        220
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5428,12 +6151,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        185
+        "pasta di semola",
+        165
        ],
        [
         "bresaola",
-        160
+        170
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5441,7 +6164,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        20
+        25
        ]
       ]
      ],
@@ -5449,12 +6172,12 @@ window.PIANO = {
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        190
+        "pasta di semola",
+        165
        ],
        [
         "petto di pollo",
-        220
+        240
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5532,41 +6255,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "tonno al naturale (sgocciolato)",
-        155
-       ],
-       [
-        "verdure (pomodori, carote, insalata, rucola)",
-        100
-       ],
-       [
-        "olio extravergine",
-        20
-       ],
-       [
-        "creatina monoidrato",
-        5
-       ],
-       [
-        "succo di frutta 100%",
-        500
-       ]
-      ]
-     ],
-     [
-      "Pasta e bresaola",
-      [
-       [
-        "pasta integrale",
-        160
-       ],
-       [
-        "bresaola",
-        120
+        170
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5587,15 +6281,102 @@ window.PIANO = {
       ]
      ],
      [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        140
+       ],
+       [
+        "bresaola",
+        130
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        15
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        145
+       ],
+       [
+        "macinato magro di manzo",
+        205
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        130
+       ],
+       [
+        "macinato magro di manzo",
+        245
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        5
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "petto di pollo",
-        170
+        185
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5620,7 +6401,7 @@ window.PIANO = {
       [
        [
         "pane",
-        185
+        180
        ],
        [
         "tartare di manzo",
@@ -5649,7 +6430,7 @@ window.PIANO = {
       [
        [
         "gnocchi di patate",
-        315
+        310
        ],
        [
         "merluzzo o nasello",
@@ -5747,6 +6528,111 @@ window.PIANO = {
       ]
      ],
      [
+      "Pasta al tonno",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        150
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "bresaola",
+        120
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "macinato magro di manzo",
+        185
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        160
+       ],
+       [
+        "macinato magro di manzo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "petto di pollo",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
       "Gnocchi e merluzzo",
       [
        [
@@ -5784,7 +6670,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        15
+        20
        ]
       ]
      ]
@@ -5883,12 +6769,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "tonno al naturale (sgocciolato)",
-        130
+        145
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5896,7 +6782,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        5
+        10
        ],
        [
         "creatina monoidrato",
@@ -5912,12 +6798,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "bresaola",
-        100
+        115
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5925,7 +6811,57 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
         5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        145
+       ],
+       [
+        "macinato magro di manzo",
+        175
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "macinato magro di manzo",
+        215
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
        ],
        [
         "creatina monoidrato",
@@ -5941,12 +6877,12 @@ window.PIANO = {
       "Pasta e pollo",
       [
        [
-        "pasta integrale",
-        165
+        "pasta di semola",
+        145
        ],
        [
         "petto di pollo",
-        140
+        155
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -5954,7 +6890,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        5
+        10
        ],
        [
         "creatina monoidrato",
@@ -6098,6 +7034,111 @@ window.PIANO = {
       ]
      ],
      [
+      "Pasta al tonno",
+      [
+       [
+        "pasta di semola",
+        180
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        155
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        180
+       ],
+       [
+        "bresaola",
+        120
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        180
+       ],
+       [
+        "macinato magro di manzo",
+        185
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        165
+       ],
+       [
+        "macinato magro di manzo",
+        235
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        180
+       ],
+       [
+        "petto di pollo",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
       "Gnocchi e merluzzo",
       [
        [
@@ -6148,11 +7189,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        135
        ],
        [
         "petto di pollo",
-        205
+        200
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -6177,7 +7218,7 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        135
        ],
        [
         "fesa di tacchino",
@@ -6205,12 +7246,12 @@ window.PIANO = {
       "Pasta al tonno",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        150
        ],
        [
         "tonno al naturale (sgocciolato)",
-        140
+        150
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -6218,7 +7259,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        5
+        10
        ],
        [
         "creatina monoidrato",
@@ -6234,12 +7275,12 @@ window.PIANO = {
       "Pasta e bresaola",
       [
        [
-        "pasta integrale",
-        170
+        "pasta di semola",
+        150
        ],
        [
         "bresaola",
-        110
+        120
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -6247,7 +7288,61 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
+        10
+       ],
+       [
+        "creatina monoidrato",
         5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        135
+       ],
+       [
+        "macinato magro di manzo",
+        225
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "creatina monoidrato",
+        5
+       ],
+       [
+        "succo di frutta 100%",
+        500
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        150
+       ],
+       [
+        "petto di pollo",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        10
        ],
        [
         "creatina monoidrato",
@@ -6275,6 +7370,10 @@ window.PIANO = {
         100
        ],
        [
+        "olio extravergine",
+        5
+       ],
+       [
         "creatina monoidrato",
         5
        ],
@@ -6289,11 +7388,11 @@ window.PIANO = {
       [
        [
         "gnocchi di patate",
-        330
+        325
        ],
        [
         "merluzzo o nasello",
-        240
+        235
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -6318,11 +7417,11 @@ window.PIANO = {
       [
        [
         "riso bianco",
-        140
+        135
        ],
        [
         "manzo magro",
-        220
+        215
        ],
        [
         "verdure (pomodori, carote, insalata, rucola)",
@@ -6361,7 +7460,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        35
+        30
        ]
       ]
      ],
@@ -6382,7 +7481,112 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        35
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta al tonno",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "tonno al naturale (sgocciolato)",
+        165
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta e bresaola",
+      [
+       [
+        "pasta di semola",
+        170
+       ],
+       [
+        "bresaola",
+        130
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
+       ]
+      ]
+     ],
+     [
+      "Pasta al ragù",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "macinato magro di manzo",
+        200
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Riso e polpette",
+      [
+       [
+        "riso bianco",
+        155
+       ],
+       [
+        "macinato magro di manzo",
+        245
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        20
+       ]
+      ]
+     ],
+     [
+      "Pasta e pollo",
+      [
+       [
+        "pasta di semola",
+        175
+       ],
+       [
+        "petto di pollo",
+        180
+       ],
+       [
+        "verdure (pomodori, carote, insalata, rucola)",
+        100
+       ],
+       [
+        "olio extravergine",
+        30
        ]
       ]
      ],
@@ -6403,7 +7607,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        35
+        30
        ]
       ]
      ],
@@ -6424,7 +7628,7 @@ window.PIANO = {
        ],
        [
         "olio extravergine",
-        30
+        25
        ]
       ]
      ]
