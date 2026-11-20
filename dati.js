@@ -2180,23 +2180,23 @@ window.PIANO = {
  "spesa": {
   "riso bianco": [
    "Pasta, riso e pane",
-   "Scotti o Gallo; va bene anche quello Coop o Conad"
+   "Va bene qualsiasi riso bianco: carnaroli, arborio, Roma, basmati (stesse calorie). NO integrale, NO precotto o già cotto in busta"
   ],
   "pasta integrale": [
    "Pasta, riso e pane",
-   "Barilla o De Cecco integrale; al Lidl Combino integrale"
+   "solo se serve: integrale di qualsiasi marca"
   ],
   "pasta di semola": [
    "Pasta, riso e pane",
-   "pasta normale: Barilla, De Cecco, Coop o Conad; al Lidl Combino"
+   "pasta di semola di grano duro, qualsiasi formato e marca (Barilla, De Cecco, Coop, Conad, Lidl). NO integrale, NO all'uovo"
   ],
   "macinato magro di manzo": [
    "Carne e pesce",
-   "macinato di manzo magro (scelto al banco); per polpette o ragù"
+   "macinato di manzo MAGRO (chiedi al banco il più magro, circa 5% di grasso); per polpette o ragù"
   ],
   "pane": [
    "Pasta, riso e pane",
-   "dal fornaio o al banco del pane"
+   "pane bianco comune dal fornaio o al banco del pane. NO integrale, NO pan carré, NO ai semi"
   ],
   "torta di ceci (farinata)": [
    "Pasta, riso e pane",
@@ -2212,7 +2212,7 @@ window.PIANO = {
   ],
   "patate": [
    "Frutta e verdura",
-   ""
+   "qualsiasi tipo, anche a pasta gialla"
   ],
   "verdure (pomodori, carote, insalata, rucola)": [
    "Frutta e verdura",
@@ -2228,7 +2228,7 @@ window.PIANO = {
   ],
   "petto di pollo": [
    "Carne e pesce",
-   "al banco macelleria"
+   "petto intero al banco macelleria, senza pelle"
   ],
   "fesa di tacchino": [
    "Carne e pesce",
@@ -2236,7 +2236,7 @@ window.PIANO = {
   ],
   "manzo magro": [
    "Carne e pesce",
-   "fesa o girello"
+   "fesa o girello, magro e senza grasso visibile"
   ],
   "tartare di manzo": [
    "Carne e pesce",
@@ -2252,7 +2252,7 @@ window.PIANO = {
   ],
   "mozzarella light": [
    "Salumi e formaggi",
-   "Santa Lucia Light (Galbani) o light Coop/Conad"
+   "mozzarella LIGHT (non quella normale): Santa Lucia Light (Galbani) o light Coop/Conad"
   ],
   "grana padano": [
    "Salumi e formaggi",
@@ -2268,7 +2268,7 @@ window.PIANO = {
   ],
   "yogurt greco 0%": [
    "Latte, yogurt e uova",
-   "Fage Total 0% o greco 0% della marca del supermercato"
+   "greco 0% di grassi, bianco senza zucchero né frutta: Fage Total 0% o marca del supermercato"
   ],
   "skyr": [
    "Latte, yogurt e uova",
@@ -2276,7 +2276,7 @@ window.PIANO = {
   ],
   "latte parzialmente scremato": [
    "Latte, yogurt e uova",
-   ""
+   "parzialmente scremato (non intero, non scremato)"
   ],
   "tonno al naturale (sgocciolato)": [
    "Dispensa",
@@ -2288,7 +2288,7 @@ window.PIANO = {
   ],
   "fiocchi d'avena": [
    "Dispensa",
-   "Quaker o marca del supermercato"
+   "fiocchi d'avena classici (non istantanei aromatizzati): Quaker o marca del supermercato"
   ],
   "gallette di riso": [
    "Dispensa",
@@ -2332,7 +2332,7 @@ window.PIANO = {
   ],
   "succo di frutta 100%": [
    "Bevande",
-   "100% frutta, senza zuccheri aggiunti; va bene la marca del supermercato"
+   "100% frutta, senza zuccheri aggiunti (non 'nettare'); va bene la marca del supermercato"
   ],
   "proteine whey": [
    "Integratori",

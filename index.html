@@ -201,6 +201,10 @@ p{margin:0}
 .gr{position:relative;flex:0 0 96px}
 .gr input{width:100%;height:46px;border:1px solid var(--line-2);background:var(--surface);border-radius:12px;padding:0 24px 0 6px;text-align:center;font-family:var(--f-tit);font-size:21px;font-weight:700;font-variant-numeric:tabular-nums}
 .gr input:focus{border-color:var(--accent-ink);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.gr.pz{flex-basis:76px}
+.scan{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;margin-bottom:10px}
+.scan video{width:100%;height:100%;object-fit:cover;display:block}
+.scan .mirino{position:absolute;inset:28% 12%;border:2px solid rgba(255,255,255,.85);border-radius:12px;box-shadow:0 0 0 999px rgba(0,0,0,.32);pointer-events:none}
 .gr u{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11.5px;color:var(--ink-3);text-decoration:none;pointer-events:none}
 .p-az{display:flex;gap:6px;flex-wrap:wrap}
 .p-az .btn{min-height:48px;flex:1 1 auto}
@@ -1002,6 +1006,7 @@ function ciboHTML(v, dove, i){
   const m = macroDi([v]);
   return '<div class="cibo"><div class="info"><div class="nome">' + esc(v.n === P.verdure ? "verdure (pomodori, carote, insalata, rucola)" : v.n) + '</div>' +
     '<div class="meta">' + fmt(m.k) + ' kcal · C' + fmt(m.c) + ' P' + fmt(m.p) + ' G' + fmt(m.f) + '</div></div>' +
+    (pezzoG(v.n) ? '<label class="gr pz"><input inputmode="decimal" value="' + fmt(v.g / pezzoG(v.n), 1).replace(",0", "") + '" data-pzr="' + esc(dove) + '" data-i="' + i + '" aria-label="Pezzi di ' + esc(v.n) + '"><u>pz</u></label>' : '') +
     '<label class="gr"><input inputmode="numeric" pattern="[0-9]*" value="' + v.g + '" data-gr="' + esc(dove) + '" data-i="' + i + '" aria-label="Grammi di ' + esc(v.n) + '"><u>' + (/succo|latte/.test(v.n) ? "ml" : "g") + '</u></label>' +
     '<button class="icobtn" data-togli="' + esc(dove) + '" data-i="' + i + '" aria-label="Togli ' + esc(v.n) + '">' + ICO.x + '</button></div>';
 }
@@ -1206,7 +1211,7 @@ function categoria(nome){
   return "misti";
 }
 function apriCibo(dove){
-  cb = {dove, filtro: "tutti", cerca: "", scelto: null, modo: "lista"};
+  cb = {dove, filtro: "tutti", cerca: "", scelto: null, modo: "lista", bc: null};
   $("#cb-dove").textContent = dove === "extra" ? "Fuori piano" : nomeCorto(dove);
   disegnaCibo(); dlgCibo.showModal(); misuraSchermo();
 }
@@ -1226,12 +1231,20 @@ function disegnaCibo(){
         '<button class="chip" data-filtro="' + k + '" aria-pressed="' + (cb.filtro === k) + '">' + t + '</button>').join("") + '</div>' +
       (recenti.length ? '<div class="eyebrow">Usati di recente</div><div>' + recenti.map(voce).join("") + '</div><div class="eyebrow">Tutti</div>' : "") +
       '<div>' + (lista.length ? lista.map(voce).join("") : '<p class="small muted" style="padding:10px 0">Nessun cibo trovato. Crealo con i valori dell\'etichetta.</p>') + '</div>';
-    piede.innerHTML = '<button class="btn" data-crea>Crea un cibo dall\'etichetta</button>';
+    piede.innerHTML = '<button class="btn" data-crea>Crea dall\'etichetta</button><button class="btn primary" data-scansiona>Scansiona codice</button>';
+  } else if (cb.modo === "scanner"){
+    $("#cb-titolo").textContent = "Scansiona il codice";
+    corpo.innerHTML = '<div class="scan"><video id="cb-video" playsinline muted autoplay></video><div class="mirino"></div></div>' +
+      '<p class="small muted" id="cb-scan-msg">Inquadra il codice a barre sulla confezione, con buona luce.</p>' +
+      '<div class="eyebrow">Oppure scrivi il numero</div>' +
+      '<div class="fld"><input id="cb-codice" inputmode="numeric" pattern="[0-9]*" placeholder="8001234567890" aria-label="Numero del codice a barre"></div>';
+    piede.innerHTML = '<button class="btn" data-indietro>Indietro</button><button class="btn primary" data-codice>Cerca</button>';
   } else if (cb.modo === "quantita"){
     const n = cb.scelto, pz = pezzoG(n), g = cb.g;
     $("#cb-titolo").textContent = n;
     const m = macroDi([{n, g: g || 0}]);
-    corpo.innerHTML = '<div class="fld"><input id="cb-g" inputmode="numeric" pattern="[0-9]*" value="' + (g || "") + '" aria-label="Quantità"><u>' + (/succo|latte/.test(n) ? "ml" : "g") + '</u></div>' +
+    corpo.innerHTML = '<div class="' + (pz ? "grid2" : "") + '"><div class="fld"><input id="cb-g" inputmode="numeric" pattern="[0-9]*" value="' + (g || "") + '" aria-label="Quantità"><u>' + (/succo|latte/.test(n) ? "ml" : "g") + '</u></div>' +
+      (pz ? '<div class="fld"><input id="cb-pz" inputmode="decimal" value="' + (g ? fmt(g / pz, 1).replace(",0", "") : "") + '" aria-label="Pezzi"><u>pz</u></div>' : '') + '</div>' +
       (pz ? '<div class="chips">' + [1, 2, 3, 4, 5, 6].map(k => '<button class="chip" data-pz="' + k * pz + '" aria-pressed="' + (g === k * pz) + '">' + k + ' pz</button>').join("") + '</div>' :
         '<div class="chips">' + [50, 100, 150, 200, 250].map(k => '<button class="chip" data-pz="' + k + '" aria-pressed="' + (g === k) + '">' + k + ' g</button>').join("") + '</div>') +
       '<div class="anteprima" id="cb-ant">' + anteprima(m) + '</div>' +
@@ -1247,6 +1260,58 @@ function disegnaCibo(){
   }
 }
 function anteprima(m){ return '<div><b>' + fmt(m.k) + '</b><span>kcal</span></div><div><b>' + fmt(m.c) + '</b><span>carbo</span></div><div><b>' + fmt(m.p) + '</b><span>prote</span></div><div><b>' + fmt(m.f) + '</b><span>grassi</span></div>'; }
+
+/* ---------- scanner codici a barre ---------- */
+let scan = null;
+function caricaZxing(){
+  if (window.ZXing) return Promise.resolve();
+  return new Promise((ok, ko) => { const el = document.createElement("script"); el.src = "zxing.min.js"; el.onload = ok; el.onerror = ko; document.head.appendChild(el); });
+}
+function fermaScanner(){ if (scan){ try { scan.reset(); } catch (e) {} scan = null; } }
+function messaggioScan(t){ const m = $("#cb-scan-msg"); if (m) m.textContent = t; }
+async function avviaScanner(){
+  cb.modo = "scanner"; cb.occupato = false; disegnaCibo();
+  try {
+    await caricaZxing();
+    const Z = window.ZXing, hints = new Map();
+    hints.set(Z.DecodeHintType.POSSIBLE_FORMATS, [Z.BarcodeFormat.EAN_13, Z.BarcodeFormat.EAN_8, Z.BarcodeFormat.UPC_A, Z.BarcodeFormat.UPC_E]);
+    hints.set(Z.DecodeHintType.TRY_HARDER, true);
+    const lettore = new Z.BrowserMultiFormatReader(hints, 250);
+    scan = lettore;
+    await lettore.decodeFromConstraints({video: {facingMode: {ideal: "environment"}}, audio: false}, $("#cb-video"), res => {
+      if (res && cb.modo === "scanner" && !cb.occupato) cercaCodice(res.getText());
+    });
+  } catch (e) {
+    messaggioScan("Non riesco ad aprire la fotocamera. Controlla che Safari possa usarla, oppure scrivi il numero qui sotto.");
+  }
+}
+async function cercaCodice(codice){
+  codice = String(codice).replace(/\D/g, "");
+  if (codice.length < 8){ avviso("Il codice deve avere almeno 8 numeri"); return; }
+  cb.occupato = true; messaggioScan("Codice " + codice + ": cerco il prodotto…");
+  const noto = Object.keys(stato.miei).find(n => stato.miei[n].bc === codice);
+  if (noto){ fermaScanner(); cb.scelto = noto; cb.g = pezzoG(noto) || 100; cb.modo = "quantita"; disegnaCibo(); return; }
+  let prod = null;
+  try {
+    const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), 9000);
+    const r = await fetch("https://world.openfoodfacts.org/api/v2/product/" + codice + ".json?fields=product_name,brands,nutriments", {signal: ctrl.signal});
+    clearTimeout(t);
+    const j = await r.json(); if (j && j.status === 1) prod = j.product;
+  } catch (e) {
+    cb.occupato = false; messaggioScan("Non riesco a cercare il prodotto: serve internet. Riprova."); return;
+  }
+  if (cb.modo !== "scanner") return;
+  fermaScanner();
+  const nm = prod && prod.nutriments || {}, nome = prod ? ((prod.product_name || "") + (prod.brands ? " " + String(prod.brands).split(",")[0].trim() : "")).trim().toLowerCase() : "";
+  const p = nm.proteins_100g, c = nm.carbohydrates_100g, f = nm.fat_100g;
+  if (!prod || !nome || p == null || c == null || f == null){
+    cb.bc = codice; cb.cerca = nome; cb.modo = "crea"; disegnaCibo();
+    avviso(prod ? "Mancano i valori: copiali dall'etichetta" : "Prodotto non trovato: copia i valori dall'etichetta"); return;
+  }
+  stato.miei[nome] = {v: [Math.round(p * 10) / 10, Math.round(c * 10) / 10, Math.round(f * 10) / 10], pz: null, bc: codice}; salva();
+  cb.scelto = nome; cb.g = 100; cb.modo = "quantita"; disegnaCibo();
+  avviso("Controlla che i valori siano giusti");
+}
 
 function aggiungiVoce(dove, v){
   const d = dataSel, g = giorno(d, true);
@@ -1372,9 +1437,14 @@ document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () =>
    su un bottone fatto subito dopo (es. la spunta) non va perso a meta'. */
 let tRidisegna = null;
 function applicaGrammi(inp){
-  if (!inp || !inp.dataset.gr || inp.dataset.applicato === inp.value) return false;
+  if (!inp || !(inp.dataset.gr || inp.dataset.pzr) || inp.dataset.applicato === inp.value) return false;
   inp.dataset.applicato = inp.value;
-  const dove = inp.dataset.gr, i = Number(inp.dataset.i), g = Math.round(num(inp.value) || 0), d = dataSel;
+  const dove = inp.dataset.gr || inp.dataset.pzr, i = Number(inp.dataset.i), d = dataSel;
+  let g = Math.round(num(inp.value) || 0);
+  if (inp.dataset.pzr){
+    const lista = dove === "extra" ? (giorno(d, true).extra || []) : vociPasto(d, dove), voce = lista[i];
+    g = voce ? Math.round((num(inp.value) || 0) * (pezzoG(voce.n) || 0)) : 0;
+  }
   if (dove === "extra"){ const gg = giorno(d, true); if (!gg.extra[i]) return false; if (g > 0) gg.extra[i].g = g; else gg.extra.splice(i, 1); }
   else {
     const r = congela(d, dove); if (!r.voci[i]) return false;
@@ -1509,7 +1579,9 @@ dlgCibo.addEventListener("click", e => {
   if (b.dataset.filtro){ cb.filtro = b.dataset.filtro; disegnaCibo(); return; }
   if (b.dataset.scegli){ cb.scelto = b.dataset.scegli; cb.g = pezzoG(cb.scelto) || 100; cb.modo = "quantita"; disegnaCibo(); const i = $("#cb-g"); i && i.select(); return; }
   if (b.dataset.pz){ cb.g = Number(b.dataset.pz); disegnaCibo(); return; }
-  if (b.hasAttribute("data-indietro")){ cb.modo = "lista"; disegnaCibo(); return; }
+  if (b.hasAttribute("data-scansiona")){ avviaScanner(); return; }
+  if (b.hasAttribute("data-codice")){ cb.occupato = false; cercaCodice($("#cb-codice").value); return; }
+  if (b.hasAttribute("data-indietro")){ fermaScanner(); cb.modo = "lista"; disegnaCibo(); return; }
   if (b.hasAttribute("data-crea")){ cb.modo = "crea"; disegnaCibo(); return; }
   if (b.hasAttribute("data-aggiungi")){
     const g = Math.round(num($("#cb-g").value) || 0); if (g <= 0){ avviso("Scrivi la quantità"); return; }
@@ -1521,15 +1593,18 @@ dlgCibo.addEventListener("click", e => {
     const nome = $("#mi-nome").value.trim().toLowerCase(), c = num($("#mi-c").value), p = num($("#mi-p").value), f = num($("#mi-f").value), pz = num($("#mi-pz").value);
     if (!nome || c == null || p == null || f == null){ avviso("Servono nome, carboidrati, proteine e grassi"); return; }
     if (c + p + f > 100){ avviso("Controlla i valori: sono per 100 g"); return; }
-    stato.miei[nome] = {v: [p, c, f], pz: pz || null}; salva();
+    stato.miei[nome] = {v: [p, c, f], pz: pz || null}; if (cb.bc) stato.miei[nome].bc = cb.bc; cb.bc = null; salva();
     cb.scelto = nome; cb.g = pz || 100; cb.modo = "quantita"; disegnaCibo(); return;
   }
 });
 dlgCibo.addEventListener("input", e => {
   if (e.target.id === "cb-cerca"){ cb.cerca = e.target.value; const pos = e.target.selectionStart; disegnaCibo(); const i = $("#cb-cerca"); i.focus(); i.setSelectionRange(pos, pos); }
-  if (e.target.id === "cb-g"){ cb.g = Math.round(num(e.target.value) || 0); $("#cb-ant").innerHTML = anteprima(macroDi([{n: cb.scelto, g: cb.g}])); }
+  if (e.target.id === "cb-pz"){ cb.g = Math.round((num(e.target.value) || 0) * pezzoG(cb.scelto)); $("#cb-g").value = cb.g || ""; $("#cb-ant").innerHTML = anteprima(macroDi([{n: cb.scelto, g: cb.g}])); }
+  if (e.target.id === "cb-g"){ cb.g = Math.round(num(e.target.value) || 0); const z = $("#cb-pz"); if (z) z.value = cb.g ? fmt(cb.g / pezzoG(cb.scelto), 1).replace(",0", "") : ""; $("#cb-ant").innerHTML = anteprima(macroDi([{n: cb.scelto, g: cb.g}])); }
 });
-dlgCibo.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.id === "cb-g"){ e.preventDefault(); dlgCibo.querySelector("[data-aggiungi]").click(); } });
+dlgCibo.addEventListener("close", fermaScanner);
+dlgCibo.addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target.id === "cb-codice"){ e.preventDefault(); cb.occupato = false; cercaCodice(e.target.value); return; } if (e.key === "Enter" && (e.target.id === "cb-g" || e.target.id === "cb-pz")){ e.preventDefault(); dlgCibo.querySelector("[data-aggiungi]").click(); } });
 
 // dialog generico
 dlg.addEventListener("click", async e => {
