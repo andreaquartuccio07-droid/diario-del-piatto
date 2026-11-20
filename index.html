@@ -96,14 +96,14 @@ header.top{position:sticky;top:0;z-index:40;padding-top:env(safe-area-inset-top)
 
 main{padding:15px 0 calc(110px + env(safe-area-inset-bottom))}
 nav.tabs{position:fixed;left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));bottom:calc(6px + env(safe-area-inset-bottom));z-index:45;max-width:740px;margin:0 auto;background:var(--deep);border:1px solid var(--deep-fill);border-radius:22px;padding:4px;box-shadow:var(--shadow);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
-.tabs-in{display:grid;grid-template-columns:repeat(3,1fr)}
+.tabs-in{display:grid;grid-auto-flow:column;grid-auto-columns:1fr}
 .tab{background:none;border:0;min-height:48px;padding:5px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--deep-ink-2);font-size:11.5px;font-weight:600;border-radius:17px;transition:background-color .15s ease-out}
 .tab svg{width:21px;height:21px}
 .tab[aria-selected="true"]{color:var(--deep-ink);background:var(--deep-fill)}
 .tab[aria-selected="true"] svg{color:var(--glow)}
 @media(min-width:760px){
   nav.tabs{position:sticky;top:calc(54px + env(safe-area-inset-top));bottom:auto;left:auto;right:auto;max-width:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0;background:color-mix(in srgb,var(--aurora-top) 72%,transparent);box-shadow:none;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
-  .tabs-in{grid-template-columns:repeat(3,max-content);gap:2px;max-width:760px;margin:0 auto}
+  .tabs-in{grid-auto-columns:max-content;gap:2px;max-width:760px;margin:0 auto}
   .tab{flex-direction:row;gap:7px;padding:10px 15px;border-radius:0;color:var(--ink-3);font-size:13px;border-bottom:2px solid transparent}
   .tab[aria-selected="true"]{color:var(--ink);background:none;border-bottom-color:var(--dato)}
   .tab[aria-selected="true"] svg{color:var(--accent-ink)}
@@ -425,6 +425,10 @@ body.cucina{font-size:17px}
     <button class="tab" role="tab" data-vista="report" data-ruolo="andrea" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5M4 19.5h16M7.5 16l3.5-4.5 3 2.5 4.5-6"/></svg>
       Report
+    </button>
+    <button class="tab" role="tab" data-vista="spesa" data-ruolo="andrea" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="18.5" r="1.5"/><circle cx="17" cy="18.5" r="1.5"/></svg>
+      Spesa
     </button>
     <!-- versione "cucina" (per chi prepara i pasti) -->
     <button class="tab" role="tab" data-vista="cucina" data-ruolo="cucina" aria-selected="false">
@@ -766,7 +770,7 @@ function render(){
   if (!ruolo){ app.innerHTML = vistaBenvenuto(); return; }
   // ogni ruolo ha le sue schermate: se la vista non e' sua, si torna alla prima
   if (ruolo === "cucina" && !VISTE_CUCINA.includes(vista)) vista = "cucina";
-  if (ruolo === "andrea" && VISTE_CUCINA.includes(vista)) vista = "oggi";
+  if (ruolo === "andrea" && VISTE_CUCINA.includes(vista) && vista !== "spesa") vista = "oggi";
   document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.vista === vista)));
   if (vista === "oggi") app.innerHTML = vistaOggi();
   else if (vista === "peso"){ app.innerHTML = vistaPeso(); disegnaGraficoPeso(); }
